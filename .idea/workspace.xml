@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/temp/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.1">
+    <include_path>
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/temp/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/temp/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/temp/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/temp/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/polyfill-php85" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/temp/vendor/composer" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/temp/vendor/symfony/event-dispatcher-contracts" />
+    </include_path>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="3COKVCaKFjg0EX5hd7Sx6fPYwAh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/var/www/yamb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="/var/www/yamb/vendor/autoload.php" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner configuration_file="$PROJECT_DIR$/vendor/willdurand/negotiation/phpunit.xml.dist" scope="XML" use_alternative_configuration_file="true" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="" />
+      <created>1776251197580</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776251197580</updated>
+      <workItem from="1776251198621" duration="4554000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
