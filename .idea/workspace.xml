@@ -5,29 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Command/RegistrationCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Command/RegistrationCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Service/UserUniquenessChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Enum/UserRoleEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordDoNotMatchException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordMissingUppercaseException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordTooShortException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/UserAlreadyExistsException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Repository/UserRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Service/RegistrationPolicy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Subscriber/DoctrineLifecycleEventSubscriber.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Resource/RegistrationResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Response/UserResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/State/Processor/RegistrationProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6a717d6-e656-43bc-a6b6-ef7a4b96510a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f6a717d6-e656-43bc-a6b6-ef7a4b96510a/storage_v2/_src_/schema/yamb.nXo4AA.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Security/UserChecker.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +234,7 @@
       <workItem from="1776251198621" duration="10230000" />
       <workItem from="1776325887607" duration="1208000" />
       <workItem from="1776413609349" duration="9000" />
-      <workItem from="1776759734555" duration="9936000" />
+      <workItem from="1776759734555" duration="10871000" />
     </task>
     <servers />
   </component>

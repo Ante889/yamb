@@ -8,7 +8,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\User\Domain\Model\User
                 property: email
 
     firewalls:
@@ -21,6 +21,7 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            user_checker: App\User\Infrastructure\Security\UserChecker
             refresh_jwt:
                 check_path: /api/auth/refresh-token
         api:
