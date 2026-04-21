@@ -3,9 +3,11 @@
 namespace App\User\Domain\Model;
 
 use App\User\Infrastructure\Doctrine\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -17,6 +19,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(
+        name: 'created',
+        type: 'datetime',
+        nullable: true
+    )]
+    #[Gedmo\Timestampable(on: 'create')]
+    private ?DateTimeInterface $created;
+
+    #[ORM\Column(
+        name: 'updated',
+        type: 'datetime',
+        nullable: true
+    )]
+    #[Gedmo\Timestampable(on: 'update')]
+    private ?DateTimeInterface $updated;
+
+    /**
+     * @var string|null
+     */
+    #[ORM\Column(length: 180)]
+    private ?string $username = null;
+
+    #[ORM\Column(
+        name: 'active',
+        type: 'boolean',
+        nullable: true
+    )]
+    private ?bool $active = true;
+
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
@@ -27,7 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /**
-     * @var string The hashed password
+     * @var ?string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -37,23 +68,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
+    public function getCreated(): ?DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(?DateTimeInterface $created): void
+    {
+        $this->created = $created;
+    }
+
+    public function getUpdated(): ?DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(?DateTimeInterface $updated): void
+    {
+        $this->updated = $updated;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(?bool $active): void
+    {
+        $this->active = $active;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
@@ -65,7 +133,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
@@ -74,7 +141,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @param list<string> $roles
      */
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
@@ -89,16 +156,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
 
-    /**
-     * Ensure the session doesn't contain actual password hashes by CRC32C-hashing them, as supported since Symfony 7.3.
-     */
     public function __serialize(): array
     {
         $data = (array) $this;
@@ -107,9 +171,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $data;
     }
 
-    #[\Deprecated]
     public function eraseCredentials(): void
     {
-        // @deprecated, to be removed when upgrading to Symfony 8
+        // TODO: Implement eraseCredentials() method.
     }
 }
