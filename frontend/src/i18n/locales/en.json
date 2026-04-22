@@ -1,0 +1,9 @@
+{
+    "login": {
+        "username": "Username",
+        "password": "Password",
+        "loginBtn": "Roll & Login 🎲",
+        "errorUser": "Username is required",
+        "errorPass": "Password must be at least 4 characters"
+    }
+}
