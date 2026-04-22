@@ -4,34 +4,44 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Service;
 
-use App\User\Domain\Exception\PasswordDoNotMatchException;
-use App\User\Domain\Exception\PasswordMissingLowercaseException;
-use App\User\Domain\Exception\PasswordMissingNumberException;
-use App\User\Domain\Exception\PasswordMissingUppercaseException;
-use App\User\Domain\Exception\PasswordTooShortException;
+use App\User\Domain\Exception\InvalidPasswordException;
+use App\User\Domain\Exception\UserException;
+use App\User\Domain\Repository\UserRepositoryInterface;
 
 final readonly class RegistrationPolicy
 {
-    public function validatePassword(string $password, string $repeat): void
-    {
+    public function __construct(
+        private UserRepositoryInterface $userRepository
+    ) {}
+
+    public function validate(
+        string $email,
+        string $username,
+        string $password,
+        string $repeat
+    ): void {
+        if ($this->userRepository->existsByEmailOrUsername($email, $username)) {
+            throw UserException::userAlreadyExists();
+        }
+
         if ($password !== $repeat) {
-            throw new PasswordDoNotMatchException();
+            throw InvalidPasswordException::doNotMatch();
         }
 
         if (strlen($password) < 8) {
-            throw new PasswordTooShortException();
+            throw InvalidPasswordException::tooShort();
         }
 
         if (!preg_match('/[A-Z]/', $password)) {
-            throw new PasswordMissingUppercaseException();
+            throw InvalidPasswordException::missingUppercase();
         }
 
         if (!preg_match('/[a-z]/', $password)) {
-            throw new PasswordMissingLowercaseException();
+            throw InvalidPasswordException::missingLowercase();
         }
 
         if (!preg_match('/[0-9]/', $password)) {
-            throw new PasswordMissingNumberException();
+            throw InvalidPasswordException::missingNumber();
         }
     }
 }

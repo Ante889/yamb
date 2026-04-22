@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Core/User/UserCoreService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Core/User/UserCoreServiceInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/NoUserException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Resource/UserResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/State/Provider/CurrentUserDataProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/InvalidPasswordException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User/Domain/Exception/UserException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Security/AuthenticatedUserService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Infrastructure/Response/UserResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Infrastructure/Response/UserResponse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/User/UserCoreService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/User/UserCoreServiceInterface.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Application/Command/RegistrationCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Application/Command/RegistrationCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Application/Service/UserUniquenessChecker.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/NoUserException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordDoNotMatchException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordMissingLowercaseException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordMissingNumberException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordMissingUppercaseException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/PasswordTooShortException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Exception/UserAlreadyExistsException.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Service/RegistrationPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Service/RegistrationPolicy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Infrastructure/State/Provider/CurrentUserDataProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Infrastructure/State/Provider/CurrentUserDataProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +251,7 @@
       <workItem from="1776413609349" duration="9000" />
       <workItem from="1776759734555" duration="11565000" />
       <workItem from="1776848053837" duration="2728000" />
-      <workItem from="1776851532456" duration="1256000" />
+      <workItem from="1776851532456" duration="3458000" />
     </task>
     <servers />
   </component>

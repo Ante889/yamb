@@ -6,15 +6,15 @@ namespace App\User\Infrastructure\State\Provider;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
-use App\Core\User\UserCoreServiceInterface;
 use App\User\Infrastructure\Resource\UserResource;
 use App\User\Infrastructure\Response\UserResponse;
+use App\User\Infrastructure\Security\AuthenticatedUserService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 final readonly class CurrentUserDataProvider implements ProviderInterface
 {
     public function __construct(
-        private UserCoreServiceInterface $userCoreService
+        private AuthenticatedUserService $authenticatedUserService
     )
     {
     }
@@ -30,7 +30,7 @@ final readonly class CurrentUserDataProvider implements ProviderInterface
         if ($operation->getClass() !== UserResource::class) throw new \LogicException();
 
         return new JsonResponse(
-            UserResponse::returnModel($this->userCoreService->getCurrentUser()), 200
+            UserResponse::returnModel($this->authenticatedUserService->getCurrentUser()), 200
         );
     }
 }
