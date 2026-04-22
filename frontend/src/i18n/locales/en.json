@@ -1,5 +1,6 @@
 {
     "login": {
+        "login": "Login",
         "username": "Username",
         "password": "Password",
         "loginBtn": "Roll & Login 🎲",

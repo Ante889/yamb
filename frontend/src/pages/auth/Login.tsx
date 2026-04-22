@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import {useTranslation} from "react-i18next";
 
 function Login() {
-    const {t} = useTranslation()<any>;
+    const {t} = useTranslation();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [rolling, setRolling] = useState(false);
@@ -35,8 +35,10 @@ function Login() {
     };
 
     const handleLogin = () => {
+        setRolling(true);
+
         if (!username.trim()) {
-            toast.error(t('login.errorUser', 'Login'));
+            toast.error(t('login.errorUser'));
             return;
         }
 
@@ -50,11 +52,8 @@ function Login() {
 
     return (
         <div className="login-page">
-
             <div className="login-card">
-
-                <h1 className="title">🎲 YAMB</h1>
-
+                <h1 className="title"> 🎲 YAMB - {t('login.login')}</h1>
                 <div className={`dice-row ${rolling ? "rolling" : ""}`}>
                     {dice.map((d, i) => (
                         <div key={i} className="dice-face">
