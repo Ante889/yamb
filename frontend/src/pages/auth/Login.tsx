@@ -1,87 +1,113 @@
-import { useState } from "react";
-import "./Login.css";
-import {rollDiceLogin} from "../../features/auth/RollDiceLogin.tsx";
+import {useState} from "react";
+import "./Auth.css";
 import toast from "react-hot-toast";
 import {useTranslation} from "react-i18next";
+import {APP_NAME} from "../../config/AppConfig.tsx";
+import {AuthCard} from "../../components/Auth/AuthCard.tsx";
+import {AuthInput} from "../../components/Auth/AuthInput.tsx";
+import {useNavigate} from "react-router-dom";
+import {AuthService} from "../../services/auth/authService.tsx";
 
-function Login() {
+function Auth() {
     const {t} = useTranslation();
+
+    const [mode, setMode] = useState<"login" | "register">("login");
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [rolling, setRolling] = useState(false);
-    const [dice, setDice] = useState([1, 1, 1, 1, 1, 1]);
+    const [repeatPassword, setRepeatPassword] = useState("");
 
-    const rollDice = async () => {
-        setRolling(true);
-        const result = await rollDiceLogin(username, password);
+    const handleSubmit = async () => {
+        const loadingToast = toast.loading(t("loading"));
+        try {
+            if (mode === "login") {
+                const res = await AuthService.login(email, password);
 
-        let count = 0;
+                if (res) {
+                    toast.success(t("login.loginSuccess"));
+                    navigate("/");
+                }
+            } else {
+                const res = await AuthService.register(username, email, password, repeatPassword);
 
-        const interval = setInterval(() => {
-            setDice(
-                Array.from({ length: 6 }, () =>
-                    Math.floor(Math.random() * 6) + 1
-                )
-            );
-
-            count++;
-
-            if (count > 10) {
-                clearInterval(interval);
-                setDice(result);
-                setRolling(false);
+                if (res) {
+                    toast.success(t("login.registrationSuccess"));
+                    navigate("/");
+                }
             }
-        }, 100);
-    };
-
-    const handleLogin = () => {
-        setRolling(true);
-
-        if (!username.trim()) {
-            toast.error(t('login.errorUser'));
-            return;
+        } finally {
+            toast.dismiss(loadingToast);
         }
-
-        if (password.length < 4) {
-            toast.error(t('login.errorPass'));
-            return;
-        }
-
-        rollDice();
     };
 
     return (
-        <div className="login-page">
-            <div className="login-card">
-                <h1 className="title"> 🎲 YAMB - {t('login.login')}</h1>
-                <div className={`dice-row ${rolling ? "rolling" : ""}`}>
-                    {dice.map((d, i) => (
-                        <div key={i} className="dice-face">
-                            {d}
-                        </div>
-                    ))}
+        <AuthCard
+            title={`🎲 ${APP_NAME} - ${
+                mode === "login" ? t("login.login") : t("login.register")
+            }`}
+        >
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit();
+            }}>
+                <div className="auth-tabs">
+                    <button
+                        className={mode === "login" ? "active" : ""}
+                        onClick={() => setMode("login")}
+                        type="button"
+                    >
+                        {t("login.login")}
+                    </button>
+
+                    <button
+                        className={mode === "register" ? "active" : ""}
+                        onClick={() => setMode("register")}
+                        type="button"
+                    >
+                        {t("login.register")}
+                    </button>
                 </div>
 
-                <input
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder={t("login.username")}
+                {mode === "register" && (
+                    <AuthInput
+                        type="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder={t("login.username")}
+                    />
+                )}
+
+                <AuthInput
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t("login.email")}
                 />
 
-                <input
+                <AuthInput
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder={t("login.password")}
                 />
 
-                <button onClick={handleLogin}>
-                    {t('login.loginBtn')}
-                </button>
+                {mode === "register" && (
+                    <AuthInput
+                        type="password"
+                        value={repeatPassword}
+                        onChange={(e) => setRepeatPassword(e.target.value)}
+                        placeholder={t("login.repeatPassword")}
+                    />
+                )}
 
-            </div>
-        </div>
+                <button style={{width: '100%', marginTop:'10px'}} className={'btn btn-primary'} type="submit">
+                    {mode === "login"
+                        ? t("login.loginBtn")
+                        : t("login.registerBtn")}
+                </button>
+            </form>
+        </AuthCard>
     );
 }
 
-export default Login;
+export default Auth;

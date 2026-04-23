@@ -10,11 +10,11 @@ final class UserException extends DomainException
 {
     public static function noUser(): self
     {
-        return new self('exception.user.no_user');
+        return new self('exception.no_user');
     }
 
     public static function userAlreadyExists(): self
     {
-        return new self('exception.password.user_already_exists');
+        return new self('exception.user_already_exists');
     }
 }

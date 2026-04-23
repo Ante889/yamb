@@ -1,10 +1,32 @@
 {
+    "exception": {
+        "password.too_short": "Password is to short.",
+        "password.missing_uppercase": "Password - missing uppercase",
+        "missing_lowercase": "Password - missing lowercase",
+        "missing_number": "Password - missing number",
+        "do_not_match": "Password - do not match",
+        "no_user": "User not found",
+        "user_already_exists": "Username or email already exists"
+    },
+    "Loading": "Loading...",
+    "dashboard": {
+        "dashboard": "Dashboard"
+    },
     "login": {
+        "email": "Email",
+        "register": "Register",
         "login": "Login",
         "username": "Username",
+        "repeatPassword": "Repeat password",
         "password": "Password",
-        "loginBtn": "Roll & Login 🎲",
+        "loginBtn": "Login 🎲",
+        "registerBtn": "Register 🎲",
         "errorUser": "Username is required",
-        "errorPass": "Password must be at least 4 characters"
+        "errorPass": "Password must be at least 4 characters",
+        "errorEmail": "Email is required",
+        "loginSuccess": "Login success",
+        "loginError": "Login error. Try again.",
+        "logout": "Logout",
+        "registrationSuccess": "Registration is successful."
     }
 }

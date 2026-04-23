@@ -6,14 +6,20 @@ import RequireAuth from "./features/auth/RequireAuth";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/auth/Login";
+import PublicOnlyRoute from "./features/auth/PublicOnlyRoute.tsx";
 
 const routes: RouteObject[] = [
     {
-        element: <PublicLayout />,
+        element: <PublicOnlyRoute />,
         children: [
             {
-                path: "/login",
-                element: <Login />,
+                element: <PublicLayout />,
+                children: [
+                    {
+                        path: "/login",
+                        element: <Login />,
+                    },
+                ],
             },
         ],
     },

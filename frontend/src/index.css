@@ -84,6 +84,12 @@ button {
     border: none;
 }
 
+.btn-danger {
+    background: #ef4444;
+    color: #ffffff;
+    border: none;
+}
+
 .btn-primary:hover {
     background: #0ea5e9;
 }
