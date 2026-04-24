@@ -16,7 +16,9 @@
         "playSolo": "Play solo",
         "playSoloDesc": "Start a quick game",
         "createRoom": "Create room",
-        "createRoomDesc": "Play with friends"
+        "createRoomDesc": "Play with friends",
+        "leaderboard": "Leaderboard",
+        "topPlayersThisWeek": "Top players"
     },
     "login": {
         "email": "Email",

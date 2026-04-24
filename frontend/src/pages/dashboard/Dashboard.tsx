@@ -29,6 +29,13 @@ function Dashboard() {
                         <p>{t('dashboard.createRoomDesc')}</p>
                     </div>
                 </div>
+                <div className="leaderboard-card">
+                    {/*<img src={yambImage} alt="create-room"/>*/}
+                    <div className="overlay">
+                        <h3>{t('dashboard.leaderboard')}</h3>
+                        <p>{t('dashboard.topPlayersThisWeek')}</p>
+                    </div>
+                </div>
             </div>
         </div>
     );
