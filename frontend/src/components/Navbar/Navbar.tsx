@@ -10,7 +10,9 @@ function Navbar() {
     const {t} = useTranslation();
     return (
         <nav className="navbar">
-            <div className="logo">{APP_NAME}</div>
+            <div className="logo">
+                {APP_NAME}
+            </div>
 
             <button className="burger" onClick={() => setOpen(!open)}>
                 ☰
@@ -26,7 +28,8 @@ function Navbar() {
                 </Link>
                 <Link
                     to="/"
-                    className={"btn btn-danger"}
+                    className={"links, open"}
+                    style={{color: 'red'}}
                     onClick={() => {
                         AuthService.logout();
                     }}

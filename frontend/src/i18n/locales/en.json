@@ -10,7 +10,13 @@
     },
     "Loading": "Loading...",
     "dashboard": {
-        "dashboard": "Dashboard"
+        "dashboard": "Dashboard",
+        "welcome": "Welcome",
+        "choiceGame": "Choice game",
+        "playSolo": "Play solo",
+        "playSoloDesc": "Start a quick game",
+        "createRoom": "Create room",
+        "createRoomDesc": "Play with friends"
     },
     "login": {
         "email": "Email",

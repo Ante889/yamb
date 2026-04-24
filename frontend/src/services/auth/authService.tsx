@@ -1,4 +1,4 @@
-import {loginApi, registerApi} from "../../api/auth/auth.api";
+import {loginApi, registerApi} from "../../api/auth/authApi.tsx";
 import { TokenService } from "../../api/token";
 
 export const AuthService = {
@@ -10,7 +10,7 @@ export const AuthService = {
         TokenService.setTokens(
             token,
             refresh_token,
-            expiresIn ?? 60 * 60
+            expiresIn ?? 60 * 15
         );
 
         return data;
@@ -22,14 +22,6 @@ export const AuthService = {
     },
 
     register: async (username: string, email: string, password: string, repeatPassword: string) => {
-        const data = await registerApi(username, email, password, repeatPassword);
-
-        console.log(data);
-
-        //const { token, refresh_token, expiresIn } = data;
-
-
-
-        return data;
+        return await registerApi(username, email, password, repeatPassword);
     },
 };

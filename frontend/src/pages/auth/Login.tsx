@@ -7,10 +7,10 @@ import {AuthCard} from "../../components/Auth/AuthCard.tsx";
 import {AuthInput} from "../../components/Auth/AuthInput.tsx";
 import {useNavigate} from "react-router-dom";
 import {AuthService} from "../../services/auth/authService.tsx";
+import {UserService} from "../../services/user/userService.tsx";
 
 function Auth() {
     const {t} = useTranslation();
-
     const [mode, setMode] = useState<"login" | "register">("login");
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -25,15 +25,15 @@ function Auth() {
                 const res = await AuthService.login(email, password);
 
                 if (res) {
+                    await UserService.getCurrentUserData()
                     toast.success(t("login.loginSuccess"));
                     navigate("/");
                 }
             } else {
                 const res = await AuthService.register(username, email, password, repeatPassword);
-
                 if (res) {
                     toast.success(t("login.registrationSuccess"));
-                    navigate("/");
+                    setMode('login');
                 }
             }
         } finally {

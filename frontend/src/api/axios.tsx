@@ -7,12 +7,12 @@ import i18n from "i18next";
 let refreshPromise: Promise<string> | null = null;
 
 const isAuthRoute = (url?: string) => {
-    return url?.includes("/login") || url?.includes("/register");
+    return url?.includes("/login") || url?.includes("/register") || url?.includes('/token/refresh');
 };
 
 const isAuthRouteResponse = () => {
     const path = window.location.pathname;
-    return path === "/login" || path === "/register";
+    return path === "/login" || path === "/register" || path === '/token/refresh';
 };
 
 
@@ -24,15 +24,14 @@ const refreshAccessToken = async (): Promise<string> => {
     refreshPromise = (async () => {
         const refreshToken = TokenService.getRefreshToken();
 
-        const res = await axios.post(BASE_URL + "/token/refresh", {
-            refreshToken,
+        const res = await axios.post(BASE_URL + "token/refresh", {
+            'refresh_token': refreshToken,
         });
 
-        const { accessToken, refreshToken: newRefresh, expiresIn } = res.data;
+        const { token, refresh_token, expiresIn } = res.data;
+        TokenService.setTokens(token, refresh_token, expiresIn ?? 60 * 15);
 
-        TokenService.setTokens(accessToken, newRefresh, expiresIn);
-
-        return accessToken;
+        return token;
     })();
 
     try {
@@ -106,8 +105,8 @@ api.interceptors.response.use(
         ========================= */
         if (status === 401) {
             if (!isAuthRouteResponse()) {
-                TokenService.clear();
-                window.location.href = "/login";
+                // TokenService.clear();
+                // window.location.href = "/login";
             }
             toast.error(i18n.t(msg || "Unauthorized"));
         }

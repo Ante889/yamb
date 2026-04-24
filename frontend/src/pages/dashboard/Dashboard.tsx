@@ -1,17 +1,37 @@
-import {useState} from "react";
+import { TokenService } from "../../api/token.tsx";
+import "./Dashboard.css";
+import yambImage from "../../assets/auth/YambLogin.jpg";
+import { useTranslation } from "react-i18next";
 
 function Dashboard() {
-    const [count, setCount] = useState(0);
+    const { t } = useTranslation();
 
     return (
-        <div>
-            <h1>Home Page</h1>
-            <p>React 18 + Vite starter template 🚀 (pinned to React 18.2.0)</p>
-            <button className={'btn btn-primary'} onClick={() => setCount(count + 1)}>
-                Count: {count}
-            </button>
+        <div className="dashboard">
+            <div className="dashboard-header">
+                <h1 style={{fontSize: '40px'}} className="title">
+                    {t("dashboard.welcome")} - {TokenService.getUsername()}
+                </h1>
+            </div>
+            <div className="dashboard-grid">
+                <div className="game-card">
+                    <img src={yambImage} alt="play-solo"/>
+                    <div className="overlay">
+                        <h3>{t('dashboard.playSolo')}</h3>
+                        <p>{t('dashboard.playSoloDesc')}</p>
+                    </div>
+                </div>
+
+                <div className="game-card">
+                    <img src={yambImage} alt="create-room"/>
+                    <div className="overlay">
+                        <h3>{t('dashboard.createRoom')}</h3>
+                        <p>{t('dashboard.createRoomDesc')}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
 
-export default Dashboard
+export default Dashboard;
