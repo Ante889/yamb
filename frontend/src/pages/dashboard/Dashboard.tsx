@@ -1,7 +1,11 @@
 import { TokenService } from "../../api/token.tsx";
 import "./Dashboard.css";
-import yambImage from "../../assets/auth/YambLogin.jpg";
+import soloGameImage from "../../assets/dashboard/SoloGame.jpg";
+import pvpImage from "../../assets/dashboard/Pvp.jpg";
+import leaderboardImage from "../../assets/dashboard/Leaderboard.jpg";
 import { useTranslation } from "react-i18next";
+import {UserService} from "../../services/user/userService.tsx";
+import {useEffect} from "react";
 
 function Dashboard() {
     const { t } = useTranslation();
@@ -15,7 +19,7 @@ function Dashboard() {
             </div>
             <div className="dashboard-grid">
                 <div className="game-card">
-                    <img src={yambImage} alt="play-solo"/>
+                    <img src={soloGameImage} alt="play-solo"/>
                     <div className="overlay">
                         <h3>{t('dashboard.playSolo')}</h3>
                         <p>{t('dashboard.playSoloDesc')}</p>
@@ -23,14 +27,14 @@ function Dashboard() {
                 </div>
 
                 <div className="game-card">
-                    <img src={yambImage} alt="create-room"/>
+                    <img src={pvpImage} alt="create-room"/>
                     <div className="overlay">
                         <h3>{t('dashboard.createRoom')}</h3>
                         <p>{t('dashboard.createRoomDesc')}</p>
                     </div>
                 </div>
                 <div className="leaderboard-card">
-                    {/*<img src={yambImage} alt="create-room"/>*/}
+                    <img src={leaderboardImage} alt="create-room"/>
                     <div className="overlay">
                         <h3>{t('dashboard.leaderboard')}</h3>
                         <p>{t('dashboard.topPlayersThisWeek')}</p>

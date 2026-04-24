@@ -7,8 +7,8 @@ const USER_EMAIL = "user_email";
 export const TokenService = {
     getAccessToken: () => localStorage.getItem(ACCESS_TOKEN),
     getRefreshToken: () => localStorage.getItem(REFRESH_TOKEN),
-    getUsername: () => localStorage.getItem(USER_EMAIL),
-    getUserEmail: () => localStorage.getItem(USER_NAME),
+    getUsername: () => localStorage.getItem(USER_NAME),
+    getUserEmail: () => localStorage.getItem(USER_EMAIL),
     setTokens: (access: string, refresh: string, expiresIn: number) => {
         const expiry = Date.now() + expiresIn * 1000;
 

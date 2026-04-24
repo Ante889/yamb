@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/dashboard/Leaderboard.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/dashboard/Pvp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/assets/dashboard/SoloGame.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/axios.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/token.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/token.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/auth/YambLogin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/features/auth/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/features/auth/RequireAuth.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" afterDir="false" />
     </list>
@@ -175,7 +182,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/var/www/yamb/frontend/src/api/user",
+    "last_opened_file_path": "/var/www/yamb/frontend/src/assets/dashboard",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -203,18 +210,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/src/api/user" />
+      <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/assets" />
+      <recent name="$PROJECT_DIR$/frontend/src/api/user" />
       <recent name="$PROJECT_DIR$/frontend/src/i18n/entiries" />
       <recent name="$PROJECT_DIR$/frontend/src/components" />
-      <recent name="$PROJECT_DIR$/src/Core/User" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
+      <recent name="$PROJECT_DIR$/frontend/src/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/auth" />
       <recent name="$PROJECT_DIR$/frontend/src/components" />
       <recent name="$PROJECT_DIR$/frontend/src/layouts/Navbar" />
-      <recent name="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Subscriber" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -249,7 +256,8 @@
       <workItem from="1776869686407" duration="121000" />
       <workItem from="1776932923078" duration="1758000" />
       <workItem from="1776934685312" duration="12064000" />
-      <workItem from="1777017281085" duration="10619000" />
+      <workItem from="1777017281085" duration="11338000" />
+      <workItem from="1777036544251" duration="3931000" />
     </task>
     <servers />
   </component>

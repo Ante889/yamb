@@ -105,8 +105,8 @@ api.interceptors.response.use(
         ========================= */
         if (status === 401) {
             if (!isAuthRouteResponse()) {
-                // TokenService.clear();
-                // window.location.href = "/login";
+                TokenService.clear();
+                window.location.href = "/login";
             }
             toast.error(i18n.t(msg || "Unauthorized"));
         }

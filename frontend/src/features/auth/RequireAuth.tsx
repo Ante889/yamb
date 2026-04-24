@@ -3,9 +3,8 @@ import { TokenService } from "../../api/token.tsx";
 
 export default function RequireAuth() {
     const token = TokenService.getAccessToken();
-    const isExpired = TokenService.isExpired();
 
-    const isAuth = !!token && !isExpired;
+    const isAuth = !!token;
 
     if (!isAuth) {
         TokenService.clear();
