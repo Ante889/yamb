@@ -13,10 +13,10 @@
 .title {
     font-size: 40px;
     font-weight: 700;
-    color: #e2e8f0;
+    color: #94a3b8;
     letter-spacing: 0.3px;
     margin-bottom: 8px;
-    background: linear-gradient(90deg, #e2e8f0, #38bdf8);
+    background: linear-gradient(90deg, #94a3b8, #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -81,11 +81,12 @@
         transparent
     );
 
-    color: #e2e8f0;
+    color: #94a3b8;
 }
 
 .overlay h3 {
     margin: 0;
+    color: #94a3b8;
 }
 
 .overlay p {
