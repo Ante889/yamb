@@ -1,8 +1,8 @@
 import {Link, useLocation} from "react-router-dom";
 import { useState } from "react";
-import {APP_NAME} from "../../config/AppConfig.tsx";
 import {AuthService} from "../../services/auth/authService.tsx";
 import {useTranslation} from "react-i18next";
+import leaderboardImage from "../../assets/dashboard/Logo.png";
 
 function Navbar() {
     const location = useLocation();
@@ -11,7 +11,7 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="logo">
-                {APP_NAME}
+                <img style={{width: '80px'}} src={leaderboardImage} alt="logo"/>
             </div>
 
             <button className="burger" onClick={() => setOpen(!open)}>
@@ -28,8 +28,7 @@ function Navbar() {
                 </Link>
                 <Link
                     to="/"
-                    className={"links, open"}
-                    style={{color: 'red'}}
+                    className="logout"
                     onClick={() => {
                         AuthService.logout();
                     }}

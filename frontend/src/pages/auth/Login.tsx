@@ -8,6 +8,7 @@ import {AuthInput} from "../../components/Auth/AuthInput.tsx";
 import {useNavigate} from "react-router-dom";
 import {AuthService} from "../../services/auth/authService.tsx";
 import {UserService} from "../../services/user/userService.tsx";
+import yambText from "../../assets/dashboard/Yamb.png";
 
 function Auth() {
     const {t} = useTranslation();
@@ -42,11 +43,8 @@ function Auth() {
     };
 
     return (
-        <AuthCard
-            title={`🎲 ${APP_NAME} - ${
-                mode === "login" ? t("login.login") : t("login.register")
-            }`}
-        >
+        <AuthCard>
+            <img style={{width: '280px'}} src={yambText} alt="yamb-text"/>
             <form onSubmit={(e) => {
                 e.preventDefault();
                 handleSubmit();
@@ -100,7 +98,7 @@ function Auth() {
                     />
                 )}
 
-                <button style={{width: '100%', marginTop:'10px'}} className={'btn btn-primary'} type="submit">
+                <button style={{width: '100%', marginTop: '10px'}} className={'btn btn-primary'} type="submit">
                     {mode === "login"
                         ? t("login.loginBtn")
                         : t("login.registerBtn")}

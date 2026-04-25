@@ -1,11 +1,10 @@
-import { TokenService } from "../../api/token.tsx";
 import "./Dashboard.css";
 import soloGameImage from "../../assets/dashboard/SoloGame.jpg";
 import pvpImage from "../../assets/dashboard/Pvp.jpg";
 import leaderboardImage from "../../assets/dashboard/Leaderboard.jpg";
+import yambText from "../../assets/dashboard/Yamb.png";
 import { useTranslation } from "react-i18next";
-import {UserService} from "../../services/user/userService.tsx";
-import {useEffect} from "react";
+
 
 function Dashboard() {
     const { t } = useTranslation();
@@ -13,9 +12,7 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="dashboard-header">
-                <h1 style={{fontSize: '40px'}} className="title">
-                    {t("dashboard.welcome")} - {TokenService.getUsername()}
-                </h1>
+                <img style={{width:'500px'}} src={yambText} alt="yamb-text"/>
             </div>
             <div className="dashboard-grid">
                 <div className="game-card">
