@@ -12,7 +12,7 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="dashboard-header">
-                <img style={{width:'500px'}} src={yambText} alt="yamb-text"/>
+                <img style={{ width: '100%', maxWidth: '500px' }} src={yambText} alt="yamb-text"/>
             </div>
             <div className="dashboard-grid">
                 <div className="game-card">
