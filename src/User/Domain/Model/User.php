@@ -2,8 +2,11 @@
 
 namespace App\User\Domain\Model;
 
+use App\Game\Domain\Model\GameParticipant;
 use App\User\Infrastructure\Doctrine\Repository\UserRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -51,17 +54,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-    /**
-     * @var list<string> The user roles
-     */
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var ?string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(
+        targetEntity: GameParticipant::class,
+        mappedBy: 'user',
+        cascade: ['persist'],
+        orphanRemoval: true
+    )]
+    private Collection $participants;
+
+    /**
+     * @param int|null $id
+     */
+    public function __construct(?int $id)
+    {
+        $this->participants = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -127,9 +141,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -138,9 +149,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -148,9 +156,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -169,6 +174,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $data["\0".self::class."\0password"] = hash('crc32c', $this->password);
 
         return $data;
+    }
+
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function setParticipants(Collection $participants): self
+    {
+        $this->participants = $participants;
+
+        return $this;
     }
 
     public function eraseCredentials(): void

@@ -5,18 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/dashboard/Logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/dashboard/Yamb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreSheet.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreSheetRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreSheetRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/favicon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Auth/AuthCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Auth/AuthCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/auth/Auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/auth/Auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/auth/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/resources.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/resources.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Model/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +264,12 @@
       <workItem from="1776934685312" duration="12064000" />
       <workItem from="1777017281085" duration="11338000" />
       <workItem from="1777036544251" duration="4125000" />
-      <workItem from="1777134275329" duration="3751000" />
+      <workItem from="1777134275329" duration="4374000" />
+      <workItem from="1777274996589" duration="2690000" />
+      <workItem from="1777299145724" duration="479000" />
+      <workItem from="1777299635897" duration="4258000" />
+      <workItem from="1777364295561" duration="603000" />
+      <workItem from="1777414119608" duration="5703000" />
     </task>
     <servers />
   </component>
