@@ -4,9 +4,9 @@ import MainLayout from "./layouts/MainLayout";
 import PublicLayout from "./layouts/PublicLayout";
 import RequireAuth from "./features/auth/RequireAuth";
 
-import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/auth/Login";
 import PublicOnlyRoute from "./features/auth/PublicOnlyRoute.tsx";
+import Dashboard from "./pages/dashboard/Dashboard.tsx";
 
 const routes: RouteObject[] = [
     {

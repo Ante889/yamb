@@ -1,0 +1,18 @@
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gap-10 { gap: 10px; }
+.gap-20 { gap: 20px; }

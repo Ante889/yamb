@@ -1,0 +1,5 @@
+:root {
+    --neon-purple: #ff4dff;
+    --neon-orange: #ffb84d;
+    --neon-gradient: linear-gradient(90deg, #ff4dff, #ffb84d);
+}

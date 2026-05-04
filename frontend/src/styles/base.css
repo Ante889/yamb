@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 0, 200, 0.08), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(255, 150, 0, 0.08), transparent 40%);
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+body {
+    margin: 0;
+    background: #020617;
+    color: #e2e8f0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0 0 10px 0;
+    color: #f1f5f9;
+}
+
+p {
+    margin: 0 0 12px 0;
+    color: #cbd5e1;
+}
+
+a {
+    background: var(--neon-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a:hover {
+    text-shadow:
+        0 0 6px rgba(255, 77, 255, 0.7),
+        0 0 10px rgba(255, 184, 77, 0.6);
+}
+
+button {
+    font-family: inherit;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #64748b;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,var(--neon-purple), var(--neon-orange));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.5);
+}
+
+::selection {
+    background: rgba(255, 77, 255, 0.3);
+}
+
+:focus {
+    outline: none;
+}
