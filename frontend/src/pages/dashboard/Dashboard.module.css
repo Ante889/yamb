@@ -28,8 +28,8 @@
 
     cursor: pointer;
 
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-subtle);
+    background: var(--color-bg-surface);
 
     transition: all 0.25s ease;
 
@@ -41,12 +41,17 @@
     height: 460px;
     object-fit: cover;
     display: block;
+
     transition: transform 0.4s ease;
 }
 
 .gameCard:hover {
     transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.3);
+    border-color: var(--border-accent);
+
+    box-shadow:
+        0 0 20px var(--glow-accent-soft),
+        0 0 40px var(--glow-warm);
 }
 
 .gameCard:hover img {
@@ -64,13 +69,15 @@
 
     background: linear-gradient(
         135deg,
-        rgba(56, 189, 248, 0.15),
-        rgba(15, 23, 42, 0.8)
+        rgba(255, 77, 255, 0.12),
+        rgba(15, 23, 42, 0.85)
     );
 
-    border: 1px solid rgba(56, 189, 248, 0.25);
+    border: 1px solid var(--border-accent);
 
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.35),
+        0 0 25px var(--glow-accent-soft);
 
     cursor: pointer;
 
@@ -82,12 +89,16 @@
     height: 100%;
     object-fit: cover;
     display: block;
+
     transition: transform 0.4s ease;
 }
 
 .leaderboardCard:hover {
     transform: translateY(-6px);
-    border-color: rgba(56, 189, 248, 0.5);
+
+    box-shadow:
+        0 0 30px var(--glow-accent-strong),
+        0 0 60px var(--glow-warm);
 }
 
 .leaderboardCard:hover img {
@@ -104,11 +115,11 @@
 
     background: linear-gradient(
         to top,
-        rgba(2, 6, 23, 0.9),
+        var(--color-bg-main),
         transparent
     );
 
-    color: #94a3b8;
+    color: var(--color-text-primary);
 }
 
 .overlay h3 {
@@ -118,8 +129,8 @@
 .overlay p {
     margin: 4px 0 0 0;
     font-size: 13px;
+    color: var(--color-text-secondary);
 }
-
 
 @media (max-width: 768px) {
     .grid {

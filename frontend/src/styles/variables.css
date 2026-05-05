@@ -1,5 +1,33 @@
 :root {
-    --neon-purple: #ff4dff;
-    --neon-orange: #ffb84d;
-    --neon-gradient: linear-gradient(90deg, #ff4dff, #ffb84d);
+    /* === CORE COLORS === */
+    --color-bg-main: #020617;
+    --color-bg-surface: rgba(15, 23, 42, 0.6);
+    --color-bg-glass: rgba(14, 28, 42, 0.75);
+
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #94a3b8;
+
+    /* === ACCENT (NEON) === */
+    --color-accent-1: #ff4dff;
+    --color-accent-2: #ffb84d;
+
+    --gradient-primary: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2));
+
+    /* === GLOW / EFFECTS === */
+    --glow-accent-soft: rgba(255, 77, 255, 0.25);
+    --glow-accent-strong: rgba(255, 77, 255, 0.5);
+    --glow-warm: rgba(255, 184, 77, 0.35);
+
+    /* === BORDERS === */
+    --border-subtle: rgba(148, 163, 184, 0.15);
+    --border-default: rgba(148, 163, 184, 0.25);
+    --border-accent: rgba(255, 77, 255, 0.4);
+
+    /* === BACKGROUND FX === */
+    --bg-accent-purple: rgba(255, 0, 200, 0.12);
+    --bg-accent-orange: rgba(255, 150, 0, 0.12);
+
+    /* === BUTTON === */
+    --btn-bg: var(--color-bg-surface);
+    --btn-border: var(--border-default);
 }

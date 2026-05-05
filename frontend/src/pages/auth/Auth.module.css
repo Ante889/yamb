@@ -5,7 +5,8 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: #020617;
+
+    background: var(--color-bg-main);
 }
 
 .loginPage::before {
@@ -14,9 +15,12 @@
     top: 15%;
     width: 100%;
     text-align: center;
+
     font-size: 42px;
     letter-spacing: 30px;
-    color: rgba(255, 77, 255, 0.08);
+
+    color: var(--bg-accent-purple);
+    opacity: 0.6;
 }
 
 .loginPage::after {
@@ -25,21 +29,23 @@
     bottom: 10%;
     width: 100%;
     text-align: center;
+
     font-size: 58px;
     letter-spacing: 50px;
-    color: rgba(255, 184, 77, 0.07);
-}
 
+    color: var(--bg-accent-orange);
+    opacity: 0.6;
+}
 
 .loginCard {
     z-index: 2;
     width: 340px;
     padding: 26px;
 
-    background: rgba(14, 28, 42, 0.75);
+    background: var(--color-bg-glass);
     backdrop-filter: blur(14px);
 
-    border: 1px solid rgba(255, 77, 255, 0.25);
+    border: 1px solid var(--border-subtle);
     border-radius: 16px;
 
     display: flex;
@@ -47,61 +53,49 @@
     gap: 12px;
 
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.5),
-        0 0 20px rgba(255, 77, 255, 0.15),
-        0 0 40px rgba(255, 184, 77, 0.1);
+        0 0 25px var(--glow-accent-soft),
+        0 0 50px var(--glow-warm);
 }
 
 .authTabs {
     display: flex;
     gap: 6px;
     margin-bottom: 8px;
-    background: rgba(255,255,255,0.05);
+
+    background: rgba(255, 184, 77, 0.08);
     padding: 4px;
     border-radius: 10px;
+
+    border: 1px solid var(--border-subtle);
 }
 
 .authTabs button {
     flex: 1;
     padding: 8px 0;
+
     border-radius: 8px;
     border: none;
+
     background: transparent;
-    color: #94a3b8;
+    color: var(--color-text-secondary);
+
     font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+
+    transition: all 0.2s ease;
 }
 
-.active {
-    background: linear-gradient(90deg, #ff4dff, #ffb84d);
-    color: #0f172a;
-    box-shadow:
-        0 4px 12px rgba(255, 77, 255, 0.4),
-        0 0 20px rgba(255, 184, 77, 0.3);
+.authTabs button:hover {
+    color: var(--color-text-primary);
 }
 
-.submitBtn {
-    width: 100%;
-    margin-top: 10px;
-
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-
-    background: linear-gradient(90deg, #ff4dff, #ffb84d);
+.authTabs .active {
+    background: var(--gradient-primary);
     color: #0f172a;
 
-    font-weight: 700;
-    cursor: pointer;
-
     box-shadow:
-        0 6px 15px rgba(255, 77, 255, 0.4),
-        0 0 25px rgba(255, 184, 77, 0.3);
+        0 4px 14px var(--glow-accent-strong),
+        0 0 25px var(--glow-warm);
 
-    transition: 0.2s;
-}
-
-.submitBtn:hover {
     transform: translateY(-1px);
 }

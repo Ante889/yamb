@@ -51,7 +51,7 @@ function Auth() {
 
     return (
         <div className={styles.loginPage}>
-            <AuthCard>
+            <AuthCard title={'auth-card'}>
                 <div className={styles.loginCard}>
                     <img
                         style={{ width: "280px", margin: "0 auto" }}
@@ -122,7 +122,7 @@ function Auth() {
                         )}
 
                         <button
-                            className={styles.submitBtn}
+                            className={'btn btn-primary'}
                             type="submit"
                         >
                             {mode === "login"
