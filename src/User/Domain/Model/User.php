@@ -68,10 +68,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private Collection $participants;
 
-    /**
-     * @param int|null $id
-     */
-    public function __construct(?int $id)
+    public function __construct()
     {
         $this->participants = new ArrayCollection();
     }

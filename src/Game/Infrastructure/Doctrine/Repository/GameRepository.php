@@ -14,6 +14,17 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
         parent::__construct($registry, Game::class);
     }
 
+    public function existsByJoinCode(string $joinCode): bool
+    {
+        return (bool) $this->createQueryBuilder('g')
+            ->select('1')
+            ->andWhere('g.joinCode = :code')
+            ->setParameter('code', $joinCode)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function add(Game $game): self
     {
         $this->getEntityManager()->persist($game);

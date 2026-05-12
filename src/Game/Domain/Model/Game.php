@@ -74,14 +74,14 @@ class Game
 
     #[ORM\Column(
         name: 'startedAt',
-        type: 'datetime',
+        type: 'datetime_immutable',
         nullable: true
     )]
     private ?\DateTimeImmutable $startedAt = null;
 
     #[ORM\Column(
         name: 'finishedAt',
-        type: 'datetime',
+        type: 'datetime_immutable',
         nullable: true
     )]
     private ?\DateTimeImmutable $finishedAt = null;
@@ -234,5 +234,10 @@ class Game
         $this->participants = $participants;
 
         return $this;
+    }
+
+    public function addParticipant(GameParticipant $participant): void
+    {
+        $this->participants->add($participant);
     }
 }

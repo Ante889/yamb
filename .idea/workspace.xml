@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreSheet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreSheetRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreSheetRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/doctrine.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/GameParticipantStatusEnum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/GameStatusEnum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/CreateSoloGameException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/JoinCodeGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/resources.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/resources.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/User/Domain/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Model/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +187,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/frontend/src/assets/dashboard&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/src/Game/Application/Command/Game&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -216,18 +215,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/assets" />
       <recent name="$PROJECT_DIR$/frontend/src/api/user" />
       <recent name="$PROJECT_DIR$/frontend/src/i18n/entiries" />
-      <recent name="$PROJECT_DIR$/frontend/src/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/auth" />
-      <recent name="$PROJECT_DIR$/frontend/src/components" />
     </key>
   </component>
   <component name="RunManager">
@@ -270,6 +269,8 @@
       <workItem from="1777299635897" duration="4258000" />
       <workItem from="1777364295561" duration="603000" />
       <workItem from="1777414119608" duration="5703000" />
+      <workItem from="1778582610270" duration="4663000" />
+      <workItem from="1778588110306" duration="2374000" />
     </task>
     <servers />
   </component>

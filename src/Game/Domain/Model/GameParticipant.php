@@ -2,6 +2,7 @@
 
 namespace App\Game\Domain\Model;
 
+use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\User\Domain\Model\User;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,11 +53,8 @@ class GameParticipant
     )]
     private User $user;
 
-    #[ORM\Column(
-        name: 'status',
-        type: 'boolean'
-    )]
-    private bool $status = true;
+    #[ORM\Column(type: 'string', length: 20, enumType: GameParticipantStatusEnum::class)]
+    private GameParticipantStatusEnum $status;
 
     #[ORM\Column(
         name: 'position',
@@ -67,19 +65,65 @@ class GameParticipant
 
     #[ORM\Column(
         name: 'joinedAt',
-        type: 'datetime',
+        type: 'datetime_immutable',
         nullable: true
     )]
-    private ?\DateTimeInterface $joinedAt;
+    private \DateTimeInterface $joinedAt;
 
-    public function __construct()
+    public function __construct(
+        User $user,
+        Game $game,
+        GameParticipantStatusEnum $status,
+        int $position,
+        DateTimeInterface $joinedAt
+    ) {
+        $this->user = $user;
+        $this->game = $game;
+        $this->status = $status;
+        $this->position = $position;
+        $this->joinedAt = $joinedAt;
+    }
+
+    public static function createSolo(User $user, Game $game): self
     {
+        return new self(
+            $user,
+            $game,
+            GameParticipantStatusEnum::NOT_READY,
+            1,
+            new \DateTimeImmutable()
+        );
     }
 
     public function getId(): int
     {
         return $this->id;
     }
+
+    public function getCreated(): ?DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(?DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUpdated(): ?DateTimeInterface
+    {
+        return $this->updated;
+    }
+
+    public function setUpdated(?DateTimeInterface $updated): self
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
 
     public function getGame(): Game
     {
@@ -105,12 +149,12 @@ class GameParticipant
         return $this;
     }
 
-    public function isStatus(): bool
+    public function getStatus(): GameParticipantStatusEnum
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): self
+    public function setStatus(GameParticipantStatusEnum $status): self
     {
         $this->status = $status;
 
