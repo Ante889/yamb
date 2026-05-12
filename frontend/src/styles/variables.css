@@ -27,7 +27,14 @@
     --bg-accent-purple: rgba(255, 0, 200, 0.12);
     --bg-accent-orange: rgba(255, 150, 0, 0.12);
 
+    --bg-overlay-dark: rgba(0, 0, 0, 0.3);
+    --bg-warm-soft: rgba(255, 184, 77, 0.08);
+
     /* === BUTTON === */
     --btn-bg: var(--color-bg-surface);
     --btn-border: var(--border-default);
+
+    /* === NAVBAR === */
+    --navbar-bg: rgba(10, 15, 30, 0.9);
+    --navbar-border: var(--border-accent);
 }

@@ -7,13 +7,12 @@
 
     backdrop-filter: blur(10px);
 
-    border-top: 1px solid rgba(255, 77, 255, 0.25);
-
-    background: rgba(15, 23, 42, 0.6) linear-gradient(90deg, #ff4dff, #ffb84d);
+    border-top: 1px solid var(--glow-accent-soft);
+    background: var( --color-bg-surface) linear-gradient(90deg, var(--color-accent-1), var(--color-accent-2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     box-shadow:
-        0 -5px 20px rgba(255, 77, 255, 0.15),
-        0 -10px 30px rgba(255, 184, 77, 0.1);
+        0 0 20px var(--glow-accent-soft),
+        0 0 40px var(--glow-warm);
 }

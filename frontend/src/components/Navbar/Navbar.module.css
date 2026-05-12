@@ -7,12 +7,12 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: 0px 24px;
+    padding: 0 24px;
 
-    background: rgba(10, 15, 30, 0.9);
+    background: var(--navbar-bg);
     backdrop-filter: blur(10px);
 
-    border-bottom: 1px solid rgba(255, 0, 200, 0.25);
+    border-bottom: 1px solid var(--navbar-border);
 }
 
 .logo {
@@ -23,9 +23,12 @@
 .burger {
     display: none;
     font-size: 26px;
+
     background: none;
     border: none;
-    color: white;
+
+    color: var(--color-text-primary);
+
     cursor: pointer;
 }
 
@@ -42,12 +45,12 @@
     font-size: 15px;
     font-weight: 600;
 
-    background: linear-gradient(90deg, #ff4dff, #ffb84d);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     opacity: 0.85;
-    transition: 0.3s;
+    transition: 0.25s ease;
 }
 
 .links a:hover {
@@ -56,21 +59,22 @@
 
 .active {
     text-shadow:
-        0 0 10px rgba(255, 77, 255, 0.8),
-        0 0 20px rgba(255, 184, 77, 0.8);
+        0 0 10px var(--glow-accent-strong),
+        0 0 20px var(--glow-warm);
 }
 
 .logout {
-    background: linear-gradient(90deg, #ff6666, #ffcc66);
+    background: linear-gradient(
+        90deg,
+        var(--color-accent-1),
+        var(--color-accent-2)
+    );
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 /* mobile */
-.open {
-    display: flex;
-}
-
 @media (max-width: 768px) {
     .burger {
         display: block;
@@ -84,14 +88,17 @@
         flex-direction: column;
         gap: 10px;
 
-        background: rgba(15, 23, 42, 0.95);
+        background: var(--color-bg-glass);
+        border: 1px solid var(--border-subtle);
+
         padding: 12px;
         border-radius: 12px;
 
         transform: scaleY(0);
         transform-origin: top;
+
         opacity: 0;
-        transition: 0.2s;
+        transition: 0.2s ease;
     }
 
     .links.open {

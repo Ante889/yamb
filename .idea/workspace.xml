@@ -5,22 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/GameParticipantStatusEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/GameStatusEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/CreateSoloGameException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/JoinCodeGenerator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/api/game/soloGameApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/Modal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/Modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/game/soloGame/soloGameService.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer/Footer.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/auth/Auth.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/auth/Auth.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/variables.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +267,7 @@
       <workItem from="1777364295561" duration="603000" />
       <workItem from="1777414119608" duration="5703000" />
       <workItem from="1778582610270" duration="4663000" />
-      <workItem from="1778588110306" duration="2374000" />
+      <workItem from="1778588110306" duration="5884000" />
     </task>
     <servers />
   </component>

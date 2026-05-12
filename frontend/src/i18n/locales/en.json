@@ -6,7 +6,8 @@
         "missing_number": "Password - missing number",
         "do_not_match": "Password - do not match",
         "no_user": "User not found",
-        "user_already_exists": "Username or email already exists"
+        "user_already_exists": "Username or email already exists",
+        "exception.failed_to_generate_join_code": "Failed to generate join code. Please try again"
     },
     "Loading": "Loading...",
     "dashboard": {

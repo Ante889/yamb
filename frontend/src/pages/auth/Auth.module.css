@@ -62,7 +62,7 @@
     gap: 6px;
     margin-bottom: 8px;
 
-    background: rgba(255, 184, 77, 0.08);
+    background: var(--bg-accent-warm-soft);
     padding: 4px;
     border-radius: 10px;
 

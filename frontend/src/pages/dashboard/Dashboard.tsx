@@ -4,9 +4,12 @@ import pvpImage from "../../assets/dashboard/Pvp.jpg";
 import leaderboardImage from "../../assets/dashboard/Leaderboard.jpg";
 import yambText from "../../assets/dashboard/Yamb.png";
 import { useTranslation } from "react-i18next";
+import {useState} from "react";
+import CreateSoloGame from "./createGame/CreateSoloGame.tsx";
 
 function Dashboard() {
     const { t } = useTranslation();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <div className={styles.dashboard}>
@@ -19,7 +22,7 @@ function Dashboard() {
             </div>
 
             <div className={styles.grid}>
-                <div className={styles.gameCard}>
+                <div className={styles.gameCard} onClick={() => setIsModalOpen(true)}>
                     <img src={soloGameImage} alt="play-solo" />
                     <div className={styles.overlay}>
                         <h3>{t("dashboard.playSolo")}</h3>
@@ -43,6 +46,7 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
+            <CreateSoloGame isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
         </div>
     );
 }
