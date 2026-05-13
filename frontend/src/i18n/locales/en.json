@@ -37,5 +37,10 @@
         "loginError": "Login error. Try again.",
         "logout": "Logout",
         "registrationSuccess": "Registration is successful."
+    },
+    "game": {
+        "createSoloGame": "Create solo game",
+        "choiceNumberOfDice": "Choice number of dice",
+        "startGame": "Start game"
     }
 }
