@@ -5,6 +5,8 @@ namespace App\Game\Domain\Model;
 use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\User\Domain\Model\User;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -70,6 +72,14 @@ class GameParticipant
     )]
     private \DateTimeInterface $joinedAt;
 
+    #[ORM\OneToMany(
+        targetEntity: ScoreEntry::class,
+        mappedBy: 'gameParticipant',
+        cascade: ['persist'],
+        orphanRemoval: true
+    )]
+    private Collection $scoreEntry;
+
     public function __construct(
         User $user,
         Game $game,
@@ -82,6 +92,8 @@ class GameParticipant
         $this->status = $status;
         $this->position = $position;
         $this->joinedAt = $joinedAt;
+
+        $this->scoreEntry = new ArrayCollection();
     }
 
     public static function createSolo(User $user, Game $game): self
@@ -89,7 +101,7 @@ class GameParticipant
         return new self(
             $user,
             $game,
-            GameParticipantStatusEnum::NOT_READY,
+            GameParticipantStatusEnum::WAITING_TURN,
             1,
             new \DateTimeImmutable()
         );
@@ -183,5 +195,20 @@ class GameParticipant
         $this->joinedAt = $joinedAt;
 
         return $this;
+    }
+
+    public function getScoreEntry(): Collection
+    {
+        return $this->scoreEntry;
+    }
+
+    public function setScoreEntry(Collection $scoreEntry): void
+    {
+        $this->scoreEntry = $scoreEntry;
+    }
+
+    public function addScoreEntry(ScoreEntry $scoreEntry): void
+    {
+        $this->scoreEntry->add($scoreEntry);
     }
 }

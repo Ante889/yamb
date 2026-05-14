@@ -33,14 +33,14 @@ class ScoreEntry
     private ?DateTimeInterface $updated;
 
     #[ORM\ManyToOne(
-        targetEntity: ScoreSheet::class,
-        inversedBy: 'entries'
+        targetEntity: GameParticipant::class,
+        inversedBy: 'scoreEntry'
     )]
     #[ORM\JoinColumn(
         nullable: false,
         onDelete: 'CASCADE'
     )]
-    private ScoreSheet $sheet;
+    private GameParticipant $gameParticipant;
 
     #[ORM\Column(
         type: 'string',
@@ -89,14 +89,14 @@ class ScoreEntry
         return $this;
     }
 
-    public function getSheet(): ScoreSheet
+    public function getGameParticipant(): GameParticipant
     {
-        return $this->sheet;
+        return $this->gameParticipant;
     }
 
-    public function setSheet(ScoreSheet $sheet): self
+    public function setGameParticipant(GameParticipant $gameParticipant): self
     {
-        $this->sheet = $sheet;
+        $this->gameParticipant = $gameParticipant;
 
         return $this;
     }
