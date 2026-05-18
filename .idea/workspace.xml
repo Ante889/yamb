@@ -5,21 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryColumnEnum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameParticipantException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Response/ScoreEntry/ScoreEntryResponse.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260415124150.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260415125452.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260415133838.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260421102550.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260428224551.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260428232506.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20260512123151.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreSheet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreSheetRepositoryInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreSheetRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +277,8 @@
       <workItem from="1778588110306" duration="7380000" />
       <workItem from="1778662915596" duration="4507000" />
       <workItem from="1778736142945" duration="1135000" />
-      <workItem from="1778737927210" duration="1534000" />
+      <workItem from="1778737927210" duration="6032000" />
+      <workItem from="1779096929658" duration="9545000" />
     </task>
     <servers />
   </component>

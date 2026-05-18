@@ -2,7 +2,10 @@
 
 namespace App\Game\Domain\Model;
 
+use App\Game\Domain\Enum\ScoreEntryColumnEnum;
+use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -42,17 +45,14 @@ class ScoreEntry
     )]
     private GameParticipant $gameParticipant;
 
-    #[ORM\Column(
-        type: 'string',
-        length: 50
-    )]
-    private string $field;
+    #[ORM\Column(type: Types::STRING, enumType: ScoreEntryFieldEnum::class)]
+    private ScoreEntryFieldEnum $field;
 
     #[ORM\Column(
-        type: 'string',
-        length: 20
+        type: Types::STRING,
+        enumType: ScoreEntryColumnEnum::class
     )]
-    private string $column;
+    private ScoreEntryColumnEnum $column;
 
     #[ORM\Column(
         type: 'integer',
@@ -101,24 +101,24 @@ class ScoreEntry
         return $this;
     }
 
-    public function getField(): string
+    public function getField(): ScoreEntryFieldEnum
     {
         return $this->field;
     }
 
-    public function setField(string $field): self
+    public function setField(ScoreEntryFieldEnum $field): self
     {
         $this->field = $field;
 
         return $this;
     }
 
-    public function getColumn(): string
+    public function getColumn(): ScoreEntryColumnEnum
     {
         return $this->column;
     }
 
-    public function setColumn(string $column): self
+    public function setColumn(ScoreEntryColumnEnum $column): self
     {
         $this->column = $column;
 

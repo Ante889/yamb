@@ -4,17 +4,19 @@ import styles from "./CreateSoloGame.module.css";
 import {useTranslation} from "react-i18next";
 import toast from "react-hot-toast";
 import {SoloGameService} from "../../../services/game/soloGame/soloGameService.tsx";
+import {useNavigate} from "react-router-dom";
 
 function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
     const { t } = useTranslation();
     const [selectedDice, setSelectedDice] = useState(6);
+    const navigate = useNavigate();
 
     const handleStart = async () => {
         const loadingToast = toast.loading(t("loading"));
 
         try {
             const gameData = await SoloGameService.createSoloGame(selectedDice);
-            console.log(gameData)
+            navigate("/solo-game/" + gameData.key);
         } finally {
             toast.dismiss(loadingToast);
         }

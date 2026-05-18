@@ -14,6 +14,15 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
         parent::__construct($registry, ScoreEntry::class);
     }
 
+    public function getByGameParticipantId(int $gameParticipant): array
+    {
+        return $this->createQueryBuilder('se')
+            ->andWhere('se.gameParticipant = :gameParticipantId')
+            ->setParameter('gameParticipantId', $gameParticipant)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function add(ScoreEntry $scoreEntry): self
     {
         $this->getEntityManager()->persist($scoreEntry);
