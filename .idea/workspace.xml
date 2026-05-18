@@ -5,26 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQuery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryColumnEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameParticipantException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Response/ScoreEntry/ScoreEntryResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/api/game/scoreEntryApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/JambLoading.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/JambLoading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/game/scoreEntry/scoreEntryService.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Voter/ScoreEntryParticipantVoter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,11 +217,11 @@
       <recent name="$PROJECT_DIR$/frontend/src/i18n/entiries" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/dashboard" />
-      <recent name="$PROJECT_DIR$/frontend/src/assets/auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -278,7 +269,7 @@
       <workItem from="1778662915596" duration="4507000" />
       <workItem from="1778736142945" duration="1135000" />
       <workItem from="1778737927210" duration="6032000" />
-      <workItem from="1779096929658" duration="9545000" />
+      <workItem from="1779096929658" duration="15222000" />
     </task>
     <servers />
   </component>

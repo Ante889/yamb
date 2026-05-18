@@ -1,0 +1,84 @@
+.sheetWrap {
+    height: 80vh;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    color: var(--color-text-primary);
+}
+
+.sheet {
+    width: 100%;
+    max-width: 520px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 14px;
+    padding: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.loadingTitle {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.cell {
+    height: 25px;
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+
+.row {
+    margin-bottom: 6px;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    opacity: 0.6;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--bg-overlay-dark),
+        transparent
+    );
+    animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sheet {
+        max-width: 100%;
+        padding: 6px;
+    }
+
+    .row {
+        gap: 3px;
+    }
+
+    .cell {
+        height: 24px;
+        border-radius: 6px;
+    }
+}

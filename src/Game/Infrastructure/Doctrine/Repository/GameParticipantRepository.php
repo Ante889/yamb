@@ -14,6 +14,15 @@ class GameParticipantRepository extends ServiceEntityRepository implements GameP
         parent::__construct($registry, GameParticipant::class);
     }
 
+    public function findById(int $id): ?GameParticipant
+    {
+        return $this->createQueryBuilder('gp')
+            ->andWhere('gp.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function add(GameParticipant $gameParticipant): self
     {
         $this->getEntityManager()->persist($gameParticipant);

@@ -1,0 +1,108 @@
+.sheetWrap {
+    padding: 45px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    color: var(--color-text-primary);
+}
+
+.sheet {
+    width: 100%;
+    max-width: 520px;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 14px;
+    padding: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.cell {
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 6px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.cat {
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+/* HEADER */
+.headerCell {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    background: var(--border-default);
+}
+
+.totalCell {
+    border-color: var(--color-accent-1);
+    box-shadow: 0 0 10px var(--glow-accent-soft);
+    font-weight: 700;
+}
+
+.grandCell {
+    background: var(--gradient-primary);
+    color: black;
+    font-weight: 800;
+}
+
+.rule {
+    position: relative;
+    font-size: 20px;
+    cursor: help;
+}
+
+.rule::after {
+    content: attr(data-rule);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+
+.rule:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    .sheet {
+        max-width: 100%;
+        padding: 6px;
+    }
+
+    .cell {
+        padding: 4px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .row {
+        gap: 3px;
+    }
+
+    .rule {
+        font-size: 18px;
+    }
+}
