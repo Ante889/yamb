@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 import styles from "./SoloGame.module.css";
 import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryService.tsx";
 import {JambLoading} from "../../components/Loading/JambLoading.tsx";
+import {useParams} from "react-router-dom";
 
 function SoloGame() {
     const [data, setData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+    const { id } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
+            if (!id) return;
+
             setLoading(true);
             try {
-                const gameData = await ScoreEntryService.getScoreEntryByParticipant(3);
+                const gameData = await ScoreEntryService.getScoreEntryByParticipant(Number(id));
                 setData(gameData);
             } finally {
                 setLoading(false);
@@ -19,7 +23,7 @@ function SoloGame() {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     const rows = [
         "ones","twos","threes","fours","fives","sixes",

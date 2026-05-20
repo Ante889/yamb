@@ -16,7 +16,7 @@ function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
 
         try {
             const gameData = await SoloGameService.createSoloGame(selectedDice);
-            navigate("/solo-game/" + gameData.key);
+            navigate("/solo-game/" + gameData.participants[0].id);
         } finally {
             toast.dismiss(loadingToast);
         }
