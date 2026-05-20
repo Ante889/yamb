@@ -46,7 +46,7 @@ function SoloGame() {
                         ↑
                     </div>
 
-                    <div className={`${styles.cell} ${styles.rule}`} data-rule="Bbilo koji redoslijed">
+                    <div className={`${styles.cell} ${styles.rule}`} data-rule="Bilo koji redoslijed">
                         ↕
                     </div>
 
