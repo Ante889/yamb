@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             uriTemplate: '/start-solo-game',
             description: 'Start solo game',
             processor: CreateSoloGameProcessor::class
-        )
+        ),
     ],
 )]
 final readonly class StartGameResource

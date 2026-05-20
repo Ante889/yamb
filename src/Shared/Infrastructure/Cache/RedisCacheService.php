@@ -25,11 +25,16 @@ readonly class RedisCacheService implements RedisCacheServiceInterface
 
     public function set(string $key, mixed $value, int $ttlSeconds): void
     {
-        $this->cache->delete($key);
+        $item = $this->cache->getItem($key);
 
-        $this->cache->get($key, function (ItemInterface $item) use ($value, $ttlSeconds) {
-            $item->expiresAfter($ttlSeconds);
-            return $value;
-        });
+        $item->set($value);
+        $item->expiresAfter($ttlSeconds);
+
+        $this->cache->save($item);
+    }
+
+    public function delete(string $key): void
+    {
+        $this->cache->deleteItem($key);
     }
 }

@@ -101,7 +101,7 @@ class GameParticipant
         return new self(
             $user,
             $game,
-            GameParticipantStatusEnum::WAITING_TURN,
+            GameParticipantStatusEnum::ACTIVE_TURN,
             1,
             new \DateTimeImmutable()
         );

@@ -17,4 +17,6 @@ interface RedisCacheServiceInterface
      * @throws InvalidArgumentException
      */
     public function set(string $key, mixed $value, int $ttlSeconds): void;
+
+    public function delete(string $key): void;
 }
