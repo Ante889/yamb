@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Game\Infrastructure\Service;
 
+use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Shared\Domain\Cache\RedisCacheServiceInterface;
 use App\Shared\Infrastructure\Cache\CacheKeyGenerator;
 use Psr\Cache\InvalidArgumentException;
 
-final class GameTurnStateService
+final class GameTurnStateService implements TurnStateStoreInterface
 {
     private int $ttlSeconds = 86400;
 

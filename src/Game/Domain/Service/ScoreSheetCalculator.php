@@ -15,13 +15,6 @@ final readonly class ScoreSheetCalculator
     private const KEY_MAX = 'max';
     private const KEY_ONES = 'ones';
 
-    private const KEY_GRID = 'grid';
-    private const KEY_UPPER = 'upper_totals';
-    private const KEY_MIN_MAX = 'min_max_totals';
-    private const KEY_DOWN = 'down_totals';
-    private const KEY_GRAND = 'grand_totals';
-
-
     public function calculate(array $entries): ScoreSheetResult
     {
         $grid = [];

@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/CacheKeyGenerator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/DiceResponseMapper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Cache/RedisCacheServiceInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Cache/RedisCacheServiceInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/RedisCacheService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/RedisCacheService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +278,8 @@
       <workItem from="1778737927210" duration="6032000" />
       <workItem from="1779096929658" duration="15519000" />
       <workItem from="1779172568571" duration="1258000" />
-      <workItem from="1779271202170" duration="7895000" />
+      <workItem from="1779271202170" duration="8224000" />
+      <workItem from="1779350108344" duration="8364000" />
     </task>
     <servers />
   </component>

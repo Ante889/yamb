@@ -24,7 +24,8 @@ final readonly class DiceGameResource
 {
     public function __construct(
         #[ApiProperty(readable: true, writable: false, identifier: true)]
-        public ?int $gameParticipantId = null
+        public ?int  $gameParticipantId = null,
+        public array $savedPositions = [],
     )
     {
     }

@@ -8,6 +8,7 @@ use App\Game\Domain\Model\GameParticipant;
 
 interface GameParticipantRepositoryInterface
 {
+    public function getDiceNumberById(int $id): ?int;
     public function findById(int $id): ?GameParticipant;
     public function add(GameParticipant $gameParticipant): self;
     public function save(): void;

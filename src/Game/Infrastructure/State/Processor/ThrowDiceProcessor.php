@@ -6,22 +6,48 @@ namespace App\Game\Infrastructure\State\Processor;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Shared\Domain\Cache\RedisCacheServiceInterface;
+use App\Game\Application\Command\Game\ThrowDiceCommand;
+use App\Game\Application\Command\Game\ThrowDiceCommandHandler;
+use App\Game\Infrastructure\Mapper\DiceResponseMapper;
+use App\Game\Infrastructure\Resource\Game\DiceGameResource;
+use Psr\Cache\InvalidArgumentException;
 use Random\RandomException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 final readonly class ThrowDiceProcessor implements ProcessorInterface
 {
     public function __construct(
-    ) {
+        private ThrowDiceCommandHandler $throwDiceCommandHandler,
+        private DiceResponseMapper      $diceResponseMapper
+    )
+    {
     }
 
+    /**
+     * @throws RandomException
+     * @throws InvalidArgumentException
+     */
     public function process(
-        mixed $data,
+        mixed     $data,
         Operation $operation,
-        array $uriVariables = [],
-        array $context = []
-    ): JsonResponse {
-        $gameParticipantId = (int) ($uriVariables['gameParticipantId'] ?? 0);
+        array     $uriVariables = [],
+        array     $context = []
+    ): JsonResponse
+    {
+        if (!$data instanceof DiceGameResource) {
+            throw new \LogicException('Invalid input');
+        }
+
+        $command = new ThrowDiceCommand(
+            (int)$uriVariables['gameParticipantId'],
+            $data->savedPositions ?? []
+        );
+
+        $dice = $this->throwDiceCommandHandler->handle($command);
+
+        return new JsonResponse(
+            $this->diceResponseMapper->mapDice($dice),
+            200
+        );
     }
 }

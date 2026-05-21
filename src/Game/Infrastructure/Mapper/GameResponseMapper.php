@@ -12,7 +12,7 @@ use Psr\Cache\InvalidArgumentException;
 final readonly class GameResponseMapper
 {
     public function __construct(
-        private GameTurnStateService $service
+        private GameTurnStateService $gameTurnStateService
     ) {
     }
 
@@ -30,7 +30,7 @@ final readonly class GameResponseMapper
                     'userId' => $participant->getUser()->getId(),
                     'status' => $participant->getStatus(),
                     'position' => $participant->getPosition(),
-                    'diceData' => $this->service->getForParticipant(
+                    'diceData' => $this->gameTurnStateService->getForParticipant(
                         $participant->getId()
                     ),
                 ],
