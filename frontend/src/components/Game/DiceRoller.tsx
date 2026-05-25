@@ -1,32 +1,52 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./DiceRoller.module.css";
+import { useTranslation } from "react-i18next";
+import { ThrowService } from "../../services/game/throwDice/throwService.tsx";
+import { useParams } from "react-router-dom";
 
 type Dice = {
-    value: number;
+    value: number | null;
     held: boolean;
 };
 
 type Props = {
     diceCount?: number;
+    dices?: number[];
+    throwNumber?: number;
     onRollComplete?: (values: number[]) => void;
 };
 
+const MAX_THROWS = 3;
+
 export function DiceRoller({
                                diceCount = 5,
+                               dices = [],
+                               throwNumber = 0,
                                onRollComplete
                            }: Props) {
-    const createDice = (): Dice[] =>
-        Array.from({ length: diceCount }, () => ({
-            value: 1,
-            held: false
-        }));
+    const { t } = useTranslation();
+    const { id } = useParams();
 
-    const [dice, setDice] = useState<Dice[]>(createDice());
-    const [rollsLeft, setRollsLeft] = useState(3);
+    const [dice, setDice] = useState<Dice[]>(
+        Array.from({ length: diceCount }, (_, i) => ({
+            value: dices[i] ?? null,
+            held: false
+        }))
+    );
+
     const [rolling, setRolling] = useState(false);
 
-    const toggleHold = (index: number) => {
-        if (rolling) return;
+    const [throwCount, setThrowCount] = useState(throwNumber);
+
+    const rollsLeft = MAX_THROWS - throwCount;
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setThrowCount(throwNumber);
+    }, [throwNumber]);
+
+    const toggleHold = (index: number, value: number | null) => {
+        if (rolling || !value) return;
 
         setDice(prev =>
             prev.map((d, i) =>
@@ -35,38 +55,57 @@ export function DiceRoller({
         );
     };
 
-    const rollDice = () => {
-        if (rolling || rollsLeft === 0) return;
+    const rollDice = async () => {
+        if (rolling || rollsLeft <= 0) return;
 
         setRolling(true);
 
+        const heldPositions = dice.map(d => d.held);
+
+        const res = await ThrowService.throwDiceGame(
+            id,
+            heldPositions
+        );
+
+        if (!res) {
+            setRolling(false);
+            return;
+        }
+
         setTimeout(() => {
-            const updated = dice.map(d =>
-                d.held
-                    ? d
-                    : {
-                        ...d,
-                        value: Math.floor(Math.random() * 6) + 1
-                    }
+            const rawValues = [
+                res['dices'].first,
+                res['dices'].second,
+                res['dices'].third,
+                res['dices'].fourth,
+                res['dices'].five,
+                res['dices'].six
+            ];
+
+            const values = rawValues.slice(0, diceCount);
+
+            setDice(prev =>
+                values.map((value, i) => ({
+                    value,
+                    held: prev[i]?.held ?? false
+                }))
             );
 
-            setDice(updated);
-            setRollsLeft(prev => prev - 1);
+
+            if (typeof res['throwNumber'] === "number") {
+                setThrowCount(res.throwNumber);
+            }
+
+            onRollComplete?.(values);
+
             setRolling(false);
-
-            onRollComplete?.(updated.map(d => d.value));
         }, 900);
-    };
-
-    const resetTurn = () => {
-        setDice(createDice());
-        setRollsLeft(3);
     };
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.info}>
-                Bacanja: {rollsLeft}/3
+                {t("game.throws")}: {rollsLeft}/{MAX_THROWS}
             </div>
 
             <div className={styles.diceRow}>
@@ -78,20 +117,20 @@ export function DiceRoller({
                             ${die.held ? styles.held : ""}
                             ${rolling && !die.held ? styles.rolling : ""}
                         `}
-                        onClick={() => toggleHold(i)}
+                        onClick={() => toggleHold(i, die.value)}
                     >
-                        {die.value}
+                        {die.value ?? "-"}
                     </div>
                 ))}
             </div>
 
-            <div className={'fullSize '}>
+            <div className="fullSize">
                 <button
-                    className={'btn btn-primary'}
+                    className="btn btn-primary"
                     onClick={rollDice}
-                    disabled={rolling || rollsLeft === 0}
+                    disabled={rolling || rollsLeft <= 0}
                 >
-                    Baci kockice
+                    {t("game.throwDice")}
                 </button>
             </div>
         </div>

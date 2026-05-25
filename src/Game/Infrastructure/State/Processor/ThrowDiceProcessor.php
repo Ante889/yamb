@@ -46,7 +46,10 @@ final readonly class ThrowDiceProcessor implements ProcessorInterface
         $dice = $this->throwDiceCommandHandler->handle($command);
 
         return new JsonResponse(
-            $this->diceResponseMapper->mapDice($dice),
+            [
+                'dices' => $this->diceResponseMapper->mapDice($dice['dices']),
+                'throwNumber' => $dice['throwNumber']
+            ],
             200
         );
     }

@@ -35,19 +35,22 @@ final class ThrowDiceService
      * @throws RandomException
      */
     public function rollDice(
-        int   $diceNumber,
+        int $diceNumber,
         array $savedPositions,
         array $previousDice
     ): array
     {
         $result = [];
-        $saved = array_flip($savedPositions);
 
         for ($i = 0; $i < $diceNumber; $i++) {
-            if (isset($saved[$i]) && isset($previousDice[$i])) {
+            if (
+                !empty($savedPositions[$i]) &&
+                isset($previousDice[$i])
+            ) {
                 $result[$i] = $previousDice[$i];
                 continue;
             }
+
             $result[$i] = random_int(1, 6);
         }
 

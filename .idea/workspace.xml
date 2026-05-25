@@ -5,22 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/DiceResponseMapper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/ConfirmExitModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/variables.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game/StartGameResponse.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +179,7 @@
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -184,28 +190,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/src/Game/Application/Command/Game&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/var/www/yamb/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/var/www/yamb/frontend/src/components/Modal",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -217,11 +223,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/components/Modal" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/assets" />
       <recent name="$PROJECT_DIR$/frontend/src/api/user" />
-      <recent name="$PROJECT_DIR$/frontend/src/i18n/entiries" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
@@ -279,7 +285,10 @@
       <workItem from="1779096929658" duration="15519000" />
       <workItem from="1779172568571" duration="1258000" />
       <workItem from="1779271202170" duration="8224000" />
-      <workItem from="1779350108344" duration="8364000" />
+      <workItem from="1779350108344" duration="8476000" />
+      <workItem from="1779438381695" duration="3972000" />
+      <workItem from="1779690970648" duration="966000" />
+      <workItem from="1779702485594" duration="11683000" />
     </task>
     <servers />
   </component>

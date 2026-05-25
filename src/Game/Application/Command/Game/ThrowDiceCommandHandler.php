@@ -51,6 +51,9 @@ final readonly class ThrowDiceCommandHandler
             ]
         );
 
-        return $dice;
+        return [
+            'throwNumber'=> ($state['throwNumber'] ?? 0) + 1,
+            'dices' => $dice
+        ];
     }
 }

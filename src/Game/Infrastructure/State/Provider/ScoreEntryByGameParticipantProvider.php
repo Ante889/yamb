@@ -9,6 +9,7 @@ use ApiPlatform\State\ProviderInterface;
 use App\Game\Application\Dto\ScoreSheetResult;
 use App\Game\Application\Query\ScoreEntry\GetScoreEntryByGameParticipantQuery;
 use App\Game\Application\Query\ScoreEntry\GetScoreEntryByGameParticipantQueryHandler;
+use Psr\Cache\InvalidArgumentException;
 
 final readonly class ScoreEntryByGameParticipantProvider implements ProviderInterface
 {
@@ -18,6 +19,9 @@ final readonly class ScoreEntryByGameParticipantProvider implements ProviderInte
     {
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): ScoreSheetResult
     {
         return $this->getScoreEntryByGameParticipantQueryHandler->query(

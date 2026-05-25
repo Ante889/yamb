@@ -12,5 +12,10 @@ final readonly class ScoreSheetResult
         public array $minMaxTotals,
         public array $downTotals,
         public array $grandTotals,
-    ) {}
+        public int   $diceNumber,
+        public array $dices,
+        public int   $throwNumber
+    )
+    {
+    }
 }

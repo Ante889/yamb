@@ -15,7 +15,7 @@ final readonly class ScoreSheetCalculator
     private const KEY_MAX = 'max';
     private const KEY_ONES = 'ones';
 
-    public function calculate(array $entries): ScoreSheetResult
+    public function calculate(array $entries, array $dices, int $diceNumber, int $throwNumber): ScoreSheetResult
     {
         $grid = [];
         $indexed = [];
@@ -48,6 +48,9 @@ final readonly class ScoreSheetCalculator
             minMaxTotals: $minMaxTotals,
             downTotals: $downTotals,
             grandTotals: $grandTotals,
+            diceNumber: $diceNumber,
+            dices: $dices,
+            throwNumber: $throwNumber
         );
     }
 

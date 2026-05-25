@@ -34,6 +34,13 @@
     --btn-bg: var(--color-bg-surface);
     --btn-border: var(--border-default);
 
+    --color-error: #ff3d6e;
+    --color-error-dark: #b3124b;
+
+    --glow-error: rgba(255, 61, 110, 0.25);
+    --glow-error-strong: rgba(255, 61, 110, 0.55);
+    --glow-error-soft: rgba(255, 61, 110, 0.15);
+
     /* === NAVBAR === */
     --navbar-bg: rgba(10, 15, 30, 0.9);
     --navbar-border: var(--border-accent);

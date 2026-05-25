@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace App\Game\Application\Query\ScoreEntry;
 
 use App\Game\Application\Dto\ScoreSheetResult;
+use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Exception\GameParticipantException;
+use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use App\Game\Domain\Service\ScoreSheetCalculator;
+use Psr\Cache\InvalidArgumentException;
 
 final readonly class GetScoreEntryByGameParticipantQueryHandler
 {
     public function __construct(
-        private ScoreEntryRepositoryInterface $scoreEntryRepository,
-        private ScoreSheetCalculator          $scoreSheetCalculator
+        private ScoreEntryRepositoryInterface      $scoreEntryRepository,
+        private ScoreSheetCalculator               $scoreSheetCalculator,
+        private TurnStateStoreInterface            $store,
+        private GameParticipantRepositoryInterface $gameParticipantRepository
     )
     {
     }
@@ -21,6 +26,7 @@ final readonly class GetScoreEntryByGameParticipantQueryHandler
     /**
      * @param GetScoreEntryByGameParticipantQuery $command
      * @return ScoreSheetResult
+     * @throws InvalidArgumentException
      */
     public function query(GetScoreEntryByGameParticipantQuery $command): ScoreSheetResult
     {
@@ -30,6 +36,14 @@ final readonly class GetScoreEntryByGameParticipantQueryHandler
 
         $scoreEntryData = $this->scoreEntryRepository->getByGameParticipantId($command->gameParticipantId);
 
-        return $this->scoreSheetCalculator->calculate($scoreEntryData);
+        $diceNumber = $this->gameParticipantRepository->getDiceNumberById($command->gameParticipantId);
+
+        $state = $this->store->getForParticipant($command->gameParticipantId);
+        return $this->scoreSheetCalculator->calculate(
+            $scoreEntryData,
+                $state['dices'] ?? [],
+            $diceNumber,
+            $state['throwNumber'] ?? 0
+        );
     }
 }

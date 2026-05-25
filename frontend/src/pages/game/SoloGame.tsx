@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import styles from "./SoloGame.module.css";
 import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryService.tsx";
 import {JambLoading} from "../../components/Loading/JambLoading.tsx";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {DiceRoller} from "../../components/Game/DiceRoller.tsx";
+import {useTranslation} from "react-i18next";
+import ConfirmExitModal from "../../components/Modal/ConfirmExitModal.tsx";
 
 function SoloGame() {
-    const [data, setData] = useState<any>(null);
+    const [data, setData] = useState<never>(null);
     const [loading, setLoading] = useState(true);
+    const { t } = useTranslation();
+    const [showExit, setShowExit] = useState(false);
+    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
@@ -40,10 +45,9 @@ function SoloGame() {
         <div className={styles.sheetWrap}>
             <div className={styles.sheet}>
                 <DiceRoller
-                    diceCount={6}
-                    onRollComplete={(values) => {
-                        console.log(values);
-                    }}
+                    diceCount={data['diceNumber'] ?? 6}
+                    dices={data['dices'] ?? []}
+                    throwNumber={data['throwNumber'] ?? 0}
                 />
                 <div className={styles.row}>
                     <div className={`${styles.cell} ${styles.cat}`}></div>
@@ -151,7 +155,20 @@ function SoloGame() {
                         {data.grandTotals.announcement}
                     </div>
                 </div>
-
+                <button
+                    className="btn btn-error"
+                    onClick={() => setShowExit(true)}
+                >
+                    {t('game.exit')}
+                </button>
+                <ConfirmExitModal
+                    open={showExit}
+                    onClose={() => setShowExit(false)}
+                    onConfirm={() => {
+                        setShowExit(false);
+                        navigate("/");
+                    }}
+                />
             </div>
         </div>
     );

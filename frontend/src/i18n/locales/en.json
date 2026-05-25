@@ -7,11 +7,11 @@
         "do_not_match": "Password - do not match",
         "no_user": "User not found",
         "user_already_exists": "Username or email already exists",
-        "exception.failed_to_generate_join_code": "Failed to generate join code. Please try again",
-        "exception.game_participant_not_found": "Error. Please refresh page.",
-        "exception.max_throws": "You have reached the maximum number of rolls. Please enter a number in the field.",
-        "exception.wrong_dice_number": "Error. Wrong dice number. Please refresh page.",
-        "exception.game_not_found": "Error. Game not found. Please refresh page."
+        "failed_to_generate_join_code": "Failed to generate join code. Please try again",
+        "game_participant_not_found": "Error. Please refresh page.",
+        "max_throws": "You have reached the maximum number of rolls. Please enter a number in the field.",
+        "wrong_dice_number": "Error. Wrong dice number. Please refresh page.",
+        "game_not_found": "Error. Game not found. Please refresh page."
     },
     "Loading": "Loading...",
     "dashboard": {
@@ -23,7 +23,8 @@
         "createRoom": "Create room",
         "createRoomDesc": "Play with friends",
         "leaderboard": "Leaderboard",
-        "topPlayersThisWeek": "Top players"
+        "topPlayersThisWeek": "Top players",
+        "exitConfirmation": "Exit confirmation"
     },
     "login": {
         "email": "Email",
@@ -45,6 +46,10 @@
     "game": {
         "createSoloGame": "Create solo game",
         "choiceNumberOfDice": "Choice number of dice",
-        "startGame": "Start game"
+        "startGame": "Start game",
+        "throws": "Bacanja",
+        "throwDice": "Baci kockice",
+        "exit": "Exit the game",
+        "confirmExit": "Are you sure you want to exit?"
     }
 }
