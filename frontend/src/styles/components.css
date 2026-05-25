@@ -44,6 +44,10 @@
     transition: all 0.2s ease;
 }
 
+.fullSize {
+    width: 100%;
+}
+
 .btn-primary:hover {
     transform: translateY(-2px);
     filter: brightness(1.1);

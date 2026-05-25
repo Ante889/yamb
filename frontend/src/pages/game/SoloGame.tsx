@@ -3,6 +3,7 @@ import styles from "./SoloGame.module.css";
 import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryService.tsx";
 import {JambLoading} from "../../components/Loading/JambLoading.tsx";
 import {useParams} from "react-router-dom";
+import {DiceRoller} from "../../components/Game/DiceRoller.tsx";
 
 function SoloGame() {
     const [data, setData] = useState<any>(null);
@@ -38,7 +39,12 @@ function SoloGame() {
     return (
         <div className={styles.sheetWrap}>
             <div className={styles.sheet}>
-
+                <DiceRoller
+                    diceCount={6}
+                    onRollComplete={(values) => {
+                        console.log(values);
+                    }}
+                />
                 <div className={styles.row}>
                     <div className={`${styles.cell} ${styles.cat}`}></div>
 
