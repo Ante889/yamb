@@ -2,6 +2,9 @@
 
 namespace App\Game\Domain\Model;
 
+use App\Game\Domain\Enum\GameStatusEnum;
+use App\Game\Domain\Event\GameCanceled;
+use App\Shared\Domain\Trait\RecordsDomainEvents;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 #[ORM\Table(name: 'game')]
 class Game
 {
+    use RecordsDomainEvents;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -94,6 +98,8 @@ class Game
     )]
     private Collection $participants;
 
+    private array $recordedEvents = [];
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -150,6 +156,21 @@ class Game
         $this->gameStatus = $gameStatus;
 
         return $this;
+    }
+
+    public function cancel(): void
+    {
+//        if ($this->gameStatus === GameStatusEnum::CANCELLED->value) {
+//            return;
+//        }
+
+        $this->gameStatus = GameStatusEnum::CANCELLED->value;
+
+        $this->recordThat(
+            new GameCanceled(
+                gameId: $this->id
+            )
+        );
     }
 
     public function getMinPlayers(): int

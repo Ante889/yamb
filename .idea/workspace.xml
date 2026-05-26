@@ -5,26 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/ConfirmExitModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/CancelSoloGameCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/CancelSoloGameCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Message/GameCanceledHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Event/GameCanceled.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EndSoloGameProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/GameParticipantProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Application/Service/DomainEventDispatcher.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Domain/Trait/RecordsDomainEvents.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Messaging/SymfonyDomainEventDispatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/variables.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/variables.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,6 +184,8 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/predis/predis" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/messenger" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-messenger" />
     </include_path>
   </component>
   <component name="ProjectColorInfo">{
@@ -195,7 +201,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/var/www/yamb/frontend/src/components/Modal",
+    "last_opened_file_path": "/var/www/AccountsApplication",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -230,11 +236,11 @@
       <recent name="$PROJECT_DIR$/frontend/src/api/user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/src/Game/Infrastructure/Response/Game" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
-      <recent name="$PROJECT_DIR$/frontend/src/dashboard" />
     </key>
   </component>
   <component name="RunManager">
@@ -288,7 +294,8 @@
       <workItem from="1779350108344" duration="8476000" />
       <workItem from="1779438381695" duration="3972000" />
       <workItem from="1779690970648" duration="966000" />
-      <workItem from="1779702485594" duration="11683000" />
+      <workItem from="1779702485594" duration="12904000" />
+      <workItem from="1779796100821" duration="10361000" />
     </task>
     <servers />
   </component>

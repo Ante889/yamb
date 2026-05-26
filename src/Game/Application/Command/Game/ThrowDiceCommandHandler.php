@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Application\Command\Game;
 
 use App\Game\Domain\Contract\TurnStateStoreInterface;
+use App\Game\Domain\Exception\GameException;
 use App\Game\Domain\Exception\ThrowDiceException;
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Service\ThrowDiceService;
@@ -29,7 +30,7 @@ final readonly class ThrowDiceCommandHandler
     {
         $diceNumber = $this->gameParticipantRepository->getDiceNumberById($command->gameParticipantId);
 
-        if (!$diceNumber) throw ThrowDiceException::gameNotFound();
+        if (!$diceNumber) throw GameException::gameNotFound();
 
         $this->throwDiceService->validateDiceNumber($diceNumber);
 

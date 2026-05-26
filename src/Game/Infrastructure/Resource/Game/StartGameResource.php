@@ -15,6 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
         new Post(
             uriTemplate: '/start-solo-game',
             description: 'Start solo game',
+            security: "is_granted('ROLE_USER')",
             processor: CreateSoloGameProcessor::class
         ),
     ],

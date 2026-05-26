@@ -9,9 +9,22 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class GameRepository extends ServiceEntityRepository implements GameRepositoryInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(
+        ManagerRegistry $registry
+    )
     {
         parent::__construct($registry, Game::class);
+    }
+
+    public function gameByGameParticipant(int $gameParticipantId): ?Game
+    {
+        return  $this->createQueryBuilder('g')
+            ->innerJoin('g.participants', 'p')
+            ->andWhere('p.id = :participantId')
+            ->setParameter('participantId', $gameParticipantId)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
     }
 
     public function existsByJoinCode(string $joinCode): bool
@@ -35,5 +48,12 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
     public function save(): void
     {
         $this->getEntityManager()->flush();
+    }
+
+    private function dispatchDomainEvents(Game $game): void
+    {
+        foreach ($game->releaseEvents() as $event) {
+            $this->messageBus->dispatch($event);
+        }
     }
 }

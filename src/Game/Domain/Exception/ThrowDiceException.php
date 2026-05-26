@@ -17,9 +17,4 @@ final class ThrowDiceException extends DomainException
     {
         return new self('exception.max_throws');
     }
-
-    public static function gameNotFound(): self
-    {
-        return new self('exception.game_not_found');
-    }
 }
