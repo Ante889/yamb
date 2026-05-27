@@ -36,6 +36,16 @@ class GameParticipantRepository extends ServiceEntityRepository implements GameP
             ->getOneOrNullResult();
     }
 
+    public function deleteByGameId(int $gameId): int
+    {
+        return $this->createQueryBuilder('gp')
+            ->delete()
+            ->where('gp.game = :gameId')
+            ->setParameter('gameId', $gameId)
+            ->getQuery()
+            ->execute();
+    }
+
     public function add(GameParticipant $gameParticipant): self
     {
         $this->getEntityManager()->persist($gameParticipant);

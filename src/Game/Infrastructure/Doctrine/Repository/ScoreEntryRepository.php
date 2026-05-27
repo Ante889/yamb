@@ -23,6 +23,21 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
             ->getResult();
     }
 
+    public function deleteByGameId(int $gameId): int
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'DELETE FROM App\Game\Domain\Model\ScoreEntry se
+                 WHERE se.gameParticipant IN (
+                 SELECT gp
+                 FROM App\Game\Domain\Model\GameParticipant gp
+                 WHERE gp.game = :gameId
+             )'
+            )
+            ->setParameter('gameId', $gameId)
+            ->execute();
+    }
+
     public function add(ScoreEntry $scoreEntry): self
     {
         $this->getEntityManager()->persist($scoreEntry);

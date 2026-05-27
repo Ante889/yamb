@@ -9,6 +9,9 @@ use App\Game\Domain\Model\ScoreEntry;
 interface ScoreEntryRepositoryInterface
 {
     public function getByGameParticipantId(int $gameParticipant): array;
+
+    public function deleteByGameId(int $gameId);
+
     public function add(ScoreEntry $scoreEntry): self;
     public function save(): void;
 }

@@ -160,9 +160,9 @@ class Game
 
     public function cancel(): void
     {
-//        if ($this->gameStatus === GameStatusEnum::CANCELLED->value) {
-//            return;
-//        }
+        if ($this->gameStatus === GameStatusEnum::CANCELLED->value) {
+            return;
+        }
 
         $this->gameStatus = GameStatusEnum::CANCELLED->value;
 

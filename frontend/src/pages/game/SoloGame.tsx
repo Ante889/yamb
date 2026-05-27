@@ -6,6 +6,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {DiceRoller} from "../../components/Game/DiceRoller.tsx";
 import {useTranslation} from "react-i18next";
 import ConfirmExitModal from "../../components/Modal/ConfirmExitModal.tsx";
+import {SoloGameService} from "../../services/game/soloGame/soloGameService.tsx";
 
 function SoloGame() {
     const [data, setData] = useState<never>(null);
@@ -30,6 +31,14 @@ function SoloGame() {
 
         fetchData();
     }, [id]);
+
+    const exitGame = async () => {
+        const res = await SoloGameService.exitSoloGame(
+            id
+        );
+
+        if(res) navigate("/");
+    };
 
     const rows = [
         "ones","twos","threes","fours","fives","sixes",
@@ -166,7 +175,7 @@ function SoloGame() {
                     onClose={() => setShowExit(false)}
                     onConfirm={() => {
                         setShowExit(false);
-                        navigate("/");
+                        exitGame()
                     }}
                 />
             </div>
