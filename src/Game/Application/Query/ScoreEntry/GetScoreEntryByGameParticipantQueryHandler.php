@@ -42,7 +42,7 @@ final readonly class GetScoreEntryByGameParticipantQueryHandler
         return $this->scoreSheetCalculator->calculate(
             $scoreEntryData,
                 $state['dices'] ?? [],
-            $diceNumber,
+            $diceNumber ?? 6,
             $state['throwNumber'] ?? 0
         );
     }

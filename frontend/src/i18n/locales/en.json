@@ -48,6 +48,7 @@
         "choiceNumberOfDice": "Choice number of dice",
         "startGame": "Start game",
         "throws": "Throws",
+        "choiceGameType": "Game type",
         "throwDice": "Throw dices",
         "exit": "Exit the game",
         "confirmExit": "Are you sure you want to exit?"

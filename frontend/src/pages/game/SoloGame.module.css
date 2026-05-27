@@ -40,7 +40,6 @@
     color: var(--color-text-secondary);
 }
 
-/* HEADER */
 .headerCell {
     font-weight: 700;
     color: var(--color-text-primary);
@@ -87,6 +86,13 @@
 }
 
 @media (max-width: 480px) {
+    .sheetWrap {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+        color: var(--color-text-primary);
+    }
     .sheet {
         max-width: 100%;
         padding: 6px;
