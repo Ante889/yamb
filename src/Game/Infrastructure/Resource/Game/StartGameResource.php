@@ -24,7 +24,8 @@ final readonly class StartGameResource
 {
     public function __construct(
         #[Assert\NotBlank]
-        public ?int $numberOfDice = null
+        public ?int    $numberOfDice = null,
+        public ?string $gameType = null,
     )
     {
     }

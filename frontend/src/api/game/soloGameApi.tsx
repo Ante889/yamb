@@ -1,8 +1,9 @@
 import api from "../axios";
 
-export const createSoloGameApi = async (numberOfDice) => {
+export const createSoloGameApi = async (numberOfDice, selectedGameType) => {
     const res = await api.post("/start-solo-game", {
         numberOfDice: numberOfDice,
+        gameType: selectedGameType
     });
 
     return res.data;

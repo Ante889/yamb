@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Domain\Service;
 
 use App\Game\Application\Dto\ScoreSheetResult;
+use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Model\ScoreEntry;
@@ -15,8 +16,14 @@ final readonly class ScoreSheetCalculator
     private const KEY_MAX = 'max';
     private const KEY_ONES = 'ones';
 
-    public function calculate(array $entries, array $dices, int $diceNumber, int $throwNumber): ScoreSheetResult
-    {
+    public function calculate(
+        array $entries,
+        array $dices,
+        int $diceNumber,
+        int $throwNumber,
+        GameTypeEnum $gameType
+    ): ScoreSheetResult {
+
         $grid = [];
         $indexed = [];
 
@@ -26,20 +33,21 @@ final readonly class ScoreSheetCalculator
         }
 
         foreach (ScoreEntryFieldEnum::cases() as $field) {
-            foreach (ScoreEntryColumnEnum::cases() as $column) {
+            foreach ($gameType->columns() as $column) {
                 $grid[$field->value][$column->value] =
                     $indexed[$field->value][$column->value] ?? null;
             }
         }
 
-        $upperTotals = $this->calculateUpperTotals($grid);
-        $minMaxTotals = $this->calculateMinMaxTotals($grid);
-        $downTotals = $this->calculateDownTotals($grid);
+        $upperTotals = $this->calculateUpperTotals($grid, $gameType);
+        $minMaxTotals = $this->calculateMinMaxTotals($grid, $gameType);
+        $downTotals = $this->calculateDownTotals($grid, $gameType);
 
         $grandTotals = $this->calculateGrandTotals(
             $upperTotals,
             $minMaxTotals,
-            $downTotals
+            $downTotals,
+            $gameType
         );
 
         return new ScoreSheetResult(
@@ -50,11 +58,12 @@ final readonly class ScoreSheetCalculator
             grandTotals: $grandTotals,
             diceNumber: $diceNumber,
             dices: $dices,
-            throwNumber: $throwNumber
+            throwNumber: $throwNumber,
+            gameType: $gameType->value
         );
     }
 
-    private function calculateUpperTotals(array $grid): array
+    private function calculateUpperTotals(array $grid, GameTypeEnum $gameType): array
     {
         $fields = [
             ScoreEntryFieldEnum::ONES->value,
@@ -62,12 +71,12 @@ final readonly class ScoreSheetCalculator
             ScoreEntryFieldEnum::THREES->value,
             ScoreEntryFieldEnum::FOURS->value,
             ScoreEntryFieldEnum::FIVES->value,
-            ScoreEntryFieldEnum::SIXES->value
+            ScoreEntryFieldEnum::SIXES->value,
         ];
 
         $totals = [];
 
-        foreach (ScoreEntryColumnEnum::cases() as $column) {
+        foreach ($gameType->columns() as $column) {
 
             $upperSum = 0;
 
@@ -85,11 +94,11 @@ final readonly class ScoreSheetCalculator
         return $totals;
     }
 
-    private function calculateMinMaxTotals(array $grid): array
+    private function calculateMinMaxTotals(array $grid, GameTypeEnum $gameType): array
     {
         $totals = [];
 
-        foreach (ScoreEntryColumnEnum::cases() as $column) {
+        foreach ($gameType->columns() as $column) {
 
             $min = (int) ($grid[self::KEY_MIN][$column->value] ?? 0);
             $max = (int) ($grid[self::KEY_MAX][$column->value] ?? 0);
@@ -103,7 +112,7 @@ final readonly class ScoreSheetCalculator
         return $totals;
     }
 
-    private function calculateDownTotals(array $grid): array
+    private function calculateDownTotals(array $grid, GameTypeEnum $gameType): array
     {
         $fields = [
             ScoreEntryFieldEnum::TWO_PAIRS->value,
@@ -111,12 +120,12 @@ final readonly class ScoreSheetCalculator
             ScoreEntryFieldEnum::STRAIGHT->value,
             ScoreEntryFieldEnum::FULL->value,
             ScoreEntryFieldEnum::POKER->value,
-            ScoreEntryFieldEnum::YAMB->value
+            ScoreEntryFieldEnum::YAMB->value,
         ];
 
         $totals = [];
 
-        foreach (ScoreEntryColumnEnum::cases() as $column) {
+        foreach ($gameType->columns() as $column) {
 
             $sum = 0;
 
@@ -135,11 +144,13 @@ final readonly class ScoreSheetCalculator
     private function calculateGrandTotals(
         array $upper,
         array $minMax,
-        array $down
+        array $down,
+        GameTypeEnum $gameType
     ): array {
+
         $totals = [];
 
-        foreach (ScoreEntryColumnEnum::cases() as $column) {
+        foreach ($gameType->columns() as $column) {
 
             $totals[$column->value] =
                 ($upper[$column->value]['upper_sum'] ?? 0)

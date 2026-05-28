@@ -7,7 +7,8 @@ namespace App\Game\Application\Command\Game;
 final readonly class NewSoloGameCommand
 {
     public function __construct(
-        public int $numberOfDice
+        public int    $numberOfDice,
+        public string $gameType
     )
     {
     }

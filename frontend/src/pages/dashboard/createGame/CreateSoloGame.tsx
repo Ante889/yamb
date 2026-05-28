@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 import { SoloGameService } from "../../../services/game/soloGame/soloGameService.tsx";
 import { useNavigate } from "react-router-dom";
-
-import classicGame from "../../../assets/dashboard/Clasic_game.png";
-import yambPlus from "../../../assets/dashboard/Yamb+.png";
-import singleColon from "../../../assets/dashboard/Single_colon.png";
+import classicGame from "../../../assets/dashboard/Classic_game.png";
+import yambPlus from "../../../assets/dashboard/YambPlus2.png";
+import singleColumn from "../../../assets/dashboard/Single_column.png";
+import {CLASSIC_GAME_TYPE, SINGLE_COLUMN_GAME_TYPE, YAMB_PLUS_GAME_TYPE} from "../../../constants/GameType.tsx";
 
 function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
     const { t } = useTranslation();
@@ -20,15 +20,15 @@ function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
 
     const gameTypes = [
         {
-            id: "single",
-            image: singleColon,
+            id: SINGLE_COLUMN_GAME_TYPE,
+            image: singleColumn,
         },
         {
-            id: "classic",
+            id: CLASSIC_GAME_TYPE,
             image: classicGame,
         },
         {
-            id: "yambPlus",
+            id: YAMB_PLUS_GAME_TYPE,
             image: yambPlus,
         },
     ];
@@ -39,7 +39,7 @@ function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
         try {
             const gameData = await SoloGameService.createSoloGame(
                 selectedDice,
-                selectedGameType
+                selectedGameType,
             );
 
             navigate("/solo-game/" + gameData.participants[0].id);

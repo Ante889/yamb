@@ -8,4 +8,5 @@ enum ScoreEntryColumnEnum: string
     case UP = 'up';
     case FREE = 'free';
     case ANNOUNCEMENT = 'announcement';
+    case HAND = 'hand';
 }

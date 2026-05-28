@@ -2,7 +2,9 @@
 
 namespace App\Game\Domain\Model;
 
+use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
+use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Event\GameCanceled;
 use App\Shared\Domain\Trait\RecordsDomainEvents;
 use DateTimeInterface;
@@ -97,6 +99,9 @@ class Game
         orphanRemoval: true
     )]
     private Collection $participants;
+
+    #[ORM\Column(type: 'string', length: 20, enumType: GameTypeEnum::class)]
+    private GameTypeEnum $gameType;
 
     private array $recordedEvents = [];
 
@@ -260,5 +265,17 @@ class Game
     public function addParticipant(GameParticipant $participant): void
     {
         $this->participants->add($participant);
+    }
+
+    public function getGameType(): GameTypeEnum
+    {
+        return $this->gameType;
+    }
+
+    public function setGameType(GameTypeEnum $gameType): self
+    {
+        $this->gameType = $gameType;
+
+        return $this;
     }
 }

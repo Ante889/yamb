@@ -6,6 +6,7 @@ namespace App\Game\Application\Command\Game;
 
 use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
+use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Repository\GameRepositoryInterface;
@@ -34,7 +35,8 @@ final readonly class NewSoloGameCommandHandler
             ->setMinPlayers(1)
             ->setMaxPlayers(1)
             ->setJoinCode($this->codeGenerator->generateUnique())
-            ->setStartedAt(new \DateTimeImmutable());
+            ->setStartedAt(new \DateTimeImmutable())
+            ->setGameType(GameTypeEnum::from($command->gameType));
 
         $participant = GameParticipant::createSolo(
             $this->userService->getCurrentUser(),

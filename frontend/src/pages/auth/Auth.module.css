@@ -99,3 +99,10 @@
 
     transform: translateY(-1px);
 }
+
+@media (max-width: 768px) {
+    .loginPage::before,
+    .loginPage::after {
+        display: none;
+    }
+}

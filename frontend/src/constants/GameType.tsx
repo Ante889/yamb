@@ -1,0 +1,3 @@
+export const SINGLE_COLUMN_GAME_TYPE = 'SINGLE_COLUMN'
+export const CLASSIC_GAME_TYPE = 'CLASSIC'
+export const YAMB_PLUS_GAME_TYPE = 'YAMB_PLUS'

@@ -39,7 +39,8 @@ final readonly class CreateSoloGameProcessor implements ProcessorInterface
 
         $game = $this->newSoloGameCommandHandler->handle(
             new NewSoloGameCommand(
-                numberOfDice: $data->numberOfDice
+                numberOfDice: $data->numberOfDice,
+                gameType: $data->gameType
             )
         );
 
