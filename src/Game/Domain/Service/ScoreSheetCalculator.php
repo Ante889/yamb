@@ -29,7 +29,7 @@ final readonly class ScoreSheetCalculator
 
         /** @var ScoreEntry $entry */
         foreach ($entries as $entry) {
-            $indexed[$entry->getField()->value][$entry->getColumn()->value] = $entry->getValue();
+            $indexed[$entry->getField()->value][$entry->getEntryColumn()->value] = $entry->getValue();
         }
 
         foreach (ScoreEntryFieldEnum::cases() as $field) {

@@ -2,6 +2,8 @@
 
 namespace App\Game\Infrastructure\Doctrine\Repository;
 
+use App\Game\Domain\Enum\ScoreEntryColumnEnum;
+use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Model\ScoreEntry;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -21,6 +23,24 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
             ->setParameter('gameParticipantId', $gameParticipant)
             ->getQuery()
             ->getResult();
+    }
+
+    public function existsForParticipantAndPosition(
+        int $participantId,
+        ScoreEntryColumnEnum $column,
+        ScoreEntryFieldEnum $row
+    ): bool
+    {
+        return (bool) $this->createQueryBuilder('se')
+            ->select('COUNT(se.id)')
+            ->andWhere('se.gameParticipant = :participantId')
+            ->andWhere('se.entryColumn = :column')
+            ->andWhere('se.field = :row')
+            ->setParameter('participantId', $participantId)
+            ->setParameter('column', $column)
+            ->setParameter('row', $row)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function deleteByGameId(int $gameId): int

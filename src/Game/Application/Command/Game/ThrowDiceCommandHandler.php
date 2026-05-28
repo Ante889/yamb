@@ -32,11 +32,9 @@ final readonly class ThrowDiceCommandHandler
 
         if (!$diceNumber) throw GameException::gameNotFound();
 
-        $this->throwDiceService->validateDiceNumber($diceNumber);
+        $throwNumber = $this->store->getThrowNumberByParticipant($command->gameParticipantId);
 
-        $state = $this->store->getForParticipant($command->gameParticipantId);
-
-        if ($state) $this->throwDiceService->assertCanThrow($state);
+        if ($throwNumber) $this->throwDiceService->assertCanThrow($throwNumber);
 
         $dice = $this->throwDiceService->rollDice(
             $diceNumber,
@@ -48,7 +46,7 @@ final readonly class ThrowDiceCommandHandler
             $command->gameParticipantId,
             [
                 'throwNumber' => ($state['throwNumber'] ?? 0) + 1,
-                'dices' => $dice,
+                'dices' => $this->store->getDicesByParticipant($command->gameParticipantId),
             ]
         );
 

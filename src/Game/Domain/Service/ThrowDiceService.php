@@ -21,9 +21,9 @@ final class ThrowDiceService
         }
     }
 
-    public function assertCanThrow(array $state): void
+    public function assertCanThrow(?int $throwNumber): void
     {
-        if (($state['throwNumber'] ?? 0) >= self::MAX_THROWS) {
+        if (($throwNumber ?? 0) >= self::MAX_THROWS) {
             throw ThrowDiceException::maxThrowsReached();
         }
     }

@@ -11,7 +11,9 @@
         "game_participant_not_found": "Error. Please refresh page.",
         "max_throws": "You have reached the maximum number of rolls. Please enter a number in the field.",
         "wrong_dice_number": "Error. Wrong dice number. Please refresh page.",
-        "game_not_found": "Error. Game not found. Please refresh page."
+        "game_not_found": "Error. Game not found. Please refresh page.",
+        "field_already_used": "This field is already used.",
+        "no_dices": "Please throw dices"
     },
     "Loading": "Loading...",
     "dashboard": {

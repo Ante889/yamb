@@ -20,4 +20,9 @@ enum ScoreEntryFieldEnum: string
     case FULL = 'full';
     case POKER = 'poker';
     case YAMB = 'yamb';
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
 }

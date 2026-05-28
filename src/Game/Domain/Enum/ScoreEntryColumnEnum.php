@@ -9,4 +9,9 @@ enum ScoreEntryColumnEnum: string
     case FREE = 'free';
     case ANNOUNCEMENT = 'announcement';
     case HAND = 'hand';
+
+    public static function values(): array
+    {
+        return array_column(self::cases(), 'value');
+    }
 }

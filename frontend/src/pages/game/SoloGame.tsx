@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryService";
 import { JambLoading } from "../../components/Loading/JambLoading";
-import { SingleColumnGame } from "./typesOfGame/SingleColumnGame";
-import { ClassicGame } from "./typesOfGame/ClassicGame";
-import { PlusGame } from "./typesOfGame/PlusGame";
+import { SingleColumnGame } from "../../components/Game/typesOfGame/SingleColumnGame";
+import { ClassicGame } from "../../components/Game/typesOfGame/ClassicGame";
+import { PlusGame } from "../../components/Game/typesOfGame/PlusGame";
 import styles  from "./SoloGame.module.css";
 
 export default function SoloGame() {
@@ -41,13 +41,13 @@ export default function SoloGame() {
 
     switch (gameData.gameType) {
         case "SINGLE_COLUMN":
-            return <SingleColumnGame gameData={gameData} styles={styles} />;
+            return <SingleColumnGame gameData={gameData} styles={styles} participantId={id} />;
 
         case "CLASSIC":
-            return <ClassicGame gameData={gameData} styles={styles} />;
+            return <ClassicGame gameData={gameData} styles={styles} participantId={id} />;
 
         case "YAMB_PLUS":
-            return <PlusGame gameData={gameData} styles={styles} />;
+            return <PlusGame gameData={gameData} styles={styles} participantId={id} />;
 
         default:
             return null;

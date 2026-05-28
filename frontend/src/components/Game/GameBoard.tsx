@@ -1,4 +1,9 @@
-import {DiceRoller} from "../../components/Game/DiceRoller.tsx";
+import {DiceRoller} from "./DiceRoller.tsx";
+import ConfirmExitModal from "../Modal/ConfirmExitModal.tsx";
+import {useState} from "react";
+import {useTranslation} from "react-i18next";
+import {SoloGameService} from "../../services/game/soloGame/soloGameService.tsx";
+import {useNavigate} from "react-router-dom";
 
 type GameColumnDefinition = {
     label: string;
@@ -11,22 +16,24 @@ type GameBoardProps = {
     styles: Record<string, string>;
 };
 
-export function GameBoard({ gameData, columns, styles }: GameBoardProps) {
+export function GameBoard({ gameData, columns, styles, participantId }: GameBoardProps) {
     const grid = gameData?.grid ?? {};
-
+    const { t } = useTranslation();
+    const [showExit, setShowExit] = useState(false);
+    const navigate = useNavigate();
     const upperSectionRows = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
+        "ones",
+        "twos",
+        "threes",
+        "fours",
+        "fives",
+        "sixes",
     ];
 
     const minMaxRows = ["Min", "Max"];
 
     const lowerSectionRows = [
-        "2 pairs",
+        "two_pairs",
         "Tris",
         "Straight",
         "Full",
@@ -56,6 +63,14 @@ export function GameBoard({ gameData, columns, styles }: GameBoardProps) {
         </div>
     );
 
+    const exitGame = async () => {
+        const res = await SoloGameService.exitSoloGame(
+            participantId
+        );
+
+        if(res) navigate("/");
+    };
+
     return (
         <div className={styles.tableWrapper}>
             <div className={styles.sheet}>
@@ -65,7 +80,7 @@ export function GameBoard({ gameData, columns, styles }: GameBoardProps) {
                     throwNumber={gameData['throwNumber'] ?? 0}
                 />
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`} />
+                    <div className={`${styles.cell} ${styles.cat}`}/>
                     {columns.map((columnDefinition) => (
                         <div
                             key={columnDefinition.gridKey}
@@ -130,7 +145,21 @@ export function GameBoard({ gameData, columns, styles }: GameBoardProps) {
                         </div>
                     ))}
                 </div>
+                <button
+                    className="btn btn-error"
+                    onClick={() => setShowExit(true)}
+                >
+                    {t('game.exit')}
+                </button>
             </div>
+            <ConfirmExitModal
+                open={showExit}
+                onClose={() => setShowExit(false)}
+                onConfirm={() => {
+                    setShowExit(false);
+                    exitGame()
+                }}
+            />
         </div>
     );
 }

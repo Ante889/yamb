@@ -1,7 +1,6 @@
 import {GameBoard} from "../GameBoard";
-import styles from "../SoloGame.module.css";
 
-export function ClassicGame({gameData, styles}: any) {
+export function ClassicGame({gameData, styles, participantId}: any) {
     return (
         <GameBoard
             gameData={gameData}
@@ -12,6 +11,7 @@ export function ClassicGame({gameData, styles}: any) {
                 {label: "↕", gridKey: "free"},
                 {label: "N", gridKey: "announcement"},
             ]}
+            participantId={participantId}
         />
     );
 }

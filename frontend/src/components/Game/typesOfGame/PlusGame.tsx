@@ -1,6 +1,6 @@
 import { GameBoard } from "../GameBoard";
 
-export function PlusGame({ gameData, styles }: any) {
+export function PlusGame({ gameData, styles, participantId }: any) {
     return (
         <GameBoard
             gameData={gameData}
@@ -12,6 +12,7 @@ export function PlusGame({ gameData, styles }: any) {
                 {label: "N", gridKey: "announcement"},
                 { label: "🖐️", gridKey: "hand" }
             ]}
+            participantId={participantId}
         />
     );
 }

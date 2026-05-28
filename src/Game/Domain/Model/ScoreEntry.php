@@ -52,13 +52,29 @@ class ScoreEntry
         type: Types::STRING,
         enumType: ScoreEntryColumnEnum::class
     )]
-    private ScoreEntryColumnEnum $column;
+    private ScoreEntryColumnEnum $entryColumn;
 
     #[ORM\Column(
         type: 'integer',
         nullable: true
     )]
     private ?int $value = null;
+
+    public static function create(
+        GameParticipant $gameParticipant,
+        ScoreEntryFieldEnum $field,
+        ScoreEntryColumnEnum $column,
+        int $value
+    ): self {
+        $scoreEntry = new self();
+
+        $scoreEntry->gameParticipant = $gameParticipant;
+        $scoreEntry->field = $field;
+        $scoreEntry->entryColumn = $column;
+        $scoreEntry->value = $value;
+
+        return $scoreEntry;
+    }
 
     public function getId(): int
     {
@@ -113,14 +129,14 @@ class ScoreEntry
         return $this;
     }
 
-    public function getColumn(): ScoreEntryColumnEnum
+    public function getEntryColumn(): ScoreEntryColumnEnum
     {
-        return $this->column;
+        return $this->entryColumn;
     }
 
-    public function setColumn(ScoreEntryColumnEnum $column): self
+    public function setEntryColumn(ScoreEntryColumnEnum $entryColumn): self
     {
-        $this->column = $column;
+        $this->entryColumn = $entryColumn;
 
         return $this;
     }
