@@ -17,4 +17,9 @@ final class EnterNewEntryException extends DomainException
     {
         return new self('exception.no_dices');
     }
+
+    public static function notPossibleToEnterInThisField(): self
+    {
+        return new self('exception.not_possible_to_enter_in_this_field');
+    }
 }

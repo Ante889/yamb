@@ -19,5 +19,12 @@ services:
     App\:
         resource: '../src/'
 
+    'App\Game\Domain\Rule\Column\':
+        resource: '../src/Game/Domain/Rule/Column/*'
+        tags: [ 'app.score_entry_column_rule' ]
+
+    App\Game\Domain\Service\CalculatePointsForEntryService:
+        arguments:
+            $rules: !tagged_iterator app.score_entry_column_rule
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

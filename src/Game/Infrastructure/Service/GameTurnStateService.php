@@ -33,11 +33,13 @@ final class GameTurnStateService implements TurnStateStoreInterface
     /**
      * @throws InvalidArgumentException
      */
-    public function getDicesByParticipant(int $participantId)
+    public function getDicesByParticipant(int $participantId): array
     {
         $state = $this->getForParticipant($participantId);
 
-        if (!$state || $state['dices'] === []) {
+        if ($state === null) return [];
+
+        if (!array_key_exists('dices', $state)) {
             throw EnterNewEntryException::noDices();
         }
 
@@ -47,11 +49,13 @@ final class GameTurnStateService implements TurnStateStoreInterface
     /**
      * @throws InvalidArgumentException
      */
-    public function getThrowNumberByParticipant(int $participantId)
+    public function getThrowNumberByParticipant(int $participantId): int
     {
         $state = $this->getForParticipant($participantId);
 
-        if (!$state || $state['throwNumber'] === []) {
+        if ($state === null) return 0;
+
+        if (!array_key_exists('throwNumber', $state)) {
             throw EnterNewEntryException::noDices();
         }
 

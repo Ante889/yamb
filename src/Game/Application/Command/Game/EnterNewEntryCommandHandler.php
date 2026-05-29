@@ -32,7 +32,8 @@ final readonly class EnterNewEntryCommandHandler
         $point = $this->calculatePointsForEntryService->calculate(
             $this->store->getDicesByParticipant($participantId),
             $command->column,
-            $command->row
+            $command->row,
+            $command->gameParticipantId
         );
 
         $scoreEntry = ScoreEntry::create(

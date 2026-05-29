@@ -116,6 +116,12 @@ api.interceptors.response.use(
         ========================= */
         if (status === 403) {
             toast.error(i18n.t(msg || "You don't have permission"));
+
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 300);
+
+            return Promise.reject(err);
         }
 
         /* =========================

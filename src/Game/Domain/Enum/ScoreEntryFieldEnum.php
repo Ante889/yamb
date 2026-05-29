@@ -25,4 +25,50 @@ enum ScoreEntryFieldEnum: string
     {
         return array_column(self::cases(), 'value');
     }
+
+    public static function ordered(): array
+    {
+        return [
+            self::ONES,
+            self::TWOS,
+            self::THREES,
+            self::FOURS,
+            self::FIVES,
+            self::SIXES,
+            self::MAX,
+            self::MIN,
+            self::TWO_PAIRS,
+            self::TRIS,
+            self::STRAIGHT,
+            self::FULL,
+            self::POKER,
+            self::YAMB,
+        ];
+    }
+
+    public static function previous(self $current): ?self
+    {
+        $ordered = self::ordered();
+
+        foreach ($ordered as $index => $field) {
+            if ($field === $current) {
+                return $ordered[$index - 1] ?? null;
+            }
+        }
+
+        return null;
+    }
+
+    public static function next(self $current): ?self
+    {
+        $ordered = self::ordered();
+
+        foreach ($ordered as $index => $field) {
+            if ($field === $current) {
+                return $ordered[$index + 1] ?? null;
+            }
+        }
+
+        return null;
+    }
 }

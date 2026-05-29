@@ -14,6 +14,8 @@ interface ScoreEntryRepositoryInterface
 
     public function existsForParticipantAndPosition(int $participantId, ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row): bool;
 
+    public function checkUpDownRule(ScoreEntryFieldEnum $row, ScoreEntryColumnEnum $column, int $participantId): bool;
+
     public function deleteByGameId(int $gameId);
 
     public function add(ScoreEntry $scoreEntry): self;

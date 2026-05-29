@@ -5,29 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/ScoreEntryValidator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewEntryProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/ColumnRuleInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/DownColumnRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/HandColumnRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/UpColumnRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/axios.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/axios.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/typesOfGame/ClassicGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/ClassicGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/typesOfGame/PlusGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/PlusGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/typesOfGame/SingleColumnGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/SingleColumnGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryColumnEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryColumnEnum.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -297,7 +289,8 @@
       <workItem from="1779796100821" duration="10562000" />
       <workItem from="1779868976402" duration="5591000" />
       <workItem from="1779958126690" duration="2138000" />
-      <workItem from="1779960398054" duration="17554000" />
+      <workItem from="1779960398054" duration="18346000" />
+      <workItem from="1780043821220" duration="8799000" />
     </task>
     <servers />
   </component>

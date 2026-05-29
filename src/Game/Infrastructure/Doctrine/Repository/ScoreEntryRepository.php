@@ -25,6 +25,23 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
             ->getResult();
     }
 
+    public function checkUpDownRule(ScoreEntryFieldEnum $row, ScoreEntryColumnEnum $column, int $participantId): bool
+    {
+        $result = $this->createQueryBuilder('se')
+            ->select('1')
+            ->where('se.gameParticipant = :gameParticipantId')
+            ->andWhere('se.entryColumn = :down')
+            ->andWhere('se.field = :row')
+            ->setParameter('gameParticipantId', $participantId)
+            ->setParameter('row', $row->value)
+            ->setParameter('down', $column->value)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $result !== null;
+    }
+
     public function existsForParticipantAndPosition(
         int $participantId,
         ScoreEntryColumnEnum $column,

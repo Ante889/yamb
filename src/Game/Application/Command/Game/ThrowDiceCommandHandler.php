@@ -6,7 +6,6 @@ namespace App\Game\Application\Command\Game;
 
 use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Exception\GameException;
-use App\Game\Domain\Exception\ThrowDiceException;
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Service\ThrowDiceService;
 use Psr\Cache\InvalidArgumentException;
@@ -39,19 +38,19 @@ final readonly class ThrowDiceCommandHandler
         $dice = $this->throwDiceService->rollDice(
             $diceNumber,
             $command->savedPositions,
-            $state['dices'] ?? []
+            $this->store->getDicesByParticipant($command->gameParticipantId)
         );
 
         $this->store->setForParticipant(
             $command->gameParticipantId,
             [
-                'throwNumber' => ($state['throwNumber'] ?? 0) + 1,
-                'dices' => $this->store->getDicesByParticipant($command->gameParticipantId),
+                'throwNumber' => $throwNumber + 1,
+                'dices' => $dice,
             ]
         );
 
         return [
-            'throwNumber'=> ($state['throwNumber'] ?? 0) + 1,
+            'throwNumber'=> $throwNumber + 1,
             'dices' => $dice
         ];
     }
