@@ -30,15 +30,15 @@ export function GameBoard({ gameData, columns, styles, participantId }: GameBoar
         "sixes",
     ];
 
-    const minMaxRows = ["Min", "Max"];
+    const minMaxRows = ["max", "min"];
 
     const lowerSectionRows = [
         "two_pairs",
-        "Tris",
-        "Straight",
-        "Full",
-        "Poker",
-        "Yamb",
+        "tris",
+        "straight",
+        "full",
+        "poker",
+        "yamb",
     ];
 
     const upperTotals = gameData?.upperTotals ?? {};

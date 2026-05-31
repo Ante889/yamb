@@ -12,10 +12,11 @@ use App\Game\Domain\Rule\Column\ColumnRuleInterface;
 final readonly class CalculatePointsForEntryService
 {
     /**
-     * @param iterable<ColumnRuleInterface> $rules
+     * @param iterable<ColumnRuleInterface> $columnRules
      */
     public function __construct(
-        private iterable $rules,
+        private iterable $columnRules,
+        private iterable $rowRules
     )
     {
     }
@@ -29,17 +30,30 @@ final readonly class CalculatePointsForEntryService
     {
         $this->validateColumn($column, $row, $participantId);
 
-        return 6;
+        return $this->calculatePoints($row, $dices);
     }
 
     private function validateColumn(ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row, int $participantId): void
     {
-        foreach ($this->rules as $rule) {
+        foreach ($this->columnRules as $rule) {
             if ($rule->supports($column)) {
                 if (!$rule->validate($row, $participantId)) {
                     throw EnterNewEntryException::notPossibleToEnterInThisField();
                 }
             }
         }
+    }
+
+    private function calculatePoints(ScoreEntryFieldEnum $row, array $dices): int
+    {
+        $points = 0;
+
+        foreach ($this->rowRules as $rule) {
+            if ($rule->supports($row)) {
+                $points = $rule->calculate($row, $dices);
+            }
+        }
+
+        return $points;
     }
 }

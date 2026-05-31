@@ -29,6 +29,8 @@ final readonly class EnterNewEntryCommandHandler
 
         $this->entryValidator->assertPositionFree($participantId, $command->column, $command->row);
 
+        $this->entryValidator->neverThrow($this->store->getThrowNumberByParticipant($participantId));
+
         $point = $this->calculatePointsForEntryService->calculate(
             $this->store->getDicesByParticipant($participantId),
             $command->column,
@@ -36,6 +38,8 @@ final readonly class EnterNewEntryCommandHandler
             $command->gameParticipantId
         );
 
+
+        //Potrebno je provjeriti smije li upisati pod HAND To ovisi o vrsti game-a
         $scoreEntry = ScoreEntry::create(
             gameParticipant: $this->gameParticipantRepository->findById($participantId),
             field: $command->row,
@@ -44,5 +48,7 @@ final readonly class EnterNewEntryCommandHandler
         );
 
         $this->scoreEntryRepository->add($scoreEntry)->save();
+
+        $this->store->deleteParticipant($participantId);
     }
 }
