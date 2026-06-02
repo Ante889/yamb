@@ -13,6 +13,7 @@ use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Infrastructure\State\Processor\EndSoloGameProcessor;
 use App\Game\Infrastructure\State\Processor\EnterNewEntryProcessor;
+use App\Game\Infrastructure\State\Processor\SetAnnouncementFieldProcessor;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
 
@@ -31,6 +32,12 @@ use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
             description: 'Enter a new entry',
             security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             processor: EnterNewEntryProcessor::class
+        ),
+        new Post(
+            uriTemplate: '/set-announcement/{gameParticipantId}',
+            description: 'Set announcement to field',
+            security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
+            processor: SetAnnouncementFieldProcessor::class
         ),
     ],
 )]

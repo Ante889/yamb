@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/AnnouncementException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/AnnouncementColumnRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/GlobalTurnStateRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/AnnouncementValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/SetAnnouncementFieldProcessor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/ColumnRuleInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/ColumnRuleInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Contract/TurnStateStoreInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/DownColumnRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/DownColumnRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/HandColumnRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/HandColumnRule.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/UpColumnRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Column/UpColumnRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/MinMaxRowRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/MinMaxRowRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/MultipleOfAKindRowRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/MultipleOfAKindRowRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/OneToSixRowRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/OneToSixRowRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewEntryProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewEntryProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/GameParticipantProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/GameParticipantProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/RedisCacheService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/RedisCacheService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Service/GameTurnStateService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +294,7 @@
       <workItem from="1780245439617" duration="6090000" />
       <workItem from="1780299364639" duration="398000" />
       <workItem from="1780299771218" duration="65000" />
-      <workItem from="1780391032323" duration="3138000" />
+      <workItem from="1780391032323" duration="11439000" />
     </task>
     <servers />
   </component>

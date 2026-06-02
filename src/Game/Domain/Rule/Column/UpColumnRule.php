@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Game\Domain\Rule\Column;
 
+use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Model\Game;
@@ -12,7 +13,8 @@ use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 final readonly class UpColumnRule implements ColumnRuleInterface
 {
     public function __construct(
-        private ScoreEntryRepositoryInterface $scoreEntryRepository
+        private ScoreEntryRepositoryInterface $scoreEntryRepository,
+        private TurnStateStoreInterface       $store
     )
     {
     }
@@ -29,10 +31,6 @@ final readonly class UpColumnRule implements ColumnRuleInterface
         Game                 $game
     ): bool
     {
-        if (!in_array($column, $game->getGameType()->columns(), true)) {
-            return false;
-        }
-
         $currentRow = ScoreEntryFieldEnum::from($row->value);
 
         $nextRow = ScoreEntryFieldEnum::next($currentRow);

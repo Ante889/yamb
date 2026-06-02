@@ -14,7 +14,6 @@ final readonly class DownColumnRule implements ColumnRuleInterface
 {
     public function __construct(
         private ScoreEntryRepositoryInterface $scoreEntryRepository,
-        private TurnStateStoreInterface       $store
     )
     {
     }
@@ -31,10 +30,6 @@ final readonly class DownColumnRule implements ColumnRuleInterface
         Game $game
     ): bool
     {
-        if (!in_array($column, $game->getGameType()->columns(), true)) {
-            return false;
-        }
-
         $currentRow = ScoreEntryFieldEnum::from($row->value);
 
         $previousRow = ScoreEntryFieldEnum::previous($currentRow);

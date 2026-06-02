@@ -29,10 +29,6 @@ final readonly class HandColumnRule implements ColumnRuleInterface
         Game                 $game
     ): bool
     {
-        if (!in_array($column, $game->getGameType()->columns(), true)) {
-            return false;
-        }
-
         return $this->store->getThrowNumberByParticipant($participantId) === 1;
     }
 }

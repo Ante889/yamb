@@ -40,7 +40,7 @@ final class GameTurnStateService implements TurnStateStoreInterface
         if ($state === null) return [];
 
         if (!array_key_exists('dices', $state)) {
-            throw EnterNewEntryException::noDices();
+            return [];
         }
 
         return $state['dices'];
@@ -56,7 +56,7 @@ final class GameTurnStateService implements TurnStateStoreInterface
         if ($state === null) return 0;
 
         if (!array_key_exists('throwNumber', $state)) {
-            throw EnterNewEntryException::noDices();
+            return 0;
         }
 
         return $state['throwNumber'];
@@ -67,11 +67,37 @@ final class GameTurnStateService implements TurnStateStoreInterface
      */
     public function setForParticipant(int $participantId, mixed $data): void
     {
+        $existing = $this->getForParticipant($participantId) ?? [];
+
+        $merged = array_replace_recursive($existing, $data);
+
         $this->redisCacheService->set(
             $this->cacheKeyGenerator->forTurn($participantId),
-            $data,
+            $merged,
             $this->ttlSeconds
         );
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function setAnnouncement(int $participantId, string $row): void
+    {
+        $state = $this->getForParticipant($participantId) ?? [];
+
+        $state['announcement'] = $row;
+
+        $this->setForParticipant($participantId, $state);
+    }
+
+    /**
+     * @throws InvalidArgumentException
+     */
+    public function getAnnouncement(int $participantId): ?string
+    {
+        $state = $this->getForParticipant($participantId);
+
+        return $state['announcement'] ?? null;
     }
 
     public function deleteParticipant(int $participantId): void

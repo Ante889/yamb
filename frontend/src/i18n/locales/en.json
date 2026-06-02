@@ -14,7 +14,9 @@
         "game_not_found": "Error. Game not found. Please refresh page.",
         "field_already_used": "This field is already used.",
         "no_dices": "Please throw dices",
-        "not_possible_to_enter_in_this_field": "It is not possible to enter in this field."
+        "not_possible_to_enter_in_this_field": "It is not possible to enter in this field.",
+        "max_throw_number_is_reached": "You rolled the dice more than 1 time.",
+        "announcement_already_set": "Announcement is already set"
     },
     "Loading": "Loading...",
     "dashboard": {
