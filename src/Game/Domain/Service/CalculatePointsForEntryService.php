@@ -7,6 +7,8 @@ namespace App\Game\Domain\Service;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Exception\EnterNewEntryException;
+use App\Game\Domain\Model\Game;
+use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Rule\Column\ColumnRuleInterface;
 
 final readonly class CalculatePointsForEntryService
@@ -25,19 +27,19 @@ final readonly class CalculatePointsForEntryService
         array                $dices,
         ScoreEntryColumnEnum $column,
         ScoreEntryFieldEnum  $row,
-        int                  $participantId
+        GameParticipant      $gameParticipant
     ): int
     {
-        $this->validateColumn($column, $row, $participantId);
+        $this->validateColumn($column, $row, $gameParticipant);
 
         return $this->calculatePoints($row, $dices);
     }
 
-    private function validateColumn(ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row, int $participantId): void
+    private function validateColumn(ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row, GameParticipant $gameParticipant): void
     {
         foreach ($this->columnRules as $rule) {
             if ($rule->supports($column)) {
-                if (!$rule->validate($row, $participantId)) {
+                if (!$rule->validate($column, $row, $gameParticipant->getId(), $gameParticipant->getGame())) {
                     throw EnterNewEntryException::notPossibleToEnterInThisField();
                 }
             }

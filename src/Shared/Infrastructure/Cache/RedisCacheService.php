@@ -3,13 +3,12 @@
 namespace App\Shared\Infrastructure\Cache;
 
 use App\Shared\Domain\Cache\RedisCacheServiceInterface;
-use Symfony\Contracts\Cache\CacheInterface;
-use Symfony\Contracts\Cache\ItemInterface;
+use Psr\Cache\CacheItemPoolInterface;
 
 readonly class RedisCacheService implements RedisCacheServiceInterface
 {
     public function __construct(
-        private CacheInterface $cache
+        private CacheItemPoolInterface $cache
     ) {}
 
     public function get(string $key): mixed

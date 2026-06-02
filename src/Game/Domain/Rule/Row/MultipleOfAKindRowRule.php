@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Domain\Rule\Row;
 
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Exception\EnterNewEntryException;
 
 final class MultipleOfAKindRowRule implements RowRuleInterface
 {
@@ -49,6 +50,7 @@ final class MultipleOfAKindRowRule implements RowRuleInterface
             ScoreEntryFieldEnum::TRIS => self::TRIS_COUNT,
             ScoreEntryFieldEnum::POKER => self::POKER_COUNT,
             ScoreEntryFieldEnum::YAMB => self::YAMB_COUNT,
+            default => throw EnterNewEntryException::notPossibleToEnterInThisField()
         };
     }
 
@@ -58,6 +60,7 @@ final class MultipleOfAKindRowRule implements RowRuleInterface
             ScoreEntryFieldEnum::TRIS => self::TRIS_REWARD,
             ScoreEntryFieldEnum::POKER => self::POKER_REWARD,
             ScoreEntryFieldEnum::YAMB => self::YAMB_REWARD,
+            default => throw EnterNewEntryException::notPossibleToEnterInThisField()
         };
     }
 }

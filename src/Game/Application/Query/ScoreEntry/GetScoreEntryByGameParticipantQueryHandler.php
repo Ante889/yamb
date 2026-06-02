@@ -39,12 +39,11 @@ final readonly class GetScoreEntryByGameParticipantQueryHandler
 
         $game = $this->gameRepository->gameByGameParticipant($command->gameParticipantId);
 
-        $state = $this->store->getForParticipant($command->gameParticipantId);
         return $this->scoreSheetCalculator->calculate(
             $scoreEntryData,
-            $state['dices'] ?? [],
-            $game->getDiceNumber() ?? 6,
-            $state['throwNumber'] ?? 0,
+            $this->store->getDicesByParticipant($command->gameParticipantId) ?? [],
+            $game->getDiceNumber(),
+            $this->store->getThrowNumberByParticipant($command->gameParticipantId) ?? 0,
             $game->getGameType()
         );
     }

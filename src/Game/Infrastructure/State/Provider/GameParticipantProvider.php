@@ -10,7 +10,7 @@ use App\Game\Infrastructure\Resource\Game\EndGameResource;
 
 final readonly class GameParticipantProvider implements ProviderInterface
 {
-    public function provide(Operation $operation, array $uriVariables = [], array $context = []): ?object
+    public function provide(Operation $operation, array $uriVariables = [], array $context = []): object
     {
         return new EndGameResource(
             gameParticipantId: (int) $uriVariables['gameParticipantId']

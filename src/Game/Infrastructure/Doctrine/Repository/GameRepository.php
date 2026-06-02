@@ -59,11 +59,4 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
     {
         $this->getEntityManager()->flush();
     }
-
-    private function dispatchDomainEvents(Game $game): void
-    {
-        foreach ($game->releaseEvents() as $event) {
-            $this->messageBus->dispatch($event);
-        }
-    }
 }

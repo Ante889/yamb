@@ -7,6 +7,7 @@ namespace App\Game\Domain\Rule\Column;
 use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Model\Game;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 
 final readonly class DownColumnRule implements ColumnRuleInterface
@@ -23,9 +24,16 @@ final readonly class DownColumnRule implements ColumnRuleInterface
         return $column === ScoreEntryColumnEnum::DOWN;
     }
 
-    public function validate(ScoreEntryFieldEnum $row, int $participantId): bool
+    public function validate(
+        ScoreEntryColumnEnum $column,
+        ScoreEntryFieldEnum $row,
+        int $participantId,
+        Game $game
+    ): bool
     {
-        $throwNumber = $this->store->getThrowNumberByParticipant($participantId);
+        if (!in_array($column, $game->getGameType()->columns(), true)) {
+            return false;
+        }
 
         $currentRow = ScoreEntryFieldEnum::from($row->value);
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Domain\Rule\Row;
 
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Exception\EnterNewEntryException;
 
 final readonly class MinMaxRowRule implements RowRuleInterface
 {
@@ -20,7 +21,8 @@ final readonly class MinMaxRowRule implements RowRuleInterface
     {
         return match ($field) {
             ScoreEntryFieldEnum::MIN => $this->calculateMin($dices),
-            ScoreEntryFieldEnum::MAX => $this->calculateMax($dices)
+            ScoreEntryFieldEnum::MAX => $this->calculateMax($dices),
+            default => throw EnterNewEntryException::notPossibleToEnterInThisField()
         };
     }
 

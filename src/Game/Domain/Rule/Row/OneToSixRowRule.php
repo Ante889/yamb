@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Domain\Rule\Row;
 
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Exception\EnterNewEntryException;
 
 final readonly class OneToSixRowRule implements RowRuleInterface
 {
@@ -41,6 +42,7 @@ final readonly class OneToSixRowRule implements RowRuleInterface
             ScoreEntryFieldEnum::FOURS => 4,
             ScoreEntryFieldEnum::FIVES => 5,
             ScoreEntryFieldEnum::SIXES => 6,
+            default => throw EnterNewEntryException::notPossibleToEnterInThisField()
         };
     }
 }
