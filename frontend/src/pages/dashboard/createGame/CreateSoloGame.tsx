@@ -14,7 +14,7 @@ function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
     const { t } = useTranslation();
 
     const [selectedDice, setSelectedDice] = useState(6);
-    const [selectedGameType, setSelectedGameType] = useState("classic");
+    const [selectedGameType, setSelectedGameType] = useState("CLASSIC");
 
     const navigate = useNavigate();
 

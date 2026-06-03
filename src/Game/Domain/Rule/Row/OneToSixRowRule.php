@@ -25,12 +25,14 @@ final readonly class OneToSixRowRule implements RowRuleInterface
     {
         $targetValue = $this->targetValue($field);
 
-        return array_sum(
+        $matches = array_values(
             array_filter(
                 $dices,
                 static fn (int $dice): bool => $dice === $targetValue
             )
         );
+
+        return array_sum(array_slice($matches, 0, 5));
     }
 
     private function targetValue(ScoreEntryFieldEnum $field): int

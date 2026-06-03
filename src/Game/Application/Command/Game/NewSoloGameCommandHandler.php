@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Game\Application\Command\Game;
 
-use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Model\Game;

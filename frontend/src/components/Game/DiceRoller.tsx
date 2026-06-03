@@ -34,16 +34,29 @@ export function DiceRoller({
         }))
     );
 
+
     const [rolling, setRolling] = useState(false);
 
     const [throwCount, setThrowCount] = useState(throwNumber);
 
-    const rollsLeft = MAX_THROWS - throwCount;
+    const rollsLeft = MAX_THROWS - throwCount
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setThrowCount(throwNumber);
     }, [throwNumber]);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setDice(
+            Array.from({ length: diceCount }, (_, i) => ({
+                value: dices[i] ?? null,
+                held: false
+            }))
+        );
+
+        setThrowCount(0);
+    }, [dices, diceCount]);
 
     const toggleHold = (index: number, value: number | null) => {
         if (rolling || !value) return;
@@ -53,6 +66,8 @@ export function DiceRoller({
                 i === index ? { ...d, held: !d.held } : d
             )
         );
+
+        setThrowCount(0);
     };
 
     const rollDice = async () => {
@@ -93,7 +108,7 @@ export function DiceRoller({
 
 
             if (typeof res['throwNumber'] === "number") {
-                setThrowCount(res.throwNumber);
+                setThrowCount(res.throwNumber ?? 0);
             }
 
             onRollComplete?.(values);
