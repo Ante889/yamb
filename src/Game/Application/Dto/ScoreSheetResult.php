@@ -15,7 +15,8 @@ final readonly class ScoreSheetResult
         public int    $diceNumber,
         public array  $dices,
         public int    $throwNumber,
-        public string $gameType
+        public string $gameType,
+        public ?string $announcement
     )
     {
     }

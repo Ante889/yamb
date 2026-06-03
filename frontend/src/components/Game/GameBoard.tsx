@@ -3,8 +3,10 @@ import ConfirmExitModal from "../Modal/ConfirmExitModal.tsx";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SoloGameService } from "../../services/game/soloGame/soloGameService.tsx";
-import { useNavigate } from "react-router-dom";
 import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryService.tsx";
+import { GameBoardService } from "../../services/game/gameBoard/gameBoardService.tsx";
+import { useNavigate } from "react-router-dom";
+import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -18,6 +20,7 @@ type GameBoardProps = {
     participantId: number;
 };
 
+
 export function GameBoard({
                               gameData,
                               columns,
@@ -25,71 +28,32 @@ export function GameBoard({
                               participantId,
                           }: GameBoardProps) {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+
     const [showExit, setShowExit] = useState(false);
     const [localGameData, setLocalGameData] = useState(gameData);
-    const navigate = useNavigate();
 
     useEffect(() => {
         setLocalGameData(gameData);
     }, [gameData]);
-
-    const upperSectionRows = [
-        "ones",
-        "twos",
-        "threes",
-        "fours",
-        "fives",
-        "sixes",
-    ];
-
-    const minMaxRows = ["max", "min"];
-
-    const lowerSectionRows = [
-        "two_pairs",
-        "tris",
-        "straight",
-        "full",
-        "poker",
-        "yamb",
-    ];
 
     const grid = localGameData?.grid ?? {};
     const upperTotals = localGameData?.upperTotals ?? {};
     const minMaxTotals = localGameData?.minMaxTotals ?? {};
     const downTotals = localGameData?.downTotals ?? {};
     const grandTotals = localGameData?.grandTotals ?? {};
-
-    const recalculateTotals = (data: any, column: string) => {
-        const upperSum = upperSectionRows.reduce(
-            (sum, row) => sum + (Number(data.grid?.[row]?.[column]) || 0),
-            0
-        );
-
-        const downSum = lowerSectionRows.reduce(
-            (sum, row) => sum + (Number(data.grid?.[row]?.[column]) || 0),
-            0
-        );
-
-        const minMaxTotal =
-            Number(data.minMaxTotals?.[column]?.min_max_total) || 0;
-
-        if (!data.upperTotals[column]) {
-            data.upperTotals[column] = {};
-        }
-
-        if (!data.downTotals[column]) {
-            data.downTotals[column] = {};
-        }
-
-        data.upperTotals[column].upper_sum = upperSum;
-        data.downTotals[column].down_sum = downSum;
-        data.grandTotals[column] = upperSum + downSum + minMaxTotal;
-    };
+    const [announcedColumn, setAnnouncedColumn] = useState(localGameData?.announcement);
 
     const handleCellClick = async (
         row: string,
         column: string
     ) => {
+
+        if (column === 'announcement' && row !== announcedColumn) {
+            await handleAnnouncementClick(row);
+            return;
+        }
+
         const response =
             await ScoreEntryService.newScoreEntryByParticipant(
                 participantId,
@@ -99,21 +63,45 @@ export function GameBoard({
 
         if (!response) return;
 
-        setLocalGameData((prev: any) => {
-            const updated = structuredClone(prev);
+        setLocalGameData((prev: any) =>
+            GameBoardService.applyScore(
+                prev,
+                row,
+                column,
+                response.point
+            )
+        );
+        setAnnouncedColumn(null)
+    };
 
-            updated.grid[row][column] = response.point;
-            updated.dices = [];
-            updated.throwNumber = 0;
+    const handleAnnouncementClick = async (
+        row: string
+    ) => {
+        const response =
+            await ScoreEntryService.setAnnouncement(
+                participantId,
+                row
+            );
 
-            recalculateTotals(updated, column);
+        if (!response) return;
 
-            return updated;
-        });
+        setAnnouncedColumn(response.row)
+    };
+
+    const exitGame = async () => {
+        const res =
+            await SoloGameService.exitSoloGame(participantId);
+
+        if (res) {
+            navigate("/");
+        }
     };
 
     const renderRow = (rowName: string) => (
-        <div className={styles.row} key={rowName}>
+        <div
+            className={styles.row}
+            key={rowName}
+        >
             <div className={`${styles.cell} ${styles.cat}`}>
                 {rowName}
             </div>
@@ -121,7 +109,14 @@ export function GameBoard({
             {columns.map((columnDefinition) => (
                 <div
                     key={columnDefinition.gridKey}
-                    className={styles.cell}
+                    className={`
+                        ${styles.cell}
+                            ${
+                                announcedColumn === rowName && columnDefinition.gridKey === 'announcement'
+                                    ? styles.announcedCell
+                                    : ""
+                            }
+                        `}
                     onClick={() =>
                         handleCellClick(
                             rowName,
@@ -129,19 +124,15 @@ export function GameBoard({
                         )
                     }
                 >
-                    {grid?.[rowName]?.[columnDefinition.gridKey] ?? "-"}
+                    {
+                        grid?.[rowName]?.[
+                            columnDefinition.gridKey
+                            ] ?? "-"
+                    }
                 </div>
             ))}
         </div>
     );
-
-    const exitGame = async () => {
-        const res = await SoloGameService.exitSoloGame(
-            participantId
-        );
-
-        if (res) navigate("/");
-    };
 
     return (
         <div className={styles.tableWrapper}>
@@ -153,22 +144,29 @@ export function GameBoard({
                 />
 
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`} />
+                    <div
+                        className={`${styles.cell} ${styles.cat}`}
+                    />
 
                     {columns.map((columnDefinition) => (
                         <div
                             key={columnDefinition.gridKey}
-                            className={`${styles.cell} ${styles.rule}`}
+                            className={`
+                                ${styles.cell}
+                                ${styles.rule}
+                            `}
                         >
                             {columnDefinition.label}
                         </div>
                     ))}
                 </div>
 
-                {upperSectionRows.map(renderRow)}
+                {UPPER_SECTION_ROWS.map(renderRow)}
 
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`}>
+                    <div
+                        className={`${styles.cell} ${styles.cat}`}
+                    >
                         Sum
                     </div>
 
@@ -177,16 +175,21 @@ export function GameBoard({
                             key={columnDefinition.gridKey}
                             className={`${styles.cell} ${styles.totalCell}`}
                         >
-                            {upperTotals?.[columnDefinition.gridKey]
-                                ?.upper_sum ?? 0}
+                            {
+                                upperTotals?.[
+                                    columnDefinition.gridKey
+                                    ]?.upper_sum ?? 0
+                            }
                         </div>
                     ))}
                 </div>
 
-                {minMaxRows.map(renderRow)}
+                {MIN_MAX_ROWS.map(renderRow)}
 
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`}>
+                    <div
+                        className={`${styles.cell} ${styles.cat}`}
+                    >
                         Sum
                     </div>
 
@@ -195,16 +198,21 @@ export function GameBoard({
                             key={columnDefinition.gridKey}
                             className={`${styles.cell} ${styles.totalCell}`}
                         >
-                            {minMaxTotals?.[columnDefinition.gridKey]
-                                ?.min_max_total ?? 0}
+                            {
+                                minMaxTotals?.[
+                                    columnDefinition.gridKey
+                                    ]?.min_max_total ?? 0
+                            }
                         </div>
                     ))}
                 </div>
 
-                {lowerSectionRows.map(renderRow)}
+                {LOWER_SECTION_ROWS.map(renderRow)}
 
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`}>
+                    <div
+                        className={`${styles.cell} ${styles.cat}`}
+                    >
                         Sum
                     </div>
 
@@ -213,14 +221,19 @@ export function GameBoard({
                             key={columnDefinition.gridKey}
                             className={`${styles.cell} ${styles.totalCell}`}
                         >
-                            {downTotals?.[columnDefinition.gridKey]
-                                ?.down_sum ?? 0}
+                            {
+                                downTotals?.[
+                                    columnDefinition.gridKey
+                                    ]?.down_sum ?? 0
+                            }
                         </div>
                     ))}
                 </div>
 
                 <div className={styles.row}>
-                    <div className={`${styles.cell} ${styles.cat}`}>
+                    <div
+                        className={`${styles.cell} ${styles.cat}`}
+                    >
                         TOTAL
                     </div>
 
@@ -229,9 +242,11 @@ export function GameBoard({
                             key={columnDefinition.gridKey}
                             className={`${styles.cell} ${styles.grandCell}`}
                         >
-                            {grandTotals?.[
-                                columnDefinition.gridKey
-                                ] ?? 0}
+                            {
+                                grandTotals?.[
+                                    columnDefinition.gridKey
+                                    ] ?? 0
+                            }
                         </div>
                     ))}
                 </div>

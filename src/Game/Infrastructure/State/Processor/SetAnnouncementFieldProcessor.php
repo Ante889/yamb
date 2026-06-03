@@ -41,7 +41,6 @@ final readonly class SetAnnouncementFieldProcessor implements ProcessorInterface
 
         return new JsonResponse(
             [
-                'column' => ScoreEntryColumnEnum::from($data->column),
                 'row' => ScoreEntryFieldEnum::from($data->row)
             ],
             201

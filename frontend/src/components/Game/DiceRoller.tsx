@@ -54,8 +54,6 @@ export function DiceRoller({
                 held: false
             }))
         );
-
-        setThrowCount(0);
     }, [dices, diceCount]);
 
     const toggleHold = (index: number, value: number | null) => {
@@ -67,7 +65,6 @@ export function DiceRoller({
             )
         );
 
-        setThrowCount(0);
     };
 
     const rollDice = async () => {
@@ -105,7 +102,6 @@ export function DiceRoller({
                     held: prev[i]?.held ?? false
                 }))
             );
-
 
             if (typeof res['throwNumber'] === "number") {
                 setThrowCount(res.throwNumber ?? 0);

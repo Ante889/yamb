@@ -6,7 +6,6 @@ namespace App\Game\Domain\Service;
 
 use App\Game\Application\Dto\ScoreSheetResult;
 use App\Game\Domain\Enum\GameTypeEnum;
-use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Model\ScoreEntry;
 
@@ -17,12 +16,14 @@ final readonly class ScoreSheetCalculator
     private const KEY_ONES = 'ones';
 
     public function calculate(
-        array $entries,
-        array $dices,
-        int $diceNumber,
-        int $throwNumber,
-        GameTypeEnum $gameType
-    ): ScoreSheetResult {
+        array        $entries,
+        array        $dices,
+        int          $diceNumber,
+        int          $throwNumber,
+        GameTypeEnum $gameType,
+        ?string       $announcement
+    ): ScoreSheetResult
+    {
 
         $grid = [];
         $indexed = [];
@@ -59,7 +60,8 @@ final readonly class ScoreSheetCalculator
             diceNumber: $diceNumber,
             dices: $dices,
             throwNumber: $throwNumber,
-            gameType: $gameType->value
+            gameType: $gameType->value,
+            announcement: $announcement
         );
     }
 
@@ -81,7 +83,7 @@ final readonly class ScoreSheetCalculator
             $upperSum = 0;
 
             foreach ($fields as $field) {
-                $upperSum += (int) ($grid[$field][$column->value] ?? 0);
+                $upperSum += (int)($grid[$field][$column->value] ?? 0);
             }
 
             $bonus = ($upperSum >= 60) ? 30 : 0;
@@ -100,9 +102,9 @@ final readonly class ScoreSheetCalculator
 
         foreach ($gameType->columns() as $column) {
 
-            $min = (int) ($grid[self::KEY_MIN][$column->value] ?? 0);
-            $max = (int) ($grid[self::KEY_MAX][$column->value] ?? 0);
-            $ones = (int) ($grid[self::KEY_ONES][$column->value] ?? 0);
+            $min = (int)($grid[self::KEY_MIN][$column->value] ?? 0);
+            $max = (int)($grid[self::KEY_MAX][$column->value] ?? 0);
+            $ones = (int)($grid[self::KEY_ONES][$column->value] ?? 0);
 
             $totals[$column->value] = [
                 'min_max_total' => ($max - $min) * $ones,
@@ -130,7 +132,7 @@ final readonly class ScoreSheetCalculator
             $sum = 0;
 
             foreach ($fields as $field) {
-                $sum += (int) ($grid[$field][$column->value] ?? 0);
+                $sum += (int)($grid[$field][$column->value] ?? 0);
             }
 
             $totals[$column->value] = [
@@ -142,11 +144,12 @@ final readonly class ScoreSheetCalculator
     }
 
     private function calculateGrandTotals(
-        array $upper,
-        array $minMax,
-        array $down,
+        array        $upper,
+        array        $minMax,
+        array        $down,
         GameTypeEnum $gameType
-    ): array {
+    ): array
+    {
 
         $totals = [];
 

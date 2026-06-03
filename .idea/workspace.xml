@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/config/GameRowsConfig.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/game/gameBoard/gameBoardService.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/scoreEntryApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/scoreEntryApi.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/createGame/CreateSoloGame.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/scoreEntry/scoreEntryService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/scoreEntry/scoreEntryService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/OneToSixRowRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/OneToSixRowRule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/SetAnnouncementFieldProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/SetAnnouncementFieldProcessor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +292,7 @@
       <workItem from="1780299771218" duration="65000" />
       <workItem from="1780391032323" duration="12050000" />
       <workItem from="1780472879200" duration="17000" />
-      <workItem from="1780489322524" duration="3522000" />
+      <workItem from="1780489322524" duration="7546000" />
     </task>
     <servers />
   </component>

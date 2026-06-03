@@ -44,7 +44,8 @@ final readonly class GetScoreEntryByGameParticipantQueryHandler
             $this->store->getDicesByParticipant($command->gameParticipantId) ?? [],
             $game->getDiceNumber(),
             $this->store->getThrowNumberByParticipant($command->gameParticipantId) ?? 0,
-            $game->getGameType()
+            $game->getGameType(),
+            $this->store->getAnnouncement($command->gameParticipantId)
         );
     }
 }

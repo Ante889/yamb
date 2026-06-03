@@ -23,6 +23,7 @@ final readonly class SetAnnouncementFieldCommandHandler
 
         $this->announcementValidator->checkThrowNumber($gameParticipantId);
         $this->announcementValidator->isAlreadySet($gameParticipantId);
+
         $this->store->setAnnouncement($gameParticipantId, $command->row->value);
     }
 }

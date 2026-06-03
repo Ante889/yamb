@@ -32,6 +32,11 @@
     cursor: pointer;
 }
 
+.announcedCell {
+    background-color: var(--color-accent-2);
+    font-weight: bold;
+}
+
 .cat {
     text-align: left;
     font-weight: 600;
