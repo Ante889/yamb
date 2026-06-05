@@ -21,8 +21,8 @@ const MAX_THROWS = 3;
 export function DiceRoller({
                                diceCount = 5,
                                dices = [],
-                               throwNumber = 0,
-                               onRollComplete
+                               throwCount,
+                               setThrowCount
                            }: Props) {
     const { t } = useTranslation();
     const { id } = useParams();
@@ -37,14 +37,7 @@ export function DiceRoller({
 
     const [rolling, setRolling] = useState(false);
 
-    const [throwCount, setThrowCount] = useState(throwNumber);
-
     const rollsLeft = MAX_THROWS - throwCount
-
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setThrowCount(throwNumber);
-    }, [throwNumber]);
 
     useEffect(() => {
         // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -106,8 +99,6 @@ export function DiceRoller({
             if (typeof res['throwNumber'] === "number") {
                 setThrowCount(res.throwNumber ?? 0);
             }
-
-            onRollComplete?.(values);
 
             setRolling(false);
         }, 900);

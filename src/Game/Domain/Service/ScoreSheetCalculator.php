@@ -102,9 +102,25 @@ final readonly class ScoreSheetCalculator
 
         foreach ($gameType->columns() as $column) {
 
-            $min = (int)($grid[self::KEY_MIN][$column->value] ?? 0);
-            $max = (int)($grid[self::KEY_MAX][$column->value] ?? 0);
-            $ones = (int)($grid[self::KEY_ONES][$column->value] ?? 0);
+            $min = $grid[self::KEY_MIN][$column->value] ?? null;
+            $max = $grid[self::KEY_MAX][$column->value] ?? null;
+            $ones = $grid[self::KEY_ONES][$column->value] ?? null;
+
+            $isValid =
+                $min !== null &&
+                $max !== null &&
+                $ones !== null;
+
+            if (!$isValid) {
+                $totals[$column->value] = [
+                    'min_max_total' => 0,
+                ];
+                continue;
+            }
+
+            $min = (int)$min;
+            $max = (int)$max;
+            $ones = (int)$ones;
 
             $totals[$column->value] = [
                 'min_max_total' => ($max - $min) * $ones,

@@ -43,6 +43,7 @@ export function GameBoard({
     const downTotals = localGameData?.downTotals ?? {};
     const grandTotals = localGameData?.grandTotals ?? {};
     const [announcedColumn, setAnnouncedColumn] = useState(localGameData?.announcement);
+    const [throwCount, setThrowCount] = useState(localGameData?.throwNumber ?? 0);
 
     const handleCellClick = async (
         row: string,
@@ -72,6 +73,7 @@ export function GameBoard({
             )
         );
         setAnnouncedColumn(null)
+        setThrowCount(0)
     };
 
     const handleAnnouncementClick = async (
@@ -140,7 +142,8 @@ export function GameBoard({
                 <DiceRoller
                     diceCount={localGameData?.diceNumber ?? 6}
                     dices={localGameData?.dices ?? []}
-                    throwNumber={localGameData?.throwNumber ?? 0}
+                    throwCount={throwCount}
+                    setThrowCount={setThrowCount}
                 />
 
                 <div className={styles.row}>
