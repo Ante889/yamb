@@ -15,7 +15,7 @@ use App\Game\Infrastructure\State\Processor\ThrowDiceProcessor;
         new Post(
             uriTemplate: '/throw-dice/{gameParticipantId}',
             description: 'throw dice',
-            security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
+            security: "is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             processor: ThrowDiceProcessor::class
         ),
     ],

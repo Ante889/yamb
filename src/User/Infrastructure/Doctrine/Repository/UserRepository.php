@@ -14,6 +14,22 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         parent::__construct($registry, User::class);
     }
 
+    public function findByGameParticipantId(int $participantId): ?User
+    {
+        static $cache = [];
+
+        if (isset($cache[$participantId])) {
+            return $cache[$participantId];
+        }
+
+        return $cache[$participantId] = $this->createQueryBuilder('u')
+            ->innerJoin('u.participants', 'p')
+            ->where('p.id = :participantId')
+            ->setParameter('participantId', $participantId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function existsByEmailOrUsername(string $email, string $username): ?User
     {
         return $this->createQueryBuilder('u')

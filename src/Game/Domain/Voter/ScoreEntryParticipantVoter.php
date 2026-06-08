@@ -3,6 +3,7 @@
 namespace App\Game\Domain\Voter;
 
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
+use App\User\Domain\Repository\UserRepositoryInterface;
 use App\User\Infrastructure\Security\AuthenticatedUserService;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
@@ -11,7 +12,7 @@ class ScoreEntryParticipantVoter extends Voter
 {
     public function __construct(
         private readonly AuthenticatedUserService           $userService,
-        private readonly GameParticipantRepositoryInterface $gameParticipantRepository
+        private readonly UserRepositoryInterface            $userRepository
     )
     {
     }
@@ -23,11 +24,11 @@ class ScoreEntryParticipantVoter extends Voter
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
-        $gameParticipant = $this->gameParticipantRepository->findById((int)$subject);
+        $user = $this->userRepository->findByGameParticipantId((int)$subject);
 
         if (
-            $gameParticipant &&
-            $this->userService->getCurrentUser() === $gameParticipant->getUser()
+            $user &&
+            $this->userService->getCurrentUser() === $user
         ) {
             return true;
         }

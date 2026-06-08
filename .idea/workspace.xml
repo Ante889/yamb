@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/gameBoard/gameBoardService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/gameBoard/gameBoardService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Voter/ScoreEntryParticipantVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Voter/ScoreEntryParticipantVoter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Domain/Repository/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Repository/UserRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
