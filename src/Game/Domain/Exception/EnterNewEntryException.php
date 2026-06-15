@@ -22,4 +22,9 @@ final class EnterNewEntryException extends DomainException
     {
         return new self('exception.not_possible_to_enter_in_this_field');
     }
+
+    public static function theGameIsFinished(): self
+    {
+        return new self('exception.the_game_is_finished');
+    }
 }

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ColumnService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/FinishSoloGameCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/FinishSoloGameCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/FinishSoloGameProcessor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/ThrowDiceCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/ThrowDiceException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ThrowDiceService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/ScoreEntryValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/ScoreEntryValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +295,7 @@
       <workItem from="1780666579193" duration="2001000" />
       <workItem from="1780993409388" duration="49000" />
       <workItem from="1781030617164" duration="2257000" />
-      <workItem from="1781525683795" duration="5152000" />
+      <workItem from="1781525683795" duration="8035000" />
     </task>
     <servers />
   </component>

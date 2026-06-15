@@ -61,11 +61,12 @@ class ScoreEntry
     private ?int $value = null;
 
     public static function create(
-        GameParticipant $gameParticipant,
-        ScoreEntryFieldEnum $field,
+        GameParticipant      $gameParticipant,
+        ScoreEntryFieldEnum  $field,
         ScoreEntryColumnEnum $column,
-        int $value
-    ): self {
+        int                  $value
+    ): self
+    {
         $scoreEntry = new self();
 
         $scoreEntry->gameParticipant = $gameParticipant;

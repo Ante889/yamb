@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Game\Domain\Service;
 
+use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Exception\EnterNewEntryException;
@@ -30,6 +31,10 @@ final readonly class CalculatePointsForEntryService
         GameParticipant      $gameParticipant
     ): int
     {
+        if($gameParticipant->getGame()->getGameStatus() !== GameStatusEnum::IN_PROGRESS->value) {
+            throw EnterNewEntryException::notPossibleToEnterInThisField();
+        }
+
         $this->validateColumn($column, $row, $gameParticipant);
 
         return $this->calculatePoints($row, $dices);

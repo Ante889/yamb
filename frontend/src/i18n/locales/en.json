@@ -19,7 +19,8 @@
         "announcement_already_set": "Announcement is already set",
         "create_announcement_or_hand": "Make an announcement or enter a hand",
         "create_announcement": "Make an announcement",
-        "create_hand": "Enter a hand"
+        "create_hand": "Enter a hand",
+        "the_game_is_finished": "The game is over."
     },
     "Loading": "Loading...",
     "dashboard": {
