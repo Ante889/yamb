@@ -16,7 +16,10 @@
         "no_dices": "Please throw dices",
         "not_possible_to_enter_in_this_field": "It is not possible to enter in this field.",
         "max_throw_number_is_reached": "You rolled the dice more than 1 time.",
-        "announcement_already_set": "Announcement is already set"
+        "announcement_already_set": "Announcement is already set",
+        "create_announcement_or_hand": "Make an announcement or enter a hand",
+        "create_announcement": "Make an announcement",
+        "create_hand": "Enter a hand"
     },
     "Loading": "Loading...",
     "dashboard": {

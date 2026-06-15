@@ -10,16 +10,6 @@ use Random\RandomException;
 final class ThrowDiceService
 {
     private const MAX_THROWS = 3;
-    private const DICE_MIN = 5;
-    private const DICE_MAX = 6;
-
-
-    public function validateDiceNumber(int $diceNumber): void
-    {
-        if ($diceNumber < self::DICE_MIN || $diceNumber > self::DICE_MAX) {
-            throw ThrowDiceException::invalidDiceNumber();
-        }
-    }
 
     public function assertCanThrow(?int $throwNumber): void
     {

@@ -4,6 +4,7 @@ namespace App\Game\Infrastructure\Doctrine\Repository;
 
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Model\ScoreEntry;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -14,6 +15,20 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ScoreEntry::class);
+    }
+
+    public function getColumnCounts(int $participantId): array
+    {
+        $result = $this->createQueryBuilder('se')
+            ->select('se.entryColumn AS entryColumn')
+            ->addSelect('COUNT(se.id) AS cnt')
+            ->where('se.gameParticipant = :participantId')
+            ->setParameter('participantId', $participantId)
+            ->groupBy('se.entryColumn')
+            ->getQuery()
+            ->getArrayResult();
+
+        return array_column($result, 'cnt', 'entryColumn');
     }
 
     public function getByGameParticipantId(int $gameParticipant): array

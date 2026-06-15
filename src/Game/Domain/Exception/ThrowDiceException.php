@@ -17,4 +17,19 @@ final class ThrowDiceException extends DomainException
     {
         return new self('exception.max_throws');
     }
+
+    public static function createAnnouncementOrHand(): self
+    {
+        return new self('exception.create_announcement_or_hand');
+    }
+
+    public static function createAnnouncement(): self
+    {
+        return new self('exception.create_announcement');
+    }
+
+    public static function createHand(): self
+    {
+        return new self('exception.create_hand');
+    }
 }

@@ -67,41 +67,39 @@ export function DiceRoller({
 
         const heldPositions = dice.map(d => d.held);
 
-        const res = await ThrowService.throwDiceGame(
+        await ThrowService.throwDiceGame(
             id,
             heldPositions
-        );
+        ).then((res) =>{
+            setTimeout(() => {
+                const rawValues = [
+                    res['dices'].first,
+                    res['dices'].second,
+                    res['dices'].third,
+                    res['dices'].fourth,
+                    res['dices'].five,
+                    res['dices'].six
+                ];
 
-        if (!res) {
+                const values = rawValues.slice(0, diceCount);
+
+                setDice(prev =>
+                    values.map((value, i) => ({
+                        value,
+                        held: prev[i]?.held ?? false
+                    }))
+                );
+
+                if (typeof res['throwNumber'] === "number") {
+                    setThrowCount(res.throwNumber ?? 0);
+                }
+
+                setRolling(false);
+            }, 900);
+        }).catch((err) => {
             setRolling(false);
             return;
-        }
-
-        setTimeout(() => {
-            const rawValues = [
-                res['dices'].first,
-                res['dices'].second,
-                res['dices'].third,
-                res['dices'].fourth,
-                res['dices'].five,
-                res['dices'].six
-            ];
-
-            const values = rawValues.slice(0, diceCount);
-
-            setDice(prev =>
-                values.map((value, i) => ({
-                    value,
-                    held: prev[i]?.held ?? false
-                }))
-            );
-
-            if (typeof res['throwNumber'] === "number") {
-                setThrowCount(res.throwNumber ?? 0);
-            }
-
-            setRolling(false);
-        }, 900);
+        });
     };
 
     return (

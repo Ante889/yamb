@@ -7,7 +7,9 @@ namespace App\Game\Application\Command\Game;
 use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Exception\GameException;
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
+use App\Game\Domain\Service\ColumnService;
 use App\Game\Domain\Service\ThrowDiceService;
+use App\Game\Domain\Validator\ScoreEntryValidator;
 use Psr\Cache\InvalidArgumentException;
 use Random\RandomException;
 
@@ -16,7 +18,9 @@ final readonly class ThrowDiceCommandHandler
     public function __construct(
         private TurnStateStoreInterface            $store,
         private ThrowDiceService                   $throwDiceService,
-        private GameParticipantRepositoryInterface $gameParticipantRepository
+        private ColumnService                      $columnService,
+        private GameParticipantRepositoryInterface $gameParticipantRepository,
+        private ScoreEntryValidator                $scoreEntryValidator
     )
     {
     }
@@ -35,6 +39,12 @@ final readonly class ThrowDiceCommandHandler
 
         if ($throwNumber) $this->throwDiceService->assertCanThrow($throwNumber);
 
+        $this->scoreEntryValidator->remainingColumns(
+            $throwNumber,
+            $this->columnService->getRemainingColumns($command->gameParticipantId),
+            $this->store->getAnnouncement($command->gameParticipantId)
+        );
+
         $dice = $this->throwDiceService->rollDice(
             $diceNumber,
             $command->savedPositions,
@@ -50,7 +60,7 @@ final readonly class ThrowDiceCommandHandler
         );
 
         return [
-            'throwNumber'=> $throwNumber + 1,
+            'throwNumber' => $throwNumber + 1,
             'dices' => $dice
         ];
     }
