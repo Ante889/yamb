@@ -5,15 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/FinishSoloGameCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/FinishSoloGameCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/FinishSoloGameProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/SoloGameFinishedModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/constants/GameStatus.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQueryHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Service/GameStatusService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/ClassicGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/ClassicGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/PlusGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/PlusGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/SingleColumnGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/SingleColumnGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal/Modal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/EnterNewEntryException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/ScoreEntry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Dto/ScoreSheetResult.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ScoreEntryRepositoryInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/ScoreSheetCalculator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ScoreEntryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewEntryProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewEntryProcessor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,29 +194,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PHPUnit./var/www/yamb/vendor/autoload.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/frontend/src/assets/dashboard&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/var/www/yamb/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PHPUnit./var/www/yamb/vendor/autoload.php.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/var/www/yamb/frontend/src/constants",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -214,11 +228,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/constants" />
+      <recent name="$PROJECT_DIR$/src/Game/Application/Query/GameStatus" />
       <recent name="$PROJECT_DIR$/frontend/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Modal" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
-      <recent name="$PROJECT_DIR$/frontend/src/assets" />
-      <recent name="$PROJECT_DIR$/frontend/src/api/user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/frontend/src/components/Game" />
@@ -296,6 +310,8 @@
       <workItem from="1780993409388" duration="49000" />
       <workItem from="1781030617164" duration="2257000" />
       <workItem from="1781525683795" duration="8035000" />
+      <workItem from="1781597938375" duration="1803000" />
+      <workItem from="1781610062420" duration="10040000" />
     </task>
     <servers />
   </component>

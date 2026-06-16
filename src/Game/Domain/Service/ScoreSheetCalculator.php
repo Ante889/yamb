@@ -21,7 +21,8 @@ final readonly class ScoreSheetCalculator
         int          $diceNumber,
         int          $throwNumber,
         GameTypeEnum $gameType,
-        ?string       $announcement
+        ?string      $announcement,
+        string       $status
     ): ScoreSheetResult
     {
 
@@ -61,7 +62,8 @@ final readonly class ScoreSheetCalculator
             dices: $dices,
             throwNumber: $throwNumber,
             gameType: $gameType->value,
-            announcement: $announcement
+            announcement: $announcement,
+            status: $status
         );
     }
 

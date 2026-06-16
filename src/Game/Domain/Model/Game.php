@@ -2,15 +2,14 @@
 
 namespace App\Game\Domain\Model;
 
-use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Event\GameCanceled;
 use App\Shared\Domain\Trait\RecordsDomainEvents;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
@@ -18,6 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Game
 {
     use RecordsDomainEvents;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -105,6 +105,9 @@ class Game
 
     private array $recordedEvents = [];
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $points = null;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -113,6 +116,29 @@ class Game
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function finish(int $points = 0): void
+    {
+        if ($this->gameStatus === GameStatusEnum::FINISHED->value) {
+            return;
+        }
+
+        $this->gameStatus = GameStatusEnum::FINISHED->value;
+        $this->finishedAt = new \DateTimeImmutable();
+        $this->points = $points;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(?int $points): self
+    {
+        $this->points = $points;
+
+        return $this;
     }
 
     public function getCreated(): ?DateTimeInterface

@@ -1,6 +1,6 @@
 import {GameBoard} from "../GameBoard";
 
-export function ClassicGame({gameData, styles, participantId}: any) {
+export function ClassicGame({gameData, styles, participantId, finishedModal, setFinishedModal}: any) {
     return (
         <GameBoard
             gameData={gameData}
@@ -12,6 +12,8 @@ export function ClassicGame({gameData, styles, participantId}: any) {
                 {label: "N", gridKey: "announcement"},
             ]}
             participantId={participantId}
+            finishedModal={finishedModal}
+            setFinishedModal={setFinishedModal}
         />
     );
 }

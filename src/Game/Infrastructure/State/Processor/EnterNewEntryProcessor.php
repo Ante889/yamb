@@ -8,6 +8,8 @@ use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
 use App\Game\Application\Command\Game\EnterNewEntryCommand;
 use App\Game\Application\Command\Game\EnterNewEntryCommandHandler;
+use App\Game\Application\Query\GameStatus\CurrentGameStatusQuery;
+use App\Game\Application\Query\GameStatus\CurrentGameStatusQueryHandler;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Infrastructure\Resource\ScoreEntry\ScoreEntryResource;
@@ -16,7 +18,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 final readonly class EnterNewEntryProcessor implements ProcessorInterface
 {
     public function __construct(
-        private EnterNewEntryCommandHandler $enterNewEntryCommandHandler
+        private EnterNewEntryCommandHandler   $enterNewEntryCommandHandler,
+        private CurrentGameStatusQueryHandler $currentGameStatusQueryHandler
     )
     {
     }
@@ -38,11 +41,16 @@ final readonly class EnterNewEntryProcessor implements ProcessorInterface
             row: ScoreEntryFieldEnum::from($data->row)
         );
 
+        $commandStatus = new CurrentGameStatusQuery(
+            gameParticipantId: (int)$uriVariables['gameParticipantId']
+        );
+
         return new JsonResponse(
             [
                 'column' => ScoreEntryColumnEnum::from($data->column),
                 'row' => ScoreEntryFieldEnum::from($data->row),
-                'point' => $this->enterNewEntryCommandHandler->handle($command)
+                'point' => $this->enterNewEntryCommandHandler->handle($command),
+                'gameStatus' => $this->currentGameStatusQueryHandler->query($commandStatus)
             ],
             201
         );

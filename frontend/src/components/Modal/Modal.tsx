@@ -1,6 +1,6 @@
 import styles from "./Modal.module.css";
 
-function Modal({ isOpen, onClose, title, children }) {
+function Modal({ isOpen, onClose, title, children, withExit = true}) {
     if (!isOpen) return null;
 
     return (
@@ -12,12 +12,14 @@ function Modal({ isOpen, onClose, title, children }) {
                 <div className={styles.header}>
                     <h2>{title}</h2>
 
-                    <button
-                        className={styles.closeButton}
-                        onClick={onClose}
-                    >
-                        ✕
-                    </button>
+                    {withExit && (
+                        <button
+                            className={styles.closeButton}
+                            onClick={onClose}
+                        >
+                            ✕
+                        </button>
+                    )}
                 </div>
 
                 <div className={styles.content}>

@@ -60,6 +60,8 @@
         "choiceGameType": "Game type",
         "throwDice": "Throw dices",
         "exit": "Exit the game",
-        "confirmExit": "Are you sure you want to exit?"
+        "confirmExit": "Are you sure you want to exit?",
+        "gameIsFinished": "Game is finished",
+        "pointsNumber": "Ukupan broj bodova"
     }
 }

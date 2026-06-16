@@ -1,6 +1,6 @@
 import { GameBoard } from "../GameBoard";
 
-export function SingleColumnGame({ gameData, styles, participantId }: any) {
+export function SingleColumnGame({ gameData, styles, participantId, finishedModal, setFinishedModal}: any) {
     return (
         <GameBoard
             gameData={gameData}
@@ -9,6 +9,8 @@ export function SingleColumnGame({ gameData, styles, participantId }: any) {
                 {label: "↕", gridKey: "free"},
             ]}
             participantId={participantId}
+            finishedModal={finishedModal}
+            setFinishedModal={setFinishedModal}
         />
     );
 }

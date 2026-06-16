@@ -10,6 +10,7 @@ use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Domain\Exception\EnterNewEntryException;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
+use App\Game\Domain\Model\ScoreEntry;
 use App\Game\Domain\Rule\Column\ColumnRuleInterface;
 
 final readonly class CalculatePointsForEntryService
@@ -38,6 +39,21 @@ final readonly class CalculatePointsForEntryService
         $this->validateColumn($column, $row, $gameParticipant);
 
         return $this->calculatePoints($row, $dices);
+    }
+
+    /**
+     * @param array<int, ScoreEntry> $scoreEntryArray
+     * @return void
+     */
+    public function getTotal(array $scoreEntries): int
+    {
+        //OVO MORAM DOVRŠITI -> Kad računa total onda treba biti max - min * 1
+        return array_reduce(
+            $scoreEntries,
+            fn (int $total, $entry) =>
+                $total + $entry->getField()->calculate($entry),
+            0
+        );
     }
 
     private function validateColumn(ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row, GameParticipant $gameParticipant): void

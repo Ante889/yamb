@@ -7,6 +7,8 @@ import { ScoreEntryService } from "../../services/game/scoreEntry/scoreEntryServ
 import { GameBoardService } from "../../services/game/gameBoard/gameBoardService.tsx";
 import { useNavigate } from "react-router-dom";
 import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
+import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
+import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -26,6 +28,8 @@ export function GameBoard({
                               columns,
                               styles,
                               participantId,
+                              finishedModal,
+                              setFinishedModal
                           }: GameBoardProps) {
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -44,6 +48,11 @@ export function GameBoard({
     const grandTotals = localGameData?.grandTotals ?? {};
     const [announcedColumn, setAnnouncedColumn] = useState(localGameData?.announcement);
     const [throwCount, setThrowCount] = useState(localGameData?.throwNumber ?? 0);
+
+    const totalPoints = Object.values(grandTotals ?? {}).reduce(
+        (sum: number, value: any) => sum + (value ?? 0),
+        0
+    );
 
     const handleCellClick = async (
         row: string,
@@ -74,6 +83,10 @@ export function GameBoard({
         );
         setAnnouncedColumn(null)
         setThrowCount(0)
+
+        if(response.gameStatus === FINISHED_GAME_STATUS) {
+            setFinishedModal(true);
+        }
     };
 
     const handleAnnouncementClick = async (
@@ -240,18 +253,12 @@ export function GameBoard({
                         TOTAL
                     </div>
 
-                    {columns.map((columnDefinition) => (
                         <div
-                            key={columnDefinition.gridKey}
+                            key={'total'}
                             className={`${styles.cell} ${styles.grandCell}`}
                         >
-                            {
-                                grandTotals?.[
-                                    columnDefinition.gridKey
-                                    ] ?? 0
-                            }
+                            {totalPoints}
                         </div>
-                    ))}
                 </div>
 
                 <button
@@ -269,6 +276,12 @@ export function GameBoard({
                     setShowExit(false);
                     exitGame();
                 }}
+            />
+
+            <SoloGameFinishedModal
+                isModalOpen={finishedModal}
+                setIsModalOpen={() => setFinishedModal(false)}
+                points={totalPoints}
             />
         </div>
     );

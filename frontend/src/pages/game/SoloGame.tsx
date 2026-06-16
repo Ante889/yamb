@@ -6,11 +6,13 @@ import { SingleColumnGame } from "../../components/Game/typesOfGame/SingleColumn
 import { ClassicGame } from "../../components/Game/typesOfGame/ClassicGame";
 import { PlusGame } from "../../components/Game/typesOfGame/PlusGame";
 import styles  from "./SoloGame.module.css";
+import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 
 export default function SoloGame() {
     const { id } = useParams();
     const [gameData, setGameData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [finishedModal, setFinishedModal] = useState(false);
 
     useEffect(() => {
         const loadGameData = async () => {
@@ -23,6 +25,9 @@ export default function SoloGame() {
                     await ScoreEntryService.getScoreEntryByParticipant(Number(id));
 
                 setGameData(response);
+                if (response['status'] === FINISHED_GAME_STATUS) {
+                    setFinishedModal(false);
+                }
             } finally {
                 setIsLoading(false);
             }
@@ -41,13 +46,19 @@ export default function SoloGame() {
 
     switch (gameData.gameType) {
         case "SINGLE_COLUMN":
-            return <SingleColumnGame gameData={gameData} styles={styles} participantId={id} />;
+            return <SingleColumnGame
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+            />;
 
         case "CLASSIC":
-            return <ClassicGame gameData={gameData} styles={styles} participantId={id} />;
+            return <ClassicGame
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+            />;
 
         case "YAMB_PLUS":
-            return <PlusGame gameData={gameData} styles={styles} participantId={id} />;
+            return <PlusGame
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+            />;
 
         default:
             return null;

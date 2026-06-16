@@ -71,4 +71,9 @@ enum ScoreEntryFieldEnum: string
 
         return null;
     }
+
+    public function isMinMax(): bool
+    {
+        return in_array($this, [self::MIN, self::MAX], true);
+    }
 }
