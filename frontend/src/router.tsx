@@ -8,6 +8,7 @@ import Login from "./pages/auth/Login";
 import PublicOnlyRoute from "./features/auth/PublicOnlyRoute.tsx";
 import Dashboard from "./pages/dashboard/Dashboard.tsx";
 import SoloGame from "./pages/game/SoloGame.tsx";
+import Leaderboard from "./pages/leaderboard/Leaderboard.tsx";
 
 const routes: RouteObject[] = [
     {
@@ -47,6 +48,10 @@ const routes: RouteObject[] = [
                     {
                         path: "/solo-game/:id",
                         element: <SoloGame />,
+                    },
+                    {
+                        path: "/leaderboard",
+                        element: <Leaderboard />,
                     },
                 ],
             },

@@ -4,7 +4,6 @@ import {useNavigate} from "react-router-dom";
 
 function SoloGameFinishedModal({
                                    isModalOpen,
-                                   setIsModalOpen,
                                    points
                                }) {
     const { t } = useTranslation();
@@ -13,7 +12,6 @@ function SoloGameFinishedModal({
     return (
         <Modal
             isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
             title={t("game.gameIsFinished")}
             withExit={false}
         >

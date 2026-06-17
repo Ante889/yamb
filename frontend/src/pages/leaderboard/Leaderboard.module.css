@@ -1,0 +1,102 @@
+.leaderboardPage {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 80vh;
+}
+
+.leaderboardTabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.leaderboardTab {
+    flex: 1;
+
+    padding: 12px;
+    border-radius: 10px;
+
+    border: 1px solid var(--border-default);
+    background: transparent;
+
+    color: var(--color-text-secondary);
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.leaderboardTab:hover {
+    border-color: var(--border-accent);
+    color: var(--color-text-primary);
+}
+
+.leaderboardTab.active {
+    background: var(--gradient-primary);
+    color: var(--color-bg-main);
+    border-color: transparent;
+
+    box-shadow:
+        0 0 12px var(--glow-accent-strong),
+        0 0 24px var(--glow-warm);
+}
+
+.leaderboardList {
+    padding: 8px;
+}
+
+.leaderboardRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 16px;
+    border-radius: 10px;
+
+    transition: all 0.2s ease;
+}
+
+.leaderboardRow:not(:last-child) {
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.leaderboardRow:hover {
+    background: var(--border-default);
+}
+
+.leaderboardLeft {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.leaderboardRank {
+    min-width: 40px;
+
+    color: var(--color-accent-2);
+    font-weight: 700;
+}
+
+.leaderboardName {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.leaderboardScore {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.topPlayer {
+    background: linear-gradient(
+        90deg,
+        var(--bg-accent-purple),
+        var(--bg-accent-orange)
+    );
+}
+
+.topPlayer .leaderboardRank {
+    font-size: 1.1rem;
+}

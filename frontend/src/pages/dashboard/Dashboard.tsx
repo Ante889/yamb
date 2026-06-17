@@ -6,10 +6,12 @@ import yambText from "../../assets/dashboard/Yamb.png";
 import { useTranslation } from "react-i18next";
 import {useState} from "react";
 import CreateSoloGame from "./createGame/CreateSoloGame.tsx";
+import {useNavigate} from "react-router-dom";
 
 function Dashboard() {
     const { t } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     return (
         <div className={styles.dashboard}>
@@ -39,7 +41,7 @@ function Dashboard() {
                 </div>
 
                 <div className={styles.leaderboardCard}>
-                    <img src={leaderboardImage} alt="leaderboard" />
+                    <img src={leaderboardImage} alt="leaderboard" onClick={() => navigate('/leaderboard')}/>
                     <div className={styles.overlay}>
                         <h3>{t("dashboard.leaderboard")}</h3>
                         <p>{t("dashboard.topPlayersThisWeek")}</p>

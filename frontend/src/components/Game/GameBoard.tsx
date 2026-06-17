@@ -183,7 +183,7 @@ export function GameBoard({
                     <div
                         className={`${styles.cell} ${styles.cat}`}
                     >
-                        Sum
+                        {t('game.sum')}
                     </div>
 
                     {columns.map((columnDefinition) => (
@@ -206,7 +206,7 @@ export function GameBoard({
                     <div
                         className={`${styles.cell} ${styles.cat}`}
                     >
-                        Sum
+                        {t('game.sum')}
                     </div>
 
                     {columns.map((columnDefinition) => (
@@ -229,7 +229,7 @@ export function GameBoard({
                     <div
                         className={`${styles.cell} ${styles.cat}`}
                     >
-                        Sum
+                        {t('game.sum')}
                     </div>
 
                     {columns.map((columnDefinition) => (
@@ -250,7 +250,7 @@ export function GameBoard({
                     <div
                         className={`${styles.cell} ${styles.cat}`}
                     >
-                        TOTAL
+                        {t('game.total')}
                     </div>
 
                         <div
@@ -280,7 +280,6 @@ export function GameBoard({
 
             <SoloGameFinishedModal
                 isModalOpen={finishedModal}
-                setIsModalOpen={() => setFinishedModal(false)}
                 points={totalPoints}
             />
         </div>
