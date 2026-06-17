@@ -26,6 +26,26 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
             ->execute();
     }
 
+    public function getFirstFiftyByType(string $type): array
+    {
+        return $this->createQueryBuilder('g')
+                ->select('
+                u.id as id,
+                u.username as username,
+                MAX(p.points) as points
+            ')
+            ->innerJoin('g.participants', 'p')
+            ->innerJoin('p.user', 'u')
+            ->where('g.gameType = :type')
+            ->andWhere('p.points IS NOT NULL')
+            ->setParameter('type', $type)
+            ->setMaxResults(50)
+            ->groupBy('u.id')
+            ->orderBy('p.points', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function gameByGameParticipant(int $gameParticipantId): ?Game
     {
         return  $this->createQueryBuilder('g')

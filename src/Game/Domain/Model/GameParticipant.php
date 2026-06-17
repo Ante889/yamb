@@ -80,6 +80,9 @@ class GameParticipant
     )]
     private Collection $scoreEntry;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $points = null;
+
     public function __construct(
         User $user,
         Game $game,
@@ -110,6 +113,18 @@ class GameParticipant
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(?int $points): self
+    {
+        $this->points = $points;
+
+        return $this;
     }
 
     public function getCreated(): ?DateTimeInterface

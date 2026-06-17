@@ -2,6 +2,7 @@
 
 namespace App\Game\Domain\Model;
 
+use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Event\GameCanceled;
@@ -105,9 +106,6 @@ class Game
 
     private array $recordedEvents = [];
 
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $points = null;
-
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -118,7 +116,7 @@ class Game
         return $this->id;
     }
 
-    public function finish(int $points = 0): void
+    public function finish(?GameParticipant $gameParticipant, int $points = 0): void
     {
         if ($this->gameStatus === GameStatusEnum::FINISHED->value) {
             return;
@@ -126,19 +124,9 @@ class Game
 
         $this->gameStatus = GameStatusEnum::FINISHED->value;
         $this->finishedAt = new \DateTimeImmutable();
-        $this->points = $points;
-    }
 
-    public function getPoints(): ?int
-    {
-        return $this->points;
-    }
-
-    public function setPoints(?int $points): self
-    {
-        $this->points = $points;
-
-        return $this;
+        $gameParticipant?->setPoints($points);
+        $gameParticipant?->setStatus(GameParticipantStatusEnum::FINISH);
     }
 
     public function getCreated(): ?DateTimeInterface

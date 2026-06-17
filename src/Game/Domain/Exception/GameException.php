@@ -12,4 +12,9 @@ final class GameException extends DomainException
     {
         return new self('exception.game_not_found');
     }
+
+    public static function gameIsFinished(): self
+    {
+        return new self('exception.game_is_finished');
+    }
 }

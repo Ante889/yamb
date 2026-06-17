@@ -9,6 +9,12 @@ use App\Game\Domain\Model\Game;
 interface GameRepositoryInterface
 {
     public function deleteById(int $gameId): int;
+
+    /**
+     * @param string $type
+     * @return array<int, Game>
+     */
+    public function getFirstFiftyByType(string $type): array;
     public function gameByGameParticipant(int $gameParticipantId): ?Game;
     public function existsByJoinCode(string $joinCode): bool;
     public function add(Game $game): self;

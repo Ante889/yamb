@@ -42,18 +42,41 @@ final readonly class CalculatePointsForEntryService
     }
 
     /**
-     * @param array<int, ScoreEntry> $scoreEntryArray
-     * @return void
+     * @param array<int, ScoreEntry> $scoreEntries
+     * @return int
      */
-    public function getTotal(array $scoreEntries): int
+    public function calculateTotalScore(array $scoreEntries): int
     {
-        //OVO MORAM DOVRŠITI -> Kad računa total onda treba biti max - min * 1
-        return array_reduce(
-            $scoreEntries,
-            fn (int $total, $entry) =>
-                $total + $entry->getField()->calculate($entry),
-            0
-        );
+        $columns = [];
+
+        foreach ($scoreEntries as $entry) {
+            $column = $entry->getEntryColumn()->value;
+            $field = $entry->getField()->value;
+
+            $columns[$column][$field] = $entry->getValue();
+        }
+
+        $total = 0;
+        $ignoredFields = ['min', 'max'];
+
+        foreach ($columns as $entries) {
+            $upper = array_sum(array_intersect_key($entries, array_flip(ScoreEntryFieldEnum::upper())));
+
+            $columnTotal = array_sum(array_diff_key($entries, array_flip($ignoredFields)));
+
+            if ($upper > 60) {
+                $columnTotal += 30;
+            }
+
+            $columnTotal += (
+                    ($entries[ScoreEntryFieldEnum::MAX->value] ?? 0)
+                    - ($entries[ScoreEntryFieldEnum::MIN->value] ?? 0)
+                ) * ($entries[ScoreEntryFieldEnum::ONES->value] ?? 0);
+
+            $total += $columnTotal;
+        }
+
+        return $total;
     }
 
     private function validateColumn(ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row, GameParticipant $gameParticipant): void

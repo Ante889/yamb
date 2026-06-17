@@ -10,4 +10,5 @@ enum GameParticipantStatusEnum: string
     case ACTIVE_TURN = 'ACTIVE_TURN';
     case DISCONNECTED = 'DISCONNECTED';
     case ELIMINATED = 'ELIMINATED';
+    case FINISH = 'FINISH';
 }

@@ -24,8 +24,8 @@ final class StraightRowRule implements RowRuleInterface
         $sorted = $this->getUniqueSorted($dices);
 
         return match (true) {
-            $sorted === self::SMALL_STRAIGHT => self::SMALL_SCORE,
-            $sorted === self::LARGE_STRAIGHT => self::LARGE_SCORE,
+            count(array_diff(self::LARGE_STRAIGHT, $sorted)) === 0 => self::LARGE_SCORE,
+            count(array_diff(self::SMALL_STRAIGHT, $sorted)) === 0 => self::SMALL_SCORE,
             default => 0,
         };
     }

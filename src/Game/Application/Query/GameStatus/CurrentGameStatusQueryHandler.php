@@ -6,6 +6,7 @@ namespace App\Game\Application\Query\GameStatus;
 
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Exception\GameParticipantException;
+use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Repository\GameRepositoryInterface;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use App\Game\Domain\Service\CalculatePointsForEntryService;
@@ -14,10 +15,11 @@ use App\Game\Domain\Service\GameStatusService;
 final readonly class CurrentGameStatusQueryHandler
 {
     public function __construct(
-        private ScoreEntryRepositoryInterface  $scoreEntryRepository,
-        private GameStatusService              $gameStatusService,
-        private GameRepositoryInterface        $gameRepository,
-        private CalculatePointsForEntryService $calculatePointsForEntryService,
+        private ScoreEntryRepositoryInterface      $scoreEntryRepository,
+        private GameStatusService                  $gameStatusService,
+        private GameRepositoryInterface            $gameRepository,
+        private GameParticipantRepositoryInterface $gameParticipantRepository,
+        private CalculatePointsForEntryService     $calculatePointsForEntryService,
     )
     {
     }
@@ -34,14 +36,14 @@ final readonly class CurrentGameStatusQueryHandler
 
         $game = $this->gameRepository->gameByGameParticipant($command->gameParticipantId);
         $scoreEntries = $this->scoreEntryRepository->getByGameParticipantId($command->gameParticipantId);
-
         $isGameFinished = $this->gameStatusService->isGameFinished(
             $game,
             count($scoreEntries)
         );
 
         if ($isGameFinished) {
-            $game->finish($this->calculatePointsForEntryService->getTotal(
+            $gameParticipant = $this->gameParticipantRepository->findById($command->gameParticipantId);
+            $game->finish($gameParticipant, $this->calculatePointsForEntryService->calculateTotalScore(
                 $scoreEntries
             ));
 

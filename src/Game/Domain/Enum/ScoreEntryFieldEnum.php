@@ -46,6 +46,18 @@ enum ScoreEntryFieldEnum: string
         ];
     }
 
+    public static function upper(): array
+    {
+        return [
+            self::ONES->value,
+            self::TWOS->value,
+            self::THREES->value,
+            self::FOURS->value,
+            self::FIVES->value,
+            self::SIXES->value
+        ];
+    }
+
     public static function previous(self $current): ?self
     {
         $ordered = self::ordered();
@@ -70,10 +82,5 @@ enum ScoreEntryFieldEnum: string
         }
 
         return null;
-    }
-
-    public function isMinMax(): bool
-    {
-        return in_array($this, [self::MIN, self::MAX], true);
     }
 }
