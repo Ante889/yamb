@@ -26,7 +26,7 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
             ->execute();
     }
 
-    public function getFirstFiftyByType(string $type): array
+    public function getFirstFiftyByType(string $type, int $dice): array
     {
         return $this->createQueryBuilder('g')
                 ->select('
@@ -38,7 +38,9 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
             ->innerJoin('p.user', 'u')
             ->where('g.gameType = :type')
             ->andWhere('p.points IS NOT NULL')
+            ->andWhere('g.diceNumber = :dice')
             ->setParameter('type', $type)
+            ->setParameter('dice', $dice)
             ->setMaxResults(50)
             ->groupBy('u.id')
             ->orderBy('p.points', 'DESC')

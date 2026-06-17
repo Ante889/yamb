@@ -7,7 +7,8 @@ namespace App\Game\Application\Query\Leaderboard;
 final readonly class LeaderboardSoloQuery
 {
     public function __construct(
-        public ?string $type
+        public ?string $type,
+        public ?int    $dice
     )
     {
     }

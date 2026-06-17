@@ -12,9 +12,10 @@ interface GameRepositoryInterface
 
     /**
      * @param string $type
+     * @param int $dice
      * @return array<int, Game>
      */
-    public function getFirstFiftyByType(string $type): array;
+    public function getFirstFiftyByType(string $type, int $dice): array;
     public function gameByGameParticipant(int $gameParticipantId): ?Game;
     public function existsByJoinCode(string $joinCode): bool;
     public function add(Game $game): self;

@@ -100,3 +100,41 @@
 .topPlayer .leaderboardRank {
     font-size: 1.1rem;
 }
+
+.noData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.noDataIcon {
+    font-size: 42px;
+    margin-bottom: 10px;
+
+    opacity: 0.8;
+
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.noDataText {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* mali “game feel” float */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

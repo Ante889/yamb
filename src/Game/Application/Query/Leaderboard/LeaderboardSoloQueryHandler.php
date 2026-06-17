@@ -23,7 +23,7 @@ final readonly class LeaderboardSoloQueryHandler
     public function query(LeaderboardSoloQuery $command): array
     {
         return LeaderboardSoloResult::fromArray(
-            $this->gameRepository->getFirstFiftyByType($command->type)
+            $this->gameRepository->getFirstFiftyByType($command->type, $command->dice)
         );
     }
 }

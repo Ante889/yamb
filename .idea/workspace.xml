@@ -5,23 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/api/leaderboard/leaderboardApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/LeaderboardLoading.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/LeaderboardLoading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/leaderboard/leaderboardSevice.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/CancelSoloGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/CancelSoloGameCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Modal/SoloGameFinishedModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Modal/SoloGameFinishedModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Application/Dto/LeaderboardSoloResult.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Dto/LeaderboardSoloResult.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQueryHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/Leaderboard/LeaderboardSoloQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/Leaderboard/LeaderboardSoloQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/Leaderboard/LeaderboardSoloQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/Leaderboard/LeaderboardSoloQueryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Enum/GameParticipantStatusEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/GameParticipantStatusEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Enum/ScoreEntryFieldEnum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/StraightRowRule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Rule/Row/StraightRowRule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/CalculatePointsForEntryService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/EndGameResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Leaderboard/LeaderboardResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Leaderboard/LeaderboardResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/LeaderboardSoloProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/LeaderboardSoloProvider.php" afterDir="false" />
     </list>
@@ -308,7 +306,7 @@
       <workItem from="1781525683795" duration="8035000" />
       <workItem from="1781597938375" duration="1803000" />
       <workItem from="1781610062420" duration="10119000" />
-      <workItem from="1781683431504" duration="11148000" />
+      <workItem from="1781683431504" duration="15128000" />
     </task>
     <servers />
   </component>

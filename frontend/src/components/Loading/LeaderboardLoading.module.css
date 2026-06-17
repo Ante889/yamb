@@ -1,0 +1,68 @@
+.leaderboardList {
+    max-width: 900px;
+    min-height: 60vh;
+}
+
+.skeletonRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 16px;
+    border-radius: 10px;
+}
+
+.leaderboardLeft {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.skeletonRank,
+.skeletonName,
+.skeletonScore {
+    position: relative;
+    overflow: hidden;
+
+    border-radius: 8px;
+    background: var(--border-subtle);
+}
+
+.skeletonRank {
+    width: 40px;
+    height: 18px;
+}
+
+.skeletonName {
+    width: 160px;
+    height: 18px;
+}
+
+.skeletonScore {
+    width: 70px;
+    height: 18px;
+}
+
+.skeletonRank::after,
+.skeletonName::after,
+.skeletonScore::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 184, 77, 0.25),
+        transparent
+    );
+
+    animation: shimmer 1.3s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}

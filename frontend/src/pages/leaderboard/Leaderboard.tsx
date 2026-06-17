@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { JambLoading } from "../../components/Loading/JambLoading";
 import styles from "./Leaderboard.module.css";
 import {
     CLASSIC_GAME_TYPE,
@@ -7,6 +6,8 @@ import {
     YAMB_PLUS_GAME_TYPE,
 } from "../../constants/GameType.tsx";
 import { useTranslation } from "react-i18next";
+import {LeaderboardService} from "../../services/leaderboard/leaderboardSevice.tsx";
+import {LeaderboardSkeleton} from "../../components/Loading/LeaderboardLoading.tsx";
 
 const GAME_MODES = [
     { id: SINGLE_COLUMN_GAME_TYPE },
@@ -14,10 +15,16 @@ const GAME_MODES = [
     { id: YAMB_PLUS_GAME_TYPE },
 ];
 
+const DICE_NUMBER = [
+    { id: 5 },
+    { id: 6 }
+];
+
 export default function Leaderboard() {
     const [isLoading, setIsLoading] = useState(true);
     const [activeTab, setActiveTab] = useState(SINGLE_COLUMN_GAME_TYPE);
     const [leaderboard, setLeaderboard] = useState([]);
+    const [dice, setDice] = useState(5);
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -25,29 +32,38 @@ export default function Leaderboard() {
             setIsLoading(true);
 
             try {
-                setLeaderboard([
-                    { id: 1, username: "Ante", score: 1245 },
-                    { id: 2, username: "Marko", score: 1190 },
-                    { id: 3, username: "Ivan", score: 1155 },
-                    { id: 4, username: "Nikola", score: 1088 },
-                    { id: 5, username: "Luka", score: 1051 },
-                    { id: 6, username: "Petar", score: 1002 },
-                ]);
+                const response =
+                    await LeaderboardService.leaderboardSolo(
+                        activeTab, dice
+                    );
+
+                if (!response) return;
+
+                setLeaderboard(response);
             } finally {
                 setIsLoading(false);
             }
         };
 
         loadGameData();
-    }, [activeTab]);
-
-    if (isLoading) {
-        return <JambLoading />;
-    }
+    }, [activeTab, dice]);
 
     return (
         <div className={styles.leaderboardPage}>
             <br/>
+            <div className={styles.leaderboardTabs}>
+                {DICE_NUMBER.map((d) => (
+                    <button
+                        key={d.id}
+                        className={`${styles.leaderboardTab} ${
+                            dice === d.id ? styles.active : ""
+                        }`}
+                        onClick={() => setDice(d.id)}
+                    >
+                        {t(`leaderboard.dice_${d.id}`)}
+                    </button>
+                ))}
+            </div>
             <div className={styles.leaderboardTabs}>
                 {GAME_MODES.map((tab) => (
                     <button
@@ -61,30 +77,45 @@ export default function Leaderboard() {
                     </button>
                 ))}
             </div>
+
             <br/>
+
             <div className={`${styles.leaderboardList} card`}>
-                {leaderboard.map((player, index) => (
-                    <div
-                        key={player.id}
-                        className={`${styles.leaderboardRow} ${
-                            index < 3 ? styles.topPlayer : ""
-                        }`}
-                    >
-                        <div className={styles.leaderboardLeft}>
-                            <span className={styles.leaderboardRank}>
-                                #{index + 1}
-                            </span>
+                {isLoading ? (
+                    <LeaderboardSkeleton/>
+                ) : (
+                    leaderboard.length > 0? (
+                        leaderboard.map((player, index) => (
+                            <div
+                                key={player.id}
+                                className={`${styles.leaderboardRow} ${
+                                    index < 3 ? styles.topPlayer : ""
+                                }`}
+                            >
+                                <div className={styles.leaderboardLeft}>
+                                <span className={styles.leaderboardRank}>
+                                    #{index + 1}
+                                </span>
 
-                            <span className={styles.leaderboardName}>
-                                {player.username}
+                                    <span className={styles.leaderboardName}>
+                                    {player.username}
+                                </span>
+                                </div>
+
+                                <span className={styles.leaderboardScore}>
+                                {player.points}
                             </span>
+                            </div>
+                        ))
+                    ) : (
+                        <div className={styles.noData}>
+                            <div className={styles.noDataIcon}>🎲</div>
+                            <div className={styles.noDataText}>
+                                {t("leaderboard.no_data")}
+                            </div>
                         </div>
-
-                        <span className={styles.leaderboardScore}>
-                            {player.score}
-                        </span>
-                    </div>
-                ))}
+                    )
+                )}
             </div>
         </div>
     );

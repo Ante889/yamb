@@ -34,7 +34,7 @@ function SoloGameFinishedModal({
 
             <button
                 className="btn fullSize"
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/leaderboard')}
             >
                 {t('dashboard.leaderboard')}
             </button>

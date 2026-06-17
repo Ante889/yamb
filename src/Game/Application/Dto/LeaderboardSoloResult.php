@@ -7,6 +7,7 @@ namespace App\Game\Application\Dto;
 final readonly class LeaderboardSoloResult
 {
     public function __construct(
+        public int $id,
         public string $username,
         public int $points
     ) {}
@@ -15,6 +16,7 @@ final readonly class LeaderboardSoloResult
     {
         return array_map(
             fn(array $item) => new self(
+                id: $item['id'],
                 username: $item['username'] ?? '',
                 points: isset($item['points']) ? (int) $item['points'] : 0,
             ),
