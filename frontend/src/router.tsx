@@ -9,6 +9,9 @@ import PublicOnlyRoute from "./features/auth/PublicOnlyRoute.tsx";
 import Dashboard from "./pages/dashboard/Dashboard.tsx";
 import SoloGame from "./pages/game/SoloGame.tsx";
 import Leaderboard from "./pages/leaderboard/Leaderboard.tsx";
+import RoomList from "./pages/duel/RoomList.tsx";
+import NotFound from "./pages/NotFound.tsx";
+import PublicRooms from "./pages/duel/publicRooms/PublicRooms.tsx";
 
 const routes: RouteObject[] = [
     {
@@ -53,6 +56,18 @@ const routes: RouteObject[] = [
                         path: "/leaderboard",
                         element: <Leaderboard />,
                     },
+                    {
+                        path: "/room-list",
+                        element: <RoomList />,
+                    },
+                    {
+                        path: "/public-rooms",
+                        element: <PublicRooms />,
+                    },
+                    {
+                        path: "*",
+                        element: <NotFound />
+                    }
                 ],
             },
         ],

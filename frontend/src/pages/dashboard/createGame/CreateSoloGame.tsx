@@ -64,7 +64,7 @@ function CreateSoloGame({ isModalOpen, setIsModalOpen }) {
                         {[5, 6].map((dice) => (
                             <button
                                 key={dice}
-                                className={`${styles.card} ${
+                                className={`card ${
                                     selectedDice === dice
                                         ? styles.active
                                         : ""

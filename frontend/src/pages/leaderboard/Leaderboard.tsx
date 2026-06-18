@@ -8,6 +8,7 @@ import {
 import { useTranslation } from "react-i18next";
 import {LeaderboardService} from "../../services/leaderboard/leaderboardSevice.tsx";
 import {LeaderboardSkeleton} from "../../components/Loading/LeaderboardLoading.tsx";
+import {useNavigate} from "react-router-dom";
 
 const GAME_MODES = [
     { id: SINGLE_COLUMN_GAME_TYPE },
@@ -25,6 +26,7 @@ export default function Leaderboard() {
     const [activeTab, setActiveTab] = useState(SINGLE_COLUMN_GAME_TYPE);
     const [leaderboard, setLeaderboard] = useState([]);
     const [dice, setDice] = useState(5);
+    const navigate = useNavigate();
     const { t } = useTranslation();
 
     useEffect(() => {
@@ -50,6 +52,17 @@ export default function Leaderboard() {
 
     return (
         <div className={styles.leaderboardPage}>
+            <div className={styles.header}>
+                <button
+                    className={'backButton'}
+                    onClick={() => navigate(-1)}
+                >
+                    ← {t("dashboard.back")}
+                </button>
+                <h1>
+                    {t("roomList.title")}
+                </h1>
+            </div>
             <br/>
             <div className={styles.leaderboardTabs}>
                 {DICE_NUMBER.map((d) => (
@@ -84,7 +97,7 @@ export default function Leaderboard() {
                 {isLoading ? (
                     <LeaderboardSkeleton/>
                 ) : (
-                    leaderboard.length > 0? (
+                    leaderboard.length > 0 ? (
                         leaderboard.map((player, index) => (
                             <div
                                 key={player.id}

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Game\Infrastructure\State\Provider;
 
-use _PHPStan_77a324412\Nette\Utils\Json;
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProviderInterface;
 use App\Game\Application\Dto\LeaderboardSoloResult;

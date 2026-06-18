@@ -1,0 +1,83 @@
+.publicRooms {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    min-height: 80vh;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding: 20px 0;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 800;
+
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.header p {
+    margin-top: 8px;
+    color: var(--color-text-secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.roomContent {
+    position: relative;
+    z-index: 2;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 24px;
+}
+
+.icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.roomContent h3 {
+    margin: 0;
+    color: var(--color-text-primary);
+}
+
+.roomContent p {
+    margin-top: 6px;
+    color: var(--color-text-secondary);
+}
+
+.code {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+
+    color: var(--color-text-secondary);
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roomCard {
+        height: auto;
+        min-height: 220px;
+    }
+}

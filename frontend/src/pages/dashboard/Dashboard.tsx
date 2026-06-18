@@ -32,10 +32,10 @@ function Dashboard() {
                     </div>
                 </div>
 
-                <div className={styles.gameCard}>
+                <div className={styles.gameCard} onClick={() => navigate('/room-list')}>
                     <img src={pvpImage} alt="create-room" />
                     <div className={styles.overlay}>
-                        <h3>{t("dashboard.createRoom")}</h3>
+                        <h3>{t("dashboard.duel")}</h3>
                         <p>{t("dashboard.createRoomDesc")}</p>
                     </div>
                 </div>

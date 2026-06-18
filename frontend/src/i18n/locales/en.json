@@ -34,7 +34,9 @@
         "createRoomDesc": "Play with friends",
         "leaderboard": "Leaderboard",
         "topPlayersThisWeek": "Top players",
-        "exitConfirmation": "Exit confirmation"
+        "exitConfirmation": "Exit confirmation",
+        "duel": "Duel",
+        "back": "Back"
     },
     "login": {
         "email": "Email",
@@ -74,5 +76,23 @@
         "dice_5": "5 Dice",
         "dice_6": "6 Dice",
         "no_data": "No data"
+    },
+    "roomList": {
+        "subtitle": "Create a room or join your friends.",
+        "title": "Duel",
+        "joinRoom": "\uD83D\uDD11 Join Room",
+        "joinRoomDesc": "Enter a room code and start playing instantly.",
+        "roomCode": "ROOM CODE",
+        "createRoom": "Create Room",
+        "createRoomDesc": "Create a private room and invite friends.",
+        "join": "Join",
+        "publicRooms": "Public Rooms",
+        "publicRoomsDesc": "Browse available rooms and join other players."
+    },
+    "publicRooms": {
+        "title": "Public rooms"
+    },
+    "error": {
+        "404": "Stranica ne postoji ili je premještena."
     }
 }
