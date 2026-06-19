@@ -87,7 +87,10 @@
         "createRoomDesc": "Create a private room and invite friends.",
         "join": "Join",
         "publicRooms": "Public Rooms",
-        "publicRoomsDesc": "Browse available rooms and join other players."
+        "publicRoomsDesc": "Browse available rooms and join other players.",
+        "visibility": "Visibility",
+        "public": "Public",
+        "private": "Private"
     },
     "publicRooms": {
         "title": "Public rooms"

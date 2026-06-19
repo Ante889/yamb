@@ -1,0 +1,256 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.label {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ── Dice picker ── */
+
+.options {
+    display: flex;
+    gap: 16px;
+}
+
+.options button {
+    flex: 1;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.active {
+    border-color: var(--color-accent-1);
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--bg-accent-purple),
+            var(--bg-accent-orange)
+        ),
+        var(--color-bg-surface);
+
+    box-shadow: 0 0 24px var(--glow-accent-soft);
+}
+
+.dice {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 150px;
+}
+
+.diceCube {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--border-default);
+    background: var(--color-bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diceFace {
+    width: 18px;
+    height: 18px;
+    display: grid;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-text-primary);
+    justify-self: center;
+    align-self: center;
+}
+
+.active .dot {
+    background: var(--color-accent-2);
+}
+
+.face1 { grid-template-columns: 1fr; }
+
+.face2 { grid-template-columns: repeat(2, 1fr); }
+.face2 .dot:nth-child(1) { justify-self: start; align-self: start; }
+.face2 .dot:nth-child(2) { justify-self: end; align-self: end; }
+
+.face3 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+.face3 .dot:nth-child(1) { grid-column: 1; grid-row: 1; }
+.face3 .dot:nth-child(2) { grid-column: 2; grid-row: 2; }
+.face3 .dot:nth-child(3) { grid-column: 3; grid-row: 3; }
+
+.face4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+
+.face5 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+.face5 .dot:nth-child(1) { grid-column: 1; grid-row: 1; }
+.face5 .dot:nth-child(2) { grid-column: 3; grid-row: 1; }
+.face5 .dot:nth-child(3) { grid-column: 2; grid-row: 2; }
+.face5 .dot:nth-child(4) { grid-column: 1; grid-row: 3; }
+.face5 .dot:nth-child(5) { grid-column: 3; grid-row: 3; }
+
+.face6 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
+
+/* ── Game type picker ── */
+
+.gameTypeOptions {
+    display: flex;
+    gap: 16px;
+}
+
+.gameTypeCard {
+    flex: 1;
+    min-height: 120px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+@media (hover: hover) {
+    .gameTypeCard:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 24px var(--glow-accent-soft);
+        border-color: var(--border-accent);
+    }
+}
+
+.gameTypeCard:active {
+    transform: scale(0.96);
+}
+
+.gameTypeActive {
+    border: 1px solid var(--color-accent-1);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(140, 82, 255, 0.08),
+            rgba(255, 140, 66, 0.08)
+        ),
+        var(--color-bg-surface);
+    box-shadow: 0 0 24px var(--glow-accent-soft);
+}
+
+.gameTypeImage {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── Visibility picker ── */
+
+.visibilityOptions {
+    display: flex;
+    gap: 16px;
+}
+
+.visibilityCard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 20px 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    border: 1px solid var(--border-default);
+    background: var(--color-bg-surface);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+@media (hover: hover) {
+    .visibilityCard:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 16px var(--glow-accent-soft);
+        border-color: var(--border-accent);
+    }
+}
+
+.visibilityCard:active {
+    transform: scale(0.96);
+}
+
+.visibilityActive {
+    border-color: var(--color-accent-1);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(140, 82, 255, 0.08),
+            rgba(255, 140, 66, 0.08)
+        ),
+        var(--color-bg-surface);
+    box-shadow: 0 0 20px var(--glow-accent-soft);
+}
+
+.visibilityIcon {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.visibilityLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 480px) {
+    .form {
+        gap: 20px;
+    }
+
+    .gameTypeOptions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .gameTypeCard {
+        width: 100%;
+        min-height: 110px;
+    }
+
+    .visibilityOptions {
+        gap: 10px;
+    }
+
+    .visibilityCard {
+        padding: 16px 10px;
+    }
+
+    .visibilityIcon {
+        font-size: 1.5rem;
+    }
+
+    .options {
+        flex-wrap: wrap;
+    }
+
+    .cardMobile {
+        margin:auto;
+    }
+}

@@ -17,7 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
             description: 'Start solo game',
             security: "is_granted('ROLE_USER')",
             processor: CreateSoloGameProcessor::class
-        ),
+        )
     ],
 )]
 final readonly class StartGameResource
