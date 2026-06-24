@@ -12,4 +12,9 @@ final class GameParticipantException extends DomainException
     {
         return new self('exception.game_participant_not_found');
     }
+
+    public static function gameParticipantIsAlreadyInRoom(): self
+    {
+        return new self('exception.game_participant_is_already_in_room');
+    }
 }

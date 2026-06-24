@@ -48,6 +48,15 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
             ->getResult();
     }
 
+    public function findByJoinCode(string $joinCode): ?Game
+    {
+        return  $this->createQueryBuilder('g')
+            ->where('g.joinCode = :joinCode')
+            ->setParameter('joinCode', $joinCode)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function gameByGameParticipant(int $gameParticipantId): ?Game
     {
         return  $this->createQueryBuilder('g')

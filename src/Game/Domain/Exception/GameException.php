@@ -17,4 +17,14 @@ final class GameException extends DomainException
     {
         return new self('exception.game_is_finished');
     }
+
+    public static function gameIsFull(): self
+    {
+        return new self('exception.game_is_full');
+    }
+
+    public static function gameIsAlreadyStarted(): self
+    {
+        return new self('exception.game_already_started');
+    }
 }

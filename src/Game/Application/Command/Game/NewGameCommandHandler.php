@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Game\Application\Command\Game;
 
+use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Model\Game;
@@ -13,7 +14,7 @@ use App\Game\Domain\Service\JoinCodeGenerator;
 use App\User\Infrastructure\Security\AuthenticatedUserService;
 use Random\RandomException;
 
-final readonly class NewSoloGameCommandHandler
+final readonly class NewGameCommandHandler
 {
     public function __construct(
         private GameRepositoryInterface  $gameRepository,
@@ -23,23 +24,22 @@ final readonly class NewSoloGameCommandHandler
     {
     }
 
-    /**
-     * @throws RandomException
-     */
-    public function handle(NewSoloGameCommand $command): Game
+    public function handle(NewGameCommand $command): Game
     {
         $game = (new Game())
-            ->setGameStatus(GameStatusEnum::IN_PROGRESS->value)
+            ->setGameStatus($command->gameStatus)
             ->setDiceNumber($command->numberOfDice)
-            ->setMinPlayers(1)
-            ->setMaxPlayers(1)
+            ->setMinPlayers($command->minPlayer)
+            ->setMaxPlayers($command->maxPlayer)
             ->setJoinCode($this->codeGenerator->generateUnique())
             ->setStartedAt(new \DateTimeImmutable())
-            ->setGameType(GameTypeEnum::from($command->gameType));
+            ->setGameType(GameTypeEnum::from($command->gameType))
+            ->setIsPublic($command->isPublic);
 
-        $participant = GameParticipant::createSolo(
+        $participant = GameParticipant::create(
             $this->userService->getCurrentUser(),
             $game,
+            $command->isSolo ? GameParticipantStatusEnum::ACTIVE_TURN : GameParticipantStatusEnum::NOT_READY
         );
 
         $game->addParticipant($participant);

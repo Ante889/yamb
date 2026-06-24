@@ -6,8 +6,9 @@ namespace App\Game\Infrastructure\State\Processor;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Game\Application\Command\Game\NewSoloGameCommand;
-use App\Game\Application\Command\Game\NewSoloGameCommandHandler;
+use App\Game\Application\Command\Game\NewGameCommand;
+use App\Game\Application\Command\Game\NewGameCommandHandler;
+use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Infrastructure\Mapper\GameResponseMapper;
 use App\Game\Infrastructure\Resource\Game\StartGameResource;
 use Psr\Cache\InvalidArgumentException;
@@ -17,8 +18,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 final readonly class CreateSoloGameProcessor implements ProcessorInterface
 {
     public function __construct(
-        private NewSoloGameCommandHandler $newSoloGameCommandHandler,
-        private GameResponseMapper        $gameResponseMapper
+        private NewGameCommandHandler $newGameCommandHandler,
+        private GameResponseMapper    $gameResponseMapper
     )
     {
     }
@@ -37,10 +38,15 @@ final readonly class CreateSoloGameProcessor implements ProcessorInterface
             throw new \LogicException('Invalid data');
         }
 
-        $game = $this->newSoloGameCommandHandler->handle(
-            new NewSoloGameCommand(
+        $game = $this->newGameCommandHandler->handle(
+            new NewGameCommand(
                 numberOfDice: $data->numberOfDice,
-                gameType: $data->gameType
+                gameStatus: GameStatusEnum::IN_PROGRESS->value,
+                gameType: $data->gameType,
+                isPublic: false,
+                minPlayer: 1,
+                maxPlayer: 1,
+                isSolo: true
             )
         );
 

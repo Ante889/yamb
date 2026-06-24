@@ -13,9 +13,17 @@ function RoomList() {
     const [roomCode, setRoomCode] = useState("");
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
-    const handleJoin = () => {
+    const handleJoin = async () => {
         if (!roomCode.trim()) return;
-        navigate(`/room/${roomCode}`);
+
+        const loadingToast = toast.loading(t("loading"));
+
+        try {
+            const room = await RoomService.joinRoomWithJoinCode(roomCode);
+            navigate(`/room/${room.key}`);
+        } finally {
+            toast.dismiss(loadingToast);
+        }
     };
 
     const handleRoomCreate = async ({ diceCount, gameType, isPublic }) => {
@@ -23,7 +31,7 @@ function RoomList() {
 
         try {
             const room = await RoomService.createRoom(diceCount, gameType, isPublic);
-            navigate("/room/" + room.code);
+            navigate("/room/" + room.key);
         } finally {
             toast.dismiss(loadingToast);
         }

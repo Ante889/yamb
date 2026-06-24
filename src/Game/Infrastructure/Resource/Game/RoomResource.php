@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Game\Infrastructure\Resource\Game;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
 use App\Game\Infrastructure\State\Processor\CreateRoomProcessor;
+use App\Game\Infrastructure\State\Processor\JoinInRoomWithJoinCodeProcessor;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -16,17 +18,28 @@ use Symfony\Component\Validator\Constraints as Assert;
             uriTemplate: '/rooms',
             description: 'Create a new room',
             security: "is_granted('ROLE_USER')",
+            validationContext: ['groups' => ['createRoom']],
             processor: CreateRoomProcessor::class
+        ),
+        new Post(
+            uriTemplate: '/join-room/{joinCode}',
+            description: 'Join in room with join code',
+            security: "is_granted('ROLE_USER')",
+            processor: JoinInRoomWithJoinCodeProcessor::class
         ),
     ],
 )]
 final readonly class RoomResource
 {
     public function __construct(
-        #[Assert\NotBlank]
+        #[ApiProperty(readable: true, writable: false, identifier: true)]
+        public ?string $joinCode = null,
+        #[Assert\NotBlank(groups: ['createRoom'])]
         public ?int    $numberOfDice = null,
+        #[Assert\NotBlank(groups: ['createRoom'])]
         public ?string $gameType = null,
-        public bool    $isPublic = true,
-    ) {
+        public ?bool   $isPublic = false
+    )
+    {
     }
 }

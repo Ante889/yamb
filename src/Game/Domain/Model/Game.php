@@ -104,6 +104,12 @@ class Game
     #[ORM\Column(type: 'string', length: 20, enumType: GameTypeEnum::class)]
     private GameTypeEnum $gameType;
 
+    #[ORM\Column(
+        name: 'isPublic',
+        type: 'boolean'
+    )]
+    private bool $isPublic = true;
+
     private array $recordedEvents = [];
 
     public function __construct()
@@ -289,6 +295,18 @@ class Game
     public function setGameType(GameTypeEnum $gameType): self
     {
         $this->gameType = $gameType;
+
+        return $this;
+    }
+
+    public function isPublic(): bool
+    {
+        return $this->isPublic;
+    }
+
+    public function setIsPublic(bool $isPublic): self
+    {
+        $this->isPublic = $isPublic;
 
         return $this;
     }

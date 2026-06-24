@@ -99,13 +99,18 @@ class GameParticipant
         $this->scoreEntry = new ArrayCollection();
     }
 
-    public static function createSolo(User $user, Game $game): self
+    public static function create(
+        User $user,
+        Game $game,
+        GameParticipantStatusEnum $status,
+        int $position = 1
+    ): self
     {
         return new self(
             $user,
             $game,
-            GameParticipantStatusEnum::ACTIVE_TURN,
-            1,
+            $status,
+            $position,
             new \DateTimeImmutable()
         );
     }

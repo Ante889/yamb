@@ -6,56 +6,63 @@ namespace App\Game\Infrastructure\State\Processor;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
+use App\Game\Application\Command\Game\NewGameCommand;
+use App\Game\Application\Command\Game\NewGameCommandHandler;
+use App\Game\Domain\Enum\GameStatusEnum;
+use App\Game\Infrastructure\Mapper\GameResponseMapper;
 use App\Game\Infrastructure\Resource\Game\RoomResource;
+use App\Shared\Domain\Mercure\MercureServiceInterface;
+use App\Shared\Domain\Mercure\MercureTopics;
+use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Mercure\HubInterface;
-use Symfony\Component\Mercure\Update;
 
 final readonly class CreateRoomProcessor implements ProcessorInterface
 {
     public function __construct(
-        // private CreateRoomCommandHandler $createRoomCommandHandler,
-        private HubInterface $hub,
-    ) {
+        private MercureServiceInterface $mercureService,
+        private NewGameCommandHandler   $commandHandler,
+        private GameResponseMapper      $gameResponseMapper
+    )
+    {
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function process(
         mixed     $data,
         Operation $operation,
         array     $uriVariables = [],
         array     $context = []
-    ): JsonResponse {
-        if (!$data instanceof RoomResource) {
-            throw new \LogicException('Invalid input');
-        }
+    ): JsonResponse
+    {
+        if (!$data instanceof RoomResource) throw new \LogicException('Invalid input');
 
-        // $room = $this->createRoomCommandHandler->handle(
-        //     new CreateRoomCommand(
-        //         numberOfDice: $data->numberOfDice,
-        //         gameType: $data->gameType,
-        //         isPublic: $data->isPublic,
-        //     )
-        // );
+        $game = $this->commandHandler->handle(
+            new NewGameCommand(
+                numberOfDice: $data->numberOfDice,
+                gameStatus: GameStatusEnum::LOBBY->value,
+                gameType: $data->gameType,
+                isPublic: $data->isPublic,
+                minPlayer: 1,
+                maxPlayer: 2,
+                isSolo: false
+            )
+        );
 
-        // Objavi novu sobu svim pretplatnicima koji gledaju listu javnih soba.
-        // Topic '/rooms' — frontend se pretplaćuje na EventSource('/rooms').
-        // Ako je soba privatna, ne objavljuj na javnom topicu.
+        $gameMapper = $this->gameResponseMapper->fromEntity(
+            $game
+        );
+
         if ($data->isPublic) {
-            $this->hub->publish(new Update(
-                topics: '/rooms',
-                data: json_encode([
-                    'type'        => 'ROOM_CREATED',
-                    // 'code'        => $room->getCode(),
-                    // 'gameType'    => $room->getGameType(),
-                    // 'numberOfDice'=> $room->getNumberOfDice(),
-                ]),
-            ));
+            $this->mercureService->create(
+                MercureTopics::rooms($game),
+                $gameMapper
+            );
         }
 
         return new JsonResponse(
-            [
-                // 'code' => $room->getCode(),
-            ],
+            $gameMapper,
             201
         );
     }

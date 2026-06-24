@@ -46,11 +46,6 @@
             var(--bg-accent-purple),
             transparent 40%
         ),
-        radial-gradient(
-            circle at bottom left,
-            var(--bg-accent-orange),
-            transparent 35%
-        ),
         var(--color-bg-surface);
 
     box-shadow:

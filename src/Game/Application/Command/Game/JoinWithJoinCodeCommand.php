@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace App\Game\Application\Command\Game;
 
-final readonly class NewSoloGameCommand
+final readonly class JoinWithJoinCodeCommand
 {
     public function __construct(
-        public int    $numberOfDice,
-        public string $gameType
+        public string $joinCode,
     )
     {
     }

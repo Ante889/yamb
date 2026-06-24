@@ -9,3 +9,9 @@ export const createRoomApi = async (diceCount: number, gameType: string, isPubli
 
     return res.data;
 };
+
+export const joinRoomWithJoinCodeApi = async (joinCode: string) => {
+    const res = await api.post("/join-room/" + joinCode, {});
+
+    return res.data;
+};
