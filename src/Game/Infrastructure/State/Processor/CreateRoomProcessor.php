@@ -56,7 +56,7 @@ final readonly class CreateRoomProcessor implements ProcessorInterface
 
         if ($data->isPublic) {
             $this->mercureService->create(
-                MercureTopics::rooms($game),
+                MercureTopics::rooms(),
                 $gameMapper
             );
         }

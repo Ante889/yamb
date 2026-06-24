@@ -5,32 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/JoinGameParticipantValidator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/JoinInRoomWithJoinCodeProcessor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureServiceInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Mercure/MercureService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/roomApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/roomApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/room/roomService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/room/roomService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewSoloGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/GameParticipantException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameParticipantException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateRoomProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateRoomProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +302,7 @@
       <workItem from="1781774418507" duration="9131000" />
       <workItem from="1782200162990" duration="599000" />
       <workItem from="1782213325866" duration="599000" />
-      <workItem from="1782295987454" duration="12095000" />
+      <workItem from="1782295987454" duration="14428000" />
     </task>
     <servers />
   </component>

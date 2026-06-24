@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./PublicRooms.module.css";
@@ -6,12 +7,64 @@ function PublicRooms() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const rooms = [
-        { id: "AB12", name: "Casual Lobby", players: 3 },
-        { id: "XY99", name: "Ranked Arena", players: 5 },
-        { id: "LM77", name: "Party Room", players: 2 },
-        { id: "QW45", name: "Fun Zone", players: 6 },
-    ];
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        setRooms([]);
+
+        const url = new URL("http://localhost:3001/.well-known/mercure");
+        url.searchParams.append("topic", "/rooms");
+        url.searchParams.append("authorization", `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InN1YnNjcmliZSI6WyIqIl19fQ.Ni9uIZUwNMhAHDpScXjD9JnwpSgqjXhkJdaUx7A4C6U`);
+
+        const eventSource = new EventSource(url);
+
+        eventSource.onopen = () => {
+            console.log("✅ Mercure SPOJEN, readyState:", eventSource.readyState);
+        };
+
+        eventSource.onmessage = (event) => {
+            console.log("📩 poruka:", event.data);
+            const data = JSON.parse(event.data);
+            const p = data.payload;
+
+            setRooms((prev) => {
+                switch (data.action) {
+
+                    case "created":
+                        return [...prev, {
+                            id: p.key,
+                            name: p.type,
+                            players: p.participants?.length ?? 0
+                        }];
+
+                    case "updated":
+                        return prev.map(room =>
+                            room.id === p.key
+                                ? {
+                                    ...room,
+                                    name: p.type ?? room.name,
+                                    players: p.participants?.length ?? room.players
+                                }
+                                : room
+                        );
+
+                    case "removed":
+                        return prev.filter(room => room.id !== p.key);
+
+                    default:
+                        return prev;
+                }
+            });
+        };
+
+        eventSource.onerror = () => {
+            console.warn("⚠️ Mercure error, readyState:", eventSource.readyState);
+        };
+
+        return () => {
+            eventSource.close();
+        };
+    }, []);
 
     return (
         <div className={styles.publicRooms}>
@@ -32,7 +85,7 @@ function PublicRooms() {
                         key={room.id}
                         className={'card'}
                         onClick={() => navigate(`/room/${room.id}`)}
-                        style={{cursor: 'pointer'}}
+                        style={{ cursor: 'pointer' }}
                     >
                         <div className={styles.roomContent}>
                             <span className={styles.icon}>🎲</span>

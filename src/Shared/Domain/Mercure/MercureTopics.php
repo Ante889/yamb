@@ -6,9 +6,9 @@ use App\Game\Domain\Model\Game;
 
 final class MercureTopics
 {
-    public static function rooms(Game $game): string
+    public static function rooms(): string
     {
-        return '/rooms/' . $game->getId();
+        return '/rooms';
     }
 
     public static function gameParticipants(Game $game): string
