@@ -4,7 +4,11 @@ namespace App\Game\Infrastructure\Doctrine\Repository;
 
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Repository\GameRepositoryInterface;
+use App\Shared\Domain\Paginator\Paginator;
+use App\Shared\Domain\Paginator\Value\Filter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
+use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 class GameRepository extends ServiceEntityRepository implements GameRepositoryInterface
@@ -24,6 +28,25 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
             ->setParameter('id', $gameId)
             ->getQuery()
             ->execute();
+    }
+
+    public function getPublic(): array
+    {
+        return $this->createQueryBuilder('g')
+                ->select('
+                    g.id as id,
+                    g.diceNumber as diceNumber,
+                    g.gameType as gameType,
+                    GROUP_CONCAT(u.username) as gameUsers
+                ')
+                ->leftJoin('g.participants', 'gp')
+                ->leftJoin('gp.user', 'u')
+                ->where('g.isPublic = :isPublic')
+                ->setParameter('isPublic', true)
+                ->groupBy('g.id')
+                ->orderBy('g.id', 'DESC')
+                ->getQuery()
+                ->getResult();
     }
 
     public function getFirstFiftyByType(string $type, int $dice): array

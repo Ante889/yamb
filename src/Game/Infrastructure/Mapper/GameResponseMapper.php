@@ -31,6 +31,7 @@ final readonly class GameResponseMapper
                     'userId' => $participant->getUser()->getId(),
                     'status' => $participant->getStatus(),
                     'position' => $participant->getPosition(),
+                    'username' => $participant->getUser()->getUsername(),
                     'diceData' => $this->gameTurnStateService->getForParticipant(
                         $participant->getId()
                     ),

@@ -3,6 +3,9 @@
     margin: 0 auto;
     padding: 0 24px;
     min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -21,6 +24,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+
+    overflow-wrap: break-word;
 }
 
 .header p {
@@ -28,56 +33,132 @@
     color: var(--color-text-secondary);
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-}
-
-.roomContent {
-    position: relative;
-    z-index: 2;
-
-    height: 100%;
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    gap: 12px;
+}
 
-    padding: 24px;
+.row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 16px 20px;
+    border-radius: 12px;
+
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(8px);
+
+    cursor: pointer;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.row:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 0 18px var(--glow-accent-soft);
+    transform: translateY(-1px);
 }
 
 .icon {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
+    font-size: 1.8rem;
+    flex-shrink: 0;
 }
 
-.roomContent h3 {
+.rowMain {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.rowName {
     margin: 0;
+    font-size: 1.05rem;
     color: var(--color-text-primary);
-}
 
-.roomContent p {
-    margin-top: 6px;
-    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .code {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-
+    font-size: 0.8rem;
+    letter-spacing: 1px;
     color: var(--color-text-secondary);
     opacity: 0.8;
 }
 
+.players {
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    max-width: 50%;
+}
+
+.player {
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+
+    color: var(--color-text-primary);
+    background: var(--bg-warm-soft);
+    border: 1px solid var(--border-subtle);
+
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.empty {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
 @media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
+    .publicRooms {
+        padding: 0 16px;
     }
 
-    .roomCard {
-        height: auto;
-        min-height: 220px;
+    .header {
+        margin-bottom: 24px;
+        padding: 12px 0;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .row {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 8px 12px;
+        padding: 14px 16px;
+    }
+
+    .icon {
+        font-size: 1.5rem;
+    }
+
+    .players {
+        flex-basis: 100%;
+        max-width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 380px) {
+    .player {
+        max-width: 100px;
     }
 }

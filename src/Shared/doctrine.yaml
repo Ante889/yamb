@@ -1,0 +1,7 @@
+doctrine:
+    orm:
+        entity_managers:
+            main:
+                dql:
+                    string_functions:
+                        GROUP_CONCAT: App\Shared\Infrastructure\Doctrine\Mysql\GroupConcat

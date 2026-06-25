@@ -70,7 +70,10 @@
         "gameIsFinished": "Game is finished",
         "pointsNumber": "Points number",
         "sum": "Sum",
-        "total": "Total"
+        "total": "Total",
+        "CLASSIC": "Classic",
+        "YAMB_PLUS": "Yamb plus",
+        "SINGLE_COLUMN": "Single column"
     },
     "leaderboard": {
         "SINGLE_COLUMN": "Single column",
@@ -96,9 +99,10 @@
         "private": "Private"
     },
     "publicRooms": {
-        "title": "Public rooms"
+        "title": "Public rooms",
+        "empty": "Room is empty"
     },
     "error": {
-        "404": "Stranica ne postoji ili je premještena."
+        "404": "Page not exist."
     }
 }
