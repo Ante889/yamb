@@ -49,8 +49,8 @@ final readonly class JoinInRoomWithJoinCodeProcessor implements ProcessorInterfa
             $game
         );
 
-        $this->mercureService->create(
-            MercureTopics::gameParticipants($game),
+        $this->mercureService->update(
+            MercureTopics::rooms(),
             $gameMapper
         );
 

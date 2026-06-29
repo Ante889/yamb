@@ -1,4 +1,9 @@
-import {createRoomApi, getPublicRoomsApi, joinRoomWithJoinCodeApi} from "../../../api/game/roomApi.tsx";
+import {
+    createRoomApi,
+    getPublicRoomsApi,
+    joinRoomWithGameIdApi,
+    joinRoomWithJoinCodeApi
+} from "../../../api/game/roomApi.tsx";
 
 export const RoomService = {
     getPublicRooms: async () => {
@@ -9,5 +14,8 @@ export const RoomService = {
     },
     joinRoomWithJoinCode: async (joinCode: string) => {
         return await joinRoomWithJoinCodeApi(joinCode);
+    },
+    joinRoomWithGameId: async (gameId: string) => {
+        return await joinRoomWithGameIdApi(gameId);
     }
 };

@@ -12,6 +12,8 @@ interface GameRepositoryInterface
 {
     public function deleteById(int $gameId): int;
 
+    public function findById(int $gameId): ?Game;
+
     /**
      * @param string $type
      * @param int $dice

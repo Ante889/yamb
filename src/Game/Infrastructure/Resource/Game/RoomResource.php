@@ -7,11 +7,12 @@ namespace App\Game\Infrastructure\Resource\Game;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
 use App\Game\Infrastructure\State\Processor\CreateRoomProcessor;
 use App\Game\Infrastructure\State\Processor\JoinInRoomWithJoinCodeProcessor;
+use App\Game\Infrastructure\State\Processor\ManuallyJoinInRoomProcessor;
 use App\Game\Infrastructure\State\Provider\PublicRoomsProvider;
-use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
@@ -36,6 +37,15 @@ use Symfony\Component\Validator\Constraints as Assert;
             security: "is_granted('ROLE_USER')",
             processor: JoinInRoomWithJoinCodeProcessor::class
         ),
+        new Post(
+            uriTemplate: '/join-room-manually/{gameId}',
+            uriVariables: [
+                'gameId' => new Link(fromProperty: 'gameId')
+            ],
+            description: 'Join in room by game id',
+            security: "is_granted('ROLE_USER')",
+            processor: ManuallyJoinInRoomProcessor::class
+        )
     ],
 )]
 final readonly class RoomResource
@@ -43,6 +53,7 @@ final readonly class RoomResource
     public function __construct(
         #[ApiProperty(readable: true, writable: false, identifier: true)]
         public ?string $joinCode = null,
+        public ?string $gameId = null,
         #[Assert\NotBlank(groups: ['createRoom'])]
         public ?int    $numberOfDice = null,
         #[Assert\NotBlank(groups: ['createRoom'])]

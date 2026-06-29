@@ -1,0 +1,145 @@
+.wrapper {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+
+    border-radius: 18px;
+    padding: 24px;
+
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 40px var(--glow-accent-soft);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.title {
+    margin: 0;
+    font-size: 28px;
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    color: var(--color-text-secondary);
+}
+
+.codeBox {
+    text-align: right;
+
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    border: 1px solid var(--border-accent);
+    background: var(--bg-accent-purple);
+}
+
+.codeBox span {
+    display: block;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.panel {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-default);
+
+    border-radius: 14px;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.panel h2 {
+    margin: 0 0 14px;
+    font-size: 18px;
+}
+
+.players {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px;
+    border-radius: 12px;
+
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
+
+    transition: 0.2s;
+}
+
+.player:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 0 15px var(--glow-accent-soft);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    background: var(--gradient-primary);
+}
+
+.info {
+    flex: 1;
+}
+
+.nameRow {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.host {
+    font-size: 10px;
+    color: var(--color-accent-2);
+}
+
+.ready {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 10px;
+    border-radius: 10px;
+
+    border: 1px solid var(--border-subtle);
+}

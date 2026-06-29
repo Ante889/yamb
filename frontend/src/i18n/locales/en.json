@@ -102,6 +102,18 @@
         "title": "Public rooms",
         "empty": "Room is empty"
     },
+    "room": {
+        "waitingForPlayers": "Waiting for players to be ready...",
+        "gameLobby": "Game lobby",
+        "roomCode": "ROOM CODE",
+        "players": "Players",
+        "mode": "Mode",
+        "dice": "Dice",
+        "visibility": "Visibility",
+        "gameSettings": "Game settings",
+        "startGame": "Start game",
+        "loadingRoom": "Loading room..."
+    },
     "error": {
         "404": "Page not exist."
     }

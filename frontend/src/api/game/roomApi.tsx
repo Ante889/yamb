@@ -22,3 +22,9 @@ export const joinRoomWithJoinCodeApi = async (joinCode: string) => {
 
     return res.data;
 };
+
+export const joinRoomWithGameIdApi = async (gameId: string) => {
+    const res = await api.post("/join-room-manually/" + gameId, {});
+
+    return res.data;
+};

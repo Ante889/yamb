@@ -2,11 +2,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./PublicRooms.module.css";
-import {APP_PAGINATION, BASE_MERCURE_URL} from "../../../config/AppConfig.tsx";
+import {APP_PAGINATION} from "../../../config/AppConfig.tsx";
 import { MercureService } from "../../../services/mercure/mercureService.tsx";
 import { RoomService } from "../../../services/game/room/roomService.tsx";
 import Pagination from "../../../components/Pagination/Pagination.tsx";
-import {mapMercureRoom, mapRestRoom} from "../../../mapper/roomMapper.tsx";
+import {applyRoomEvent, mapMercureRoom, mapRestRoom} from "../../../mapper/roomMapper.tsx";
+import toast from "react-hot-toast";
 
 type Room = {
     id: number;
@@ -44,38 +45,23 @@ function PublicRooms() {
         let cancelled = false;
 
         const connect = async () => {
-            const res = await MercureService.getMercureToken();
-            const token = res.token;
-            if (cancelled) return;
-
-            const url = new URL(BASE_MERCURE_URL);
-            url.searchParams.append("topic", "/rooms");
-            url.searchParams.append("authorization", token);
-
-            const eventSource = new EventSource(url);
-            esRef.current = eventSource;
-
-            eventSource.onmessage = (event) => {
-                const data = JSON.parse(event.data);
+            const eventSource = await MercureService.subscribeToRooms((data) => {
                 const incoming = mapMercureRoom(data.payload);
 
-                setRooms((prev) => {
-                    switch (data.action) {
-                        case "created": {
-                            if (prev.some((room) => room.id === incoming.id)) return prev;
-                            return [incoming, ...prev];
-                        }
-                        case "updated":
-                            return prev.map((room) =>
-                                room.id === incoming.id ? { ...room, ...incoming } : room
-                            );
-                        case "removed":
-                            return prev.filter((room) => room.id !== incoming.id);
-                        default:
-                            return prev;
-                    }
-                });
-            };
+                setRooms((prev) =>
+                    applyRoomEvent(
+                        prev,
+                        data.action,
+                        incoming
+                    )
+                );
+            });
+
+            if (!cancelled) {
+                esRef.current = eventSource;
+            } else {
+                eventSource.close();
+            }
         };
 
         connect();
@@ -99,6 +85,17 @@ function PublicRooms() {
         return rooms.slice(start, start + PAGE_SIZE);
     }, [rooms, page]);
 
+    const handleJoin = async (gameId) => {
+        const loadingToast = toast.loading(t("loading"));
+
+        try {
+            const room = await RoomService.joinRoomWithGameId(gameId);
+            navigate(`/room/${room.key}`);
+        } finally {
+            toast.dismiss(loadingToast);
+        }
+    };
+
     return (
         <div className={styles.publicRooms}>
             <div className={styles.header}>
@@ -113,7 +110,7 @@ function PublicRooms() {
                     <li
                         key={room.id}
                         className={styles.row}
-                        onClick={() => navigate(`/room/${room.id}`)}
+                        onClick={() => handleJoin(room.id)}
                     >
                         <span className={styles.icon}>🎲</span>
 

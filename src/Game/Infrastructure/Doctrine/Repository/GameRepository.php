@@ -20,6 +20,14 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
         parent::__construct($registry, Game::class);
     }
 
+    public function findById(int $gameId): ?Game
+    {
+        return  $this->createQueryBuilder('g')
+            ->where('g.id = :id')
+            ->setParameter('id', $gameId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
     public function deleteById(int $gameId): int
     {
         return $this->createQueryBuilder('g')

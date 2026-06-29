@@ -2,8 +2,6 @@
 
 namespace App\Shared\Domain\Mercure;
 
-use App\Game\Domain\Model\Game;
-
 final class MercureTopics
 {
     public static function rooms(): string
@@ -11,9 +9,9 @@ final class MercureTopics
         return '/rooms';
     }
 
-    public static function gameParticipants(Game $game): string
+    public static function gameParticipants(): string
     {
-        return '/game-participants/' . $game->getId();
+        return '/game-participants';
     }
 
     public static function gameParticipantsPattern(): string
