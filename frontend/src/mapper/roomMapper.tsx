@@ -1,3 +1,6 @@
+import room from "../pages/duel/room/Room.tsx";
+import {useNavigate} from "react-router-dom";
+
 export function parseRestPlayers(gameUsers: string | null | undefined): string[] {
     if (!gameUsers) return [];
     return gameUsers
@@ -42,7 +45,7 @@ export function applyRoomEvent(
                     : room
             );
 
-        case "removed":
+        case "deleted":
             return rooms.filter(
                 (room) => room.id !== incoming.id
             );
@@ -57,11 +60,11 @@ export function applyEventForLobbyRoom(
     action: string,
     incoming: any
 ): any {
-    if (action === "removed") {
-        return null;
-    }
-
     if (!prevRoom || prevRoom.key === incoming.key) {
+        if (action === "deleted") {
+            return null
+        }
+
         return incoming;
     }
 

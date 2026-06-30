@@ -119,10 +119,27 @@
     text-overflow: ellipsis;
 }
 
-.empty {
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    opacity: 0.7;
+.emptyState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 60px 20px;
+    margin-top: 20px;
+
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.7);
+
+    text-align: center;
+}
+
+.emptyState p {
+    font-size: 16px;
+    margin: 0;
+    letter-spacing: 0.3px;
 }
 
 @media (max-width: 768px) {

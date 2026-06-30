@@ -53,6 +53,13 @@ class GameParticipantRepository extends ServiceEntityRepository implements GameP
         return $this;
     }
 
+    public function remove(GameParticipant $gameParticipant): self
+    {
+        $this->getEntityManager()->remove($gameParticipant);
+
+        return $this;
+    }
+
     public function save(): void
     {
         $this->getEntityManager()->flush();

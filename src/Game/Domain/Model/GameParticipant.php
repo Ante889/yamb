@@ -72,13 +72,6 @@ class GameParticipant
     )]
     private \DateTimeInterface $joinedAt;
 
-    #[ORM\Column(
-        name: 'last_time_in_lobby',
-        type: 'datetime_immutable',
-        nullable: true
-    )]
-    private \DateTimeInterface $lastTimeInLobby;
-
     #[ORM\OneToMany(
         targetEntity: ScoreEntry::class,
         mappedBy: 'gameParticipant',
@@ -138,19 +131,6 @@ class GameParticipant
 
         return $this;
     }
-
-    public function getLastTimeInLobby(): DateTimeInterface
-    {
-        return $this->lastTimeInLobby;
-    }
-
-    public function setLastTimeInLobby(DateTimeInterface $lastTimeInLobby): self
-    {
-        $this->lastTimeInLobby = $lastTimeInLobby;
-
-        return $this;
-    }
-
 
     public function getCreated(): ?DateTimeInterface
     {

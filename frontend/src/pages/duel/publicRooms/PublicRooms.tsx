@@ -8,6 +8,7 @@ import { RoomService } from "../../../services/game/room/roomService.tsx";
 import Pagination from "../../../components/Pagination/Pagination.tsx";
 import {applyRoomEvent, mapMercureRoom, mapRestRoom} from "../../../mapper/roomMapper.tsx";
 import toast from "react-hot-toast";
+import PublicRoomsLoadingPage from "../../../components/Loading/PublicRoomsLoadingPage.tsx";
 
 type Room = {
     id: number;
@@ -23,17 +24,20 @@ function PublicRooms() {
 
     const [rooms, setRooms] = useState<Room[]>([]);
     const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(true);
     const esRef = useRef<EventSource | null>(null);
 
     useEffect(() => {
         let cancelled = false;
 
         (async () => {
+            setLoading(true)
             const initial = await RoomService.getPublicRooms();
             if (cancelled) return;
 
             const list = Array.isArray(initial) ? initial : [];
             setRooms(list.map(mapRestRoom));
+            setLoading(false)
         })();
 
         return () => {
@@ -99,42 +103,57 @@ function PublicRooms() {
     return (
         <div className={styles.publicRooms}>
             <div className={styles.header}>
-                <button className={"backButton"} onClick={() => navigate(-1)}>
+                <button className={"backButton"} onClick={() => navigate("/room-list")}>
                     ← {t("dashboard.back")}
                 </button>
                 <h1>{t("publicRooms.title")}</h1>
             </div>
 
-            <ul className={styles.list}>
-                {visibleRooms.map((room) => (
-                    <li
-                        key={room.id}
-                        className={styles.row}
-                        onClick={() => handleJoin(room.id)}
-                    >
-                        <span className={styles.icon}>🎲</span>
+            {loading ? (
+                <PublicRoomsLoadingPage />
+            ) : (
+                <>
+                    {visibleRooms.length > 0 ? (
+                        <>
+                            <ul className={styles.list}>
+                                {visibleRooms.map((room) => (
+                                    <li
+                                        key={room.id}
+                                        className={styles.row}
+                                        onClick={() => handleJoin(room.id)}
+                                    >
+                                        <span className={styles.icon}>🎲</span>
 
-                        <div className={styles.rowMain}>
-                            <h3 className={styles.rowName}>{t("game." + room.name)}</h3>
-                            <span className={styles.code}>#{room.id}</span>
-                        </div>
+                                        <div className={styles.rowMain}>
+                                            <h3 className={styles.rowName}>{t("game." + room.name)}</h3>
+                                            <span className={styles.code}>#{room.id}</span>
+                                        </div>
 
-                        <div className={styles.players}>
-                            {room.players.length === 0 ? (
-                                <span className={styles.empty}>{t("publicRooms.empty")}</span>
-                            ) : (
-                                room.players.map((player, i) => (
-                                    <span key={i} className={styles.player}>
+                                        <div className={styles.players}>
+                                            {room.players.length === 0 ? (
+                                                <span className={styles.empty}>{t("publicRooms.empty")}</span>
+                                            ) : (
+                                                room.players.map((player, i) => (
+                                                    <span key={i} className={styles.player}>
                                         {player}
                                     </span>
-                                ))
-                            )}
-                        </div>
-                    </li>
-                ))}
-            </ul>
+                                                ))
+                                            )}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
 
-            <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+                            <Pagination page={page} totalPages={totalPages} onPageChange={setPage}/>
+                        </>
+                    ) : (
+                        <div className={styles.emptyState}>
+                            <p>{t("publicRooms.noRooms")}</p>
+                        </div>
+                    )}
+
+                </>
+            )}
         </div>
     );
 }

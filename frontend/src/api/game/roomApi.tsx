@@ -28,3 +28,9 @@ export const joinRoomWithGameIdApi = async (gameId: string) => {
 
     return res.data;
 };
+
+export const lobbyHeartBeatApi = async (gameParticipantId: string) => {
+    const res = await api.post("/game-participant-heart-beat/" + gameParticipantId, {});
+
+    return res.data;
+};

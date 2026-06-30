@@ -43,7 +43,7 @@ function RoomList() {
                 <div className={styles.header}>
                     <button
                         className="backButton"
-                        onClick={() => navigate(-1)}
+                        onClick={() => navigate('/')}
                     >
                         ← {t("dashboard.back")}
                     </button>

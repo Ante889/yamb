@@ -8,4 +8,9 @@ final class CacheKeyGenerator
     {
         return sprintf('yamb:game-participant:%d:turn', $gameParticipantId);
     }
+
+    public function forHeartBeat(int $gameParticipantId): string
+    {
+        return sprintf('yamb:game-participant:%d:heart-beat', $gameParticipantId);
+    }
 }

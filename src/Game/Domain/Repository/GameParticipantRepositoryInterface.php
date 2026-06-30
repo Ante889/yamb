@@ -12,5 +12,6 @@ interface GameParticipantRepositoryInterface
     public function findById(int $id): ?GameParticipant;
     public function deleteByGameId(int $gameId);
     public function add(GameParticipant $gameParticipant): self;
+    public function remove(GameParticipant $gameParticipant): self;
     public function save(): void;
 }

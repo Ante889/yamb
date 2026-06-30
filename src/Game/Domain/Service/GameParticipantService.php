@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace App\Game\Domain\Service;
 
-use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
+use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Repository\GameRepositoryInterface;
 use App\Game\Domain\Validator\JoinGameParticipantValidator;
+use App\Game\Infrastructure\Mapper\GameResponseMapper;
+use App\Shared\Domain\Mercure\MercureServiceInterface;
+use App\Shared\Domain\Mercure\MercureTopics;
 use App\User\Domain\Model\User;
+use Psr\Cache\InvalidArgumentException;
 
 final readonly class GameParticipantService
 {
     public function __construct(
-        private JoinGameParticipantValidator $joinGameParticipantValidator,
-        private GameRepositoryInterface      $gameRepository
+        private JoinGameParticipantValidator       $joinGameParticipantValidator,
+        private GameRepositoryInterface            $gameRepository,
+        private GameParticipantRepositoryInterface $gameParticipantRepository,
+        private MercureServiceInterface            $mercureService,
+        private GameResponseMapper                 $gameResponseMapper
     )
     {
     }
@@ -29,21 +36,54 @@ final readonly class GameParticipantService
         $this->joinGameParticipantValidator->gameAlreadyStarted($game);
     }
 
-    public function addParticipant(Game $game, User $user): Game
+    /**
+     * @param array $gameParticipants
+     * @return void
+     * @throws InvalidArgumentException
+     */
+    public function removeExpiredGameParticipants(array $gameParticipants): void
     {
-        $participant = GameParticipant::create(
-            $user,
-            $game,
-            GameParticipantStatusEnum::NOT_READY,
-            2
-        );
+        /** @var GameParticipant $gameParticipant */
+        foreach ($gameParticipants as $gameParticipant) {
+            if ($gameParticipant->getPosition() === 1) {
+                $game = $gameParticipant->getGame();
+                $this->gameParticipantRepository->deleteByGameId($game->getId());
+                $this->gameRepository->remove($game);
 
-        $game->addParticipant($participant);
+                $this->mercureService->delete(
+                    MercureTopics::rooms(),
+                    [
+                        'key' => $game->getId()
+                    ]
+                );
+            } else {
+                $gameMapper = $this->gameResponseMapper->fromEntity(
+                    $gameParticipant->getGame()->removeParticipant($gameParticipant)
+                );
 
-        $this->gameRepository
-            ->add($game)
-            ->save();
+                $this->mercureService->update(
+                    MercureTopics::rooms(),
+                    $gameMapper
+                );
+            }
+        }
 
-        return $game;
+        $this->gameParticipantRepository->save();
+    }
+
+    public function removeEmptyGame(array $games): void
+    {
+        foreach ($games as $game) {
+            $this->gameRepository->remove($game);
+
+            $this->mercureService->delete(
+                MercureTopics::rooms(),
+                [
+                    'key' => $game->getId()
+                ]
+            );
+        }
+
+        $this->gameParticipantRepository->save();
     }
 }

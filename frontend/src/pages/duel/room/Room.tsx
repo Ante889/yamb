@@ -1,50 +1,86 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "./Room.module.css";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { GameService } from "../../../services/game/game/gameService.tsx";
 import RoomLoading from "../../../components/Loading/RoomLoading.tsx";
-import {MercureService} from "../../../services/mercure/mercureService.tsx";
-import {applyEventForLobbyRoom} from "../../../mapper/roomMapper.tsx";
-import {TokenService} from "../../../api/token.tsx";
+import { MercureService } from "../../../services/mercure/mercureService.tsx";
+import { applyEventForLobbyRoom } from "../../../mapper/roomMapper.tsx";
+import { TokenService } from "../../../api/token.tsx";
+import { RoomService } from "../../../services/game/room/roomService.tsx";
 
 function Room() {
     const { id } = useParams();
     const { t } = useTranslation();
-    const [roomData, setRoomData] = useState(null);
+    const navigate = useNavigate();
+
+    const [roomData, setRoomData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
+
     const esRef = useRef<EventSource | null>(null);
 
+    const username = TokenService.getUsername();
+
+    const currentUser = useMemo(() => {
+        return roomData?.participants?.find(
+            (p: any) => p.username === username
+        );
+    }, [roomData, username]);
+
+    const isHost = currentUser?.position === 1;
+    const gameParticipantId = currentUser?.id;
+
+    const participants = roomData?.participants ?? [];
+
     useEffect(() => {
-        (async () => {
+        let cancelled = false;
+
+        const load = async () => {
             try {
                 const res = await GameService.getGameById(id);
+                if (cancelled) return;
                 setRoomData(res);
+            } catch (e) {
+                navigate("/room-list");
             } finally {
-                setLoading(false);
+                if (!cancelled) setLoading(false);
             }
-        })();
-    }, [id]);
+        };
+
+        load();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [id, navigate]);
 
     useEffect(() => {
         let cancelled = false;
 
         const connect = async () => {
             const eventSource = await MercureService.subscribeToRooms((data) => {
-                setRoomData((prev) =>
-                    applyEventForLobbyRoom(
+                setRoomData((prev) => {
+                    const updated = applyEventForLobbyRoom(
                         prev,
                         data.action,
                         data.payload
-                    )
-                );
+                    );
+
+                    if (!updated) {
+                        navigate("/public-rooms");
+                        return null;
+                    }
+
+                    return updated;
+                });
             });
 
-            if (!cancelled) {
-                esRef.current = eventSource;
-            } else {
+            if (cancelled) {
                 eventSource.close();
+                return;
             }
+
+            esRef.current = eventSource;
         };
 
         connect();
@@ -53,30 +89,45 @@ function Room() {
             cancelled = true;
             esRef.current?.close();
         };
-    }, []);
+    }, [navigate]);
 
-    const username = TokenService.getUsername();
 
-    const currentUser = roomData?.participants?.find(
-        (p) => p.username === username
-    );
+    useEffect(() => {
+        if (!gameParticipantId) return;
 
-    const isHost = currentUser?.position === 1;
+        const sendHeartbeat = async () => {
+            try {
+                await RoomService.lobbyHeartBeat(gameParticipantId);
+            } catch (err) {
+                console.error("Heartbeat failed:", err);
+            }
+        };
 
-    const gameParticipantId = currentUser?.id;
+        sendHeartbeat();
 
-    const participants = roomData?.participants ?? [];
+        const interval = setInterval(sendHeartbeat, 10000);
+
+        return () => clearInterval(interval);
+    }, [gameParticipantId]);
 
 
     if (loading || !roomData) {
-        return (
-            <RoomLoading />
-        );
+        return <RoomLoading />;
     }
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
+                <button
+                    className={"mainBackButton"}
+                    onClick={() => navigate(-1)}
+                >
+                    ← {t("dashboard.back")}
+                </button>
+
+                <br />
+                <br />
+
                 <div className={styles.header}>
                     <div>
                         <h1 className={styles.title}>
@@ -100,7 +151,7 @@ function Room() {
                         </h2>
 
                         <div className={styles.players}>
-                            {participants.map((p) => (
+                            {participants.map((p: any) => (
                                 <div key={p.id} className={styles.player}>
                                     <div className={styles.avatar} />
 
@@ -131,13 +182,15 @@ function Room() {
 
                             <div className={styles.setting}>
                                 <span>{t("room.mode")}</span>
-                                <strong>{t('game.' + roomData.type)}</strong>
+                                <strong>{t("game." + roomData.type)}</strong>
                             </div>
 
                             <div className={styles.setting}>
                                 <span>{t("room.visibility")}</span>
                                 <strong>
-                                    {roomData.isPublic ? "Public" : "Private"}
+                                    {roomData.isPublic
+                                        ? "Public"
+                                        : "Private"}
                                 </strong>
                             </div>
                         </div>
@@ -148,7 +201,6 @@ function Room() {
                             </button>
                         )}
                     </div>
-
                 </div>
             </div>
         </div>

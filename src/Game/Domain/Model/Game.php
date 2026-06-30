@@ -287,6 +287,13 @@ class Game
         $this->participants->add($participant);
     }
 
+    public function removeParticipant(GameParticipant $participant): self
+    {
+        $this->participants->removeElement($participant);
+
+        return $this;
+    }
+
     public function getGameType(): GameTypeEnum
     {
         return $this->gameType;

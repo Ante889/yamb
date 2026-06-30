@@ -152,6 +152,19 @@ select:focus {
         0 0 50px var(--glow-warm);
 }
 
+.mainBackButton {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--color-text-primary);
+
+    padding: 8px 14px;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
 .backButton {
     position: absolute;
     left: 0;

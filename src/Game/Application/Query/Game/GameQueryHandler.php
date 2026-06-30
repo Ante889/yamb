@@ -28,7 +28,7 @@ final readonly class GameQueryHandler
     {
         $game = $this->gameRepository->findById($command->gameId);
 
-        if (!$command->gameId) {
+        if (!$game) {
             throw GameException::gameNotFound();
         }
 

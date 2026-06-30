@@ -23,7 +23,7 @@ final readonly class GameValidator
         }
 
         if(!$exist) {
-            throw GameException::gameNotFound();
+            throw GameParticipantException::gameParticipantNotFound();
         }
     }
 }

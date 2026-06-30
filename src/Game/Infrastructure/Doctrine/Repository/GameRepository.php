@@ -2,6 +2,7 @@
 
 namespace App\Game\Infrastructure\Doctrine\Repository;
 
+use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Repository\GameRepositoryInterface;
 use App\Shared\Domain\Paginator\Paginator;
@@ -18,6 +19,15 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
     )
     {
         parent::__construct($registry, Game::class);
+    }
+
+    public function getLobbyStatus(): array
+    {
+        return  $this->createQueryBuilder('g')
+            ->where('g.gameStatus = :status')
+            ->setParameter('status', GameStatusEnum::LOBBY->value)
+            ->getQuery()
+            ->getResult();
     }
 
     public function findById(int $gameId): ?Game
@@ -50,7 +60,9 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
                 ->leftJoin('g.participants', 'gp')
                 ->leftJoin('gp.user', 'u')
                 ->where('g.isPublic = :isPublic')
+                ->andWhere('g.gameStatus = :gameStatus')
                 ->setParameter('isPublic', true)
+                ->setParameter('gameStatus', GameStatusEnum::LOBBY->value)
                 ->groupBy('g.id')
                 ->orderBy('g.id', 'DESC')
                 ->getQuery()
@@ -115,6 +127,11 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
         $this->getEntityManager()->persist($game);
 
         return $this;
+    }
+
+    public function remove(Game $game): void
+    {
+        $this->getEntityManager()->remove($game);
     }
 
     public function save(): void

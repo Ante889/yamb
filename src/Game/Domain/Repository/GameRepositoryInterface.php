@@ -10,6 +10,10 @@ use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
 
 interface GameRepositoryInterface
 {
+    /**
+     * @return array<int, Game>
+     */
+    public function getLobbyStatus(): array;
     public function deleteById(int $gameId): int;
 
     public function findById(int $gameId): ?Game;
@@ -29,5 +33,6 @@ interface GameRepositoryInterface
     public function findByJoinCode(string $joinCode): ?Game;
     public function existsByJoinCode(string $joinCode): bool;
     public function add(Game $game): self;
+    public function remove(Game $game): void;
     public function save(): void;
 }

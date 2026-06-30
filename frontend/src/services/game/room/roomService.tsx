@@ -2,7 +2,8 @@ import {
     createRoomApi,
     getPublicRoomsApi,
     joinRoomWithGameIdApi,
-    joinRoomWithJoinCodeApi
+    joinRoomWithJoinCodeApi,
+    lobbyHeartBeatApi
 } from "../../../api/game/roomApi.tsx";
 
 export const RoomService = {
@@ -17,5 +18,8 @@ export const RoomService = {
     },
     joinRoomWithGameId: async (gameId: string) => {
         return await joinRoomWithGameIdApi(gameId);
+    },
+    lobbyHeartBeat: async (gameParticipantId: string) => {
+        return await lobbyHeartBeatApi(gameParticipantId);
     }
 };
