@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Game\Infrastructure\State\Processor;
+namespace App\Game\Infrastructure\State\Processor\Create;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Game\Application\Command\Game\NewGameCommand;
-use App\Game\Application\Command\Game\NewGameCommandHandler;
+use App\Game\Application\Command\Game\Create\NewGameCommand;
+use App\Game\Application\Command\Game\Create\NewGameCommandHandler;
 use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Infrastructure\Mapper\GameResponseMapper;
 use App\Game\Infrastructure\Resource\Game\RoomResource;

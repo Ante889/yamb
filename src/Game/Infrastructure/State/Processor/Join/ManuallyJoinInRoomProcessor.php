@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Game\Infrastructure\State\Processor;
+namespace App\Game\Infrastructure\State\Processor\Join;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Game\Application\Command\Game\JoinWithJoinCodeCommand;
-use App\Game\Application\Command\Game\JoinWithJoinCodeCommandHandler;
+use App\Game\Application\Command\Game\Join\JoinWithGameIdCommand;
+use App\Game\Application\Command\Game\Join\JoinWithGameIdCommandHandler;
 use App\Game\Infrastructure\Mapper\GameResponseMapper;
 use App\Game\Infrastructure\Resource\Game\RoomResource;
 use App\Shared\Domain\Mercure\MercureServiceInterface;
@@ -15,12 +15,12 @@ use App\Shared\Domain\Mercure\MercureTopics;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-final readonly class JoinInRoomWithJoinCodeProcessor implements ProcessorInterface
+final readonly class ManuallyJoinInRoomProcessor implements ProcessorInterface
 {
     public function __construct(
-        private JoinWithJoinCodeCommandHandler $joinCodeCommandHandler,
-        private GameResponseMapper             $gameResponseMapper,
-        private MercureServiceInterface        $mercureService,
+        private JoinWithGameIdCommandHandler $joinWithGameIdCommandHandler,
+        private GameResponseMapper           $gameResponseMapper,
+        private MercureServiceInterface      $mercureService,
     )
     {
     }
@@ -39,9 +39,9 @@ final readonly class JoinInRoomWithJoinCodeProcessor implements ProcessorInterfa
             throw new \LogicException('Invalid data');
         }
 
-        $game = $this->joinCodeCommandHandler->handle(
-            new JoinWithJoinCodeCommand(
-                joinCode: $uriVariables['joinCode']
+        $game = $this->joinWithGameIdCommandHandler->handle(
+            new JoinWithGameIdCommand(
+                gameId: (int)$uriVariables['gameId']
             )
         );
 

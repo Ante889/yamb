@@ -23,6 +23,16 @@ final class GameException extends DomainException
         return new self('exception.game_is_full');
     }
 
+    public static function notEnoughPlayers(): self
+    {
+        return new self('exception.not_enough_players');
+    }
+
+    public static function somePlayerLeaveRoom(): self
+    {
+        return new self('exception.some_player_leave_room');
+    }
+
     public static function gameIsAlreadyStarted(): self
     {
         return new self('exception.game_already_started');

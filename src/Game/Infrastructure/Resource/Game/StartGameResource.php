@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Game\Infrastructure\Resource\Game;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
-use App\Game\Infrastructure\State\Processor\CreateSoloGameProcessor;
-use Symfony\Component\Validator\Constraints as Assert;
+use App\Game\Infrastructure\State\Processor\Create\CreateSoloGameProcessor;
 
 #[ApiResource(
     shortName: 'StartGameData',
@@ -23,9 +23,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 final readonly class StartGameResource
 {
     public function __construct(
-        #[Assert\NotBlank]
-        public ?int    $numberOfDice = null,
-        public ?string $gameType = null,
+        #[ApiProperty(readable: true, writable: false, identifier: true)]
+        public ?int $gameId = null
     )
     {
     }

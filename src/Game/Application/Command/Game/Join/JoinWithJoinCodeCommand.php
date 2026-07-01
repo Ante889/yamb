@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Game\Application\Command\Game;
+namespace App\Game\Application\Command\Game\Join;
 
 final readonly class JoinWithJoinCodeCommand
 {

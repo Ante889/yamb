@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Game\Application\Command\Game;
+namespace App\Game\Application\Command\Game\Join;
 
 use App\Game\Domain\Enum\GameParticipantStatusEnum;
 use App\Game\Domain\Exception\GameException;
@@ -28,7 +28,9 @@ final readonly class JoinWithGameIdCommandHandler
 
         if (!$game) throw GameException::gameNotFound();
 
-        $this->gameParticipantService->gameParticipantJoinChecks($game, $this->userService->getCurrentUser());
+        if($this->gameParticipantService->isAlreadyPlayerInRoom($game, $this->userService->getCurrentUser())) return $game;
+
+        $this->gameParticipantService->gameParticipantJoinChecks($game);
 
         $participant = GameParticipant::create(
             $this->userService->getCurrentUser(),

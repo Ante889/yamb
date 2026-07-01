@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Game\Domain\Service;
 
+use App\Game\Domain\Exception\GameParticipantException;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
@@ -27,11 +28,9 @@ final readonly class GameParticipantService
     {
     }
 
-    public function gameParticipantJoinChecks(Game $game, User $user): void
+    public function gameParticipantJoinChecks(Game $game): void
     {
         $this->joinGameParticipantValidator->isThereSpaceInTheRoom($game);
-
-        $this->joinGameParticipantValidator->isAlreadyPlayerAlreadyInRoom($game, $user);
 
         $this->joinGameParticipantValidator->gameAlreadyStarted($game);
     }
@@ -85,5 +84,16 @@ final readonly class GameParticipantService
         }
 
         $this->gameParticipantRepository->save();
+    }
+
+    public function isAlreadyPlayerInRoom(Game $game, User $user): bool
+    {
+        foreach ($game->getParticipants() as $participant) {
+            if ($user === $participant->getUser()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

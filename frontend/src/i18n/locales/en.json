@@ -24,7 +24,9 @@
         "game_is_finished": "Game is finished",
         "game_is_full": "Room is full",
         "game_participant_is_already_in_room": "You are already in room",
-        "game_already_started": "Game already started"
+        "game_already_started": "Game already started",
+        "not_enough_players": "Not enough players",
+        "some_player_leave_room": "The opponent has left the room. Wait a moment."
     },
     "Loading": "Loading...",
     "dashboard": {

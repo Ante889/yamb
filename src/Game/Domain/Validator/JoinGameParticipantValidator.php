@@ -19,15 +19,6 @@ final readonly class JoinGameParticipantValidator
         }
     }
 
-    public function isAlreadyPlayerAlreadyInRoom(Game $game, User $user): void
-    {
-        foreach ($game->getParticipants() as $participant) {
-            if ($user === $participant->getUser()) {
-                throw GameParticipantException::gameParticipantIsAlreadyInRoom();
-            }
-        }
-    }
-
     public function gameAlreadyStarted(Game $game): void
     {
         if($game->getGameStatus() !== GameStatusEnum::LOBBY->value) {

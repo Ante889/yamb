@@ -6,12 +6,9 @@ namespace App\Game\Infrastructure\State\Processor;
 
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
-use App\Game\Application\Command\Game\JoinWithGameIdCommand;
-use App\Game\Application\Command\Game\JoinWithGameIdCommandHandler;
 use App\Game\Application\Command\Game\LobbyHeartBeat\LobbyHeartBeatCommand;
 use App\Game\Application\Command\Game\LobbyHeartBeat\LobbyHeartBeatCommandHandler;
 use App\Game\Infrastructure\Resource\Game\GameParticipantResource;
-use App\Game\Infrastructure\Resource\Game\RoomResource;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

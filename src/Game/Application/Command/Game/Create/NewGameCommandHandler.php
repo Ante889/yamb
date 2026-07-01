@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Game\Application\Command\Game;
+namespace App\Game\Application\Command\Game\Create;
 
 use App\Game\Domain\Enum\GameParticipantStatusEnum;
-use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Enum\GameTypeEnum;
 use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Repository\GameRepositoryInterface;
 use App\Game\Domain\Service\JoinCodeGenerator;
 use App\User\Infrastructure\Security\AuthenticatedUserService;
-use Random\RandomException;
 
 final readonly class NewGameCommandHandler
 {

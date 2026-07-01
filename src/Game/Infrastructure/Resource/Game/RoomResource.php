@@ -9,9 +9,9 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
-use App\Game\Infrastructure\State\Processor\CreateRoomProcessor;
-use App\Game\Infrastructure\State\Processor\JoinInRoomWithJoinCodeProcessor;
-use App\Game\Infrastructure\State\Processor\ManuallyJoinInRoomProcessor;
+use App\Game\Infrastructure\State\Processor\Create\CreateRoomProcessor;
+use App\Game\Infrastructure\State\Processor\Join\JoinInRoomWithJoinCodeProcessor;
+use App\Game\Infrastructure\State\Processor\Join\ManuallyJoinInRoomProcessor;
 use App\Game\Infrastructure\State\Provider\PublicRoomsProvider;
 use Symfony\Component\Validator\Constraints as Assert;
 

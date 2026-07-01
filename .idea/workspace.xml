@@ -5,37 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/PublicRoomsLoadingPage.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Loading/PublicRoomsLoadingPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/LobbyHeartBeat/LobbyHeartBeatCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/LobbyHeartBeat/LobbyHeartBeatCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Dto/GameForDeleteResult.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameParticipant/AllParticipantsWithExpiredHeartBeatQueryHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Console/ClearRooms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ParticipantLobbyHeartBeatProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartDuelGameResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateDuelGameProcessor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/roomApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/roomApi.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/RoomList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/publicRooms/PublicRooms.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/room/roomService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/room/roomService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/styles/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/Game/GameQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/Game/GameQueryHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/GameParticipant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithGameIdCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithGameIdCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithJoinCodeCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithJoinCodeCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewGameCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewGameCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/GameParticipantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/GameParticipantService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/GameParticipantResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/GameParticipantResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/CacheKeyGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Infrastructure/Cache/CacheKeyGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/JoinGameParticipantValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/JoinGameParticipantValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateRoomProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateRoomProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateSoloGameProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/HeartBeatProcessor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/JoinInRoomWithJoinCodeProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Join/JoinInRoomWithJoinCodeProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ManuallyJoinInRoomProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Join/ManuallyJoinInRoomProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ParticipantLobbyHeartBeatProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ParticipantLobbyHeartBeatProcessor.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,29 +199,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "PHPUnit./var/www/yamb/vendor/autoload.php.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/var/www/yamb/src/Game/Application/Query/GameParticipant",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;PHPUnit./var/www/yamb/vendor/autoload.php.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/src/Game/Application/Command/Game&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/var/www/yamb/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -240,18 +233,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Query/GameParticipant" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game/LobbyHeartBeat" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
       <recent name="$PROJECT_DIR$/src/Shared/Infrastructure/Doctrine" />
-      <recent name="$PROJECT_DIR$/src/Shared/Domain/Paginator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create" />
       <recent name="$PROJECT_DIR$/frontend/src/services" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Game" />
       <recent name="$PROJECT_DIR$/frontend/src/pages/game" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
-      <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
     </key>
   </component>
   <component name="RunManager">
@@ -334,7 +327,9 @@
       <workItem from="1782718261085" duration="18217000" />
       <workItem from="1782764443580" duration="30000" />
       <workItem from="1782764744612" duration="606000" />
-      <workItem from="1782805224562" duration="19510000" />
+      <workItem from="1782805224562" duration="19747000" />
+      <workItem from="1782887335771" duration="6440000" />
+      <workItem from="1782911866071" duration="1326000" />
     </task>
     <servers />
   </component>
