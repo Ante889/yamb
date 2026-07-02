@@ -8,6 +8,7 @@ use App\Game\Domain\Model\GameParticipant;
 
 interface GameParticipantRepositoryInterface
 {
+    public function getByIdAndUserId(int $id, int $userId): ?GameParticipant;
     public function getDiceNumberById(int $id): ?int;
     public function findById(int $id): ?GameParticipant;
     public function deleteByGameId(int $gameId);

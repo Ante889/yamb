@@ -5,30 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartDuelGameResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateDuelGameProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewChatCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewChatCommandHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/EventListener/ChatCreatedListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/Chat/GetChatByGameQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/Chat/GetChatByGameQueryHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Event/ChatCreatedEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Chat.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/ChatRepositoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ChatRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Chat/ChatResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateNewChatProcessor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/GameChatProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Loading/RoomLoading.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Loading/RoomLoading.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithGameIdCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithGameIdCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithGameIdCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithJoinCodeCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/JoinWithJoinCodeCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Join/JoinWithJoinCodeCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewGameCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/NewGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Create/NewGameCommandHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Exception/GameException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Service/GameParticipantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Service/GameParticipantService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/JoinGameParticipantValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/JoinGameParticipantValidator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/RoomResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateRoomProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateRoomProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/CreateSoloGameProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create/CreateSoloGameProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/HeartBeatProcessor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/JoinInRoomWithJoinCodeProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Join/JoinInRoomWithJoinCodeProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ManuallyJoinInRoomProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Join/ManuallyJoinInRoomProcessor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ParticipantLobbyHeartBeatProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ParticipantLobbyHeartBeatProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Repository/GameParticipantRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/GameParticipantRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/GameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/GameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,29 +201,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PHPUnit./var/www/yamb/vendor/autoload.php.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/var/www/yamb/src/Game/Application/Command/Game&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;php.override.implement.member.chooser.php.doc&quot;: &quot;NONE&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/var/www/yamb/frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PHPUnit./var/www/yamb/vendor/autoload.php.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/var/www/yamb/src/Game/Application/Query/Chat",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "php.override.implement.member.chooser.php.doc": "NONE",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -233,11 +235,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Game/Application/Query/Chat" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Query/GameParticipant" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game/LobbyHeartBeat" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Loading" />
-      <recent name="$PROJECT_DIR$/src/Shared/Infrastructure/Doctrine" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create" />
@@ -329,7 +331,9 @@
       <workItem from="1782764744612" duration="606000" />
       <workItem from="1782805224562" duration="19747000" />
       <workItem from="1782887335771" duration="6440000" />
-      <workItem from="1782911866071" duration="1326000" />
+      <workItem from="1782911866071" duration="1357000" />
+      <workItem from="1782982493606" duration="192000" />
+      <workItem from="1782990847961" duration="10049000" />
     </task>
     <servers />
   </component>

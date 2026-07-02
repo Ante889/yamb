@@ -14,6 +14,17 @@ class GameParticipantRepository extends ServiceEntityRepository implements GameP
         parent::__construct($registry, GameParticipant::class);
     }
 
+    public function getByIdAndUserId(int $id, int $userId): ?GameParticipant
+    {
+        return $this->createQueryBuilder('gp')
+            ->andWhere('gp.id = :id and gp.user = :userId')
+            ->setParameter('id', $id)
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
     public function getDiceNumberById(int $id): ?int
     {
         $result = $this->createQueryBuilder('gp')

@@ -22,7 +22,6 @@
     border: 1px solid var(--border-subtle);
 
     box-shadow: 0 0 30px var(--glow-accent-soft);
-    backdrop-filter: blur(12px);
 }
 
 .spinner {

@@ -115,7 +115,13 @@
         "visibility": "Visibility",
         "gameSettings": "Game settings",
         "startGame": "Start game",
-        "loadingRoom": "Loading room..."
+        "loadingRoom": "Loading room...",
+        "hostNeedToStartGame": "Host player need to start game"
+    },
+    "chat": {
+        "send": "Send",
+        "chat": "Chat",
+        "typeAMessage": "Type a message..."
     },
     "error": {
         "404": "Page not exist."

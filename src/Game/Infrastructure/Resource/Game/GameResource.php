@@ -8,7 +8,6 @@ use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use App\Game\Infrastructure\State\Provider\GameProvider;
-use App\Game\Infrastructure\State\Provider\PublicRoomsProvider;
 
 #[ApiResource(
     shortName: 'GameData',

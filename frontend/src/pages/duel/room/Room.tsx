@@ -1,17 +1,18 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import {useNavigate, useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import styles from "./Room.module.css";
-import { useEffect, useRef, useState, useMemo } from "react";
-import { GameService } from "../../../services/game/game/gameService.tsx";
+import {useEffect, useMemo, useRef, useState} from "react";
+import {GameService} from "../../../services/game/game/gameService.tsx";
 import RoomLoading from "../../../components/Loading/RoomLoading.tsx";
-import { MercureService } from "../../../services/mercure/mercureService.tsx";
-import { applyEventForLobbyRoom } from "../../../mapper/roomMapper.tsx";
-import { TokenService } from "../../../api/token.tsx";
-import { RoomService } from "../../../services/game/room/roomService.tsx";
+import {MercureService} from "../../../services/mercure/mercureService.tsx";
+import {applyEventForLobbyRoom} from "../../../mapper/roomMapper.tsx";
+import {TokenService} from "../../../api/token.tsx";
+import {RoomService} from "../../../services/game/room/roomService.tsx";
+import Chat from "../../../components/Chat/Chat.tsx";
 
 function Room() {
-    const { id } = useParams();
-    const { t } = useTranslation();
+    const {id} = useParams();
+    const {t} = useTranslation();
     const navigate = useNavigate();
 
     const [roomData, setRoomData] = useState<any>(null);
@@ -112,7 +113,7 @@ function Room() {
 
 
     if (loading || !roomData) {
-        return <RoomLoading />;
+        return <RoomLoading/>;
     }
 
     return (
@@ -125,8 +126,8 @@ function Room() {
                     ← {t("dashboard.back")}
                 </button>
 
-                <br />
-                <br />
+                <br/>
+                <br/>
 
                 <div className={styles.header}>
                     <div>
@@ -153,7 +154,7 @@ function Room() {
                         <div className={styles.players}>
                             {participants.map((p: any) => (
                                 <div key={p.id} className={styles.player}>
-                                    <div className={styles.avatar} />
+                                    <div className={styles.avatar}/>
 
                                     <div className={styles.info}>
                                         <div className={styles.nameRow}>
@@ -195,12 +196,20 @@ function Room() {
                             </div>
                         </div>
 
-                        {isHost && (
+                        {isHost ? (
                             <button className="btn-primary fullSize">
                                 {t("room.startGame")}
                             </button>
+                        ) : (
+                            <button disabled={true} className="btn-primary fullSize">
+                                {t("room.hostNeedToStartGame")}
+                            </button>
                         )}
                     </div>
+                </div>
+                <br/>
+                <div className={styles.panel}>
+                    <Chat username={username} gameId={id}/>
                 </div>
             </div>
         </div>

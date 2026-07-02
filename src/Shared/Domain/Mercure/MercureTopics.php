@@ -9,9 +9,9 @@ final class MercureTopics
         return '/rooms';
     }
 
-    public static function gameParticipants(): string
+    public static function gameChat(int $gameId): string
     {
-        return '/game-participants';
+        return '/game/' . $gameId;
     }
 
     public static function gameParticipantsPattern(): string
