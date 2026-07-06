@@ -32,7 +32,7 @@ class ChatRepository extends ServiceEntityRepository implements ChatRepositoryIn
             ->innerJoin('gp.user', 'u')
             ->where('gp.game = :gameId')
             ->setParameter('gameId', $gameId)
-            ->orderBy('c.created', 'DESC')
+            ->orderBy('c.created', 'ASC')
             ->getQuery()
             ->getResult();
     }

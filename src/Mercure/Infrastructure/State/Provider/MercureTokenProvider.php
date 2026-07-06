@@ -24,10 +24,16 @@ final readonly class MercureTokenProvider implements ProviderInterface
      */
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): JsonResponse
     {
+        $gameId = $context['filters']['gameId'] ?? null;
+
         $topics = [
             MercureTopics::rooms(),
             MercureTopics::gameParticipantsPattern(),
         ];
+
+        if ($gameId) {
+            $topics[] = MercureTopics::gameChat((int) $gameId);
+        }
 
         return new JsonResponse([
             'token' => $this->tokenGenerator->generate($topics)

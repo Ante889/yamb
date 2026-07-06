@@ -19,6 +19,7 @@ function Room() {
     const [loading, setLoading] = useState(true);
 
     const esRef = useRef<EventSource | null>(null);
+    const hasLoadedRef = useRef(false)
 
     const username = TokenService.getUsername();
 
@@ -41,6 +42,7 @@ function Room() {
                 const res = await GameService.getGameById(id);
                 if (cancelled) return;
                 setRoomData(res);
+                hasLoadedRef.current = true;
             } catch (e) {
                 navigate("/room-list");
             } finally {
@@ -60,20 +62,9 @@ function Room() {
 
         const connect = async () => {
             const eventSource = await MercureService.subscribeToRooms((data) => {
-                setRoomData((prev) => {
-                    const updated = applyEventForLobbyRoom(
-                        prev,
-                        data.action,
-                        data.payload
-                    );
-
-                    if (!updated) {
-                        navigate("/public-rooms");
-                        return null;
-                    }
-
-                    return updated;
-                });
+                setRoomData((prev) =>
+                    applyEventForLobbyRoom(prev, data.action, data.payload)
+                );
             });
 
             if (cancelled) {
@@ -90,8 +81,13 @@ function Room() {
             cancelled = true;
             esRef.current?.close();
         };
-    }, [navigate]);
+    }, []);
 
+    useEffect(() => {
+        if (hasLoadedRef.current && roomData === null) {
+            navigate("/public-rooms");
+        }
+    }, [roomData, navigate]);
 
     useEffect(() => {
         if (!gameParticipantId) return;
@@ -209,7 +205,7 @@ function Room() {
                 </div>
                 <br/>
                 <div className={styles.panel}>
-                    <Chat username={username} gameId={id}/>
+                    <Chat username={username} gameId={id} gameParticipantId={gameParticipantId}/>
                 </div>
             </div>
         </div>
