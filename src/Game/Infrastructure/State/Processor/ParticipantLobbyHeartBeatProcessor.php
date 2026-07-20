@@ -11,6 +11,7 @@ use App\Game\Application\Command\Game\LobbyHeartBeat\LobbyHeartBeatCommandHandle
 use App\Game\Infrastructure\Resource\Game\GameParticipantResource;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class ParticipantLobbyHeartBeatProcessor implements ProcessorInterface
 {
@@ -42,6 +43,6 @@ final readonly class ParticipantLobbyHeartBeatProcessor implements ProcessorInte
 
         return new JsonResponse([
            'created' => true
-       ], 200);
+       ], Response::HTTP_OK);
     }
 }

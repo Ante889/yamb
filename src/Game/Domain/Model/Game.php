@@ -135,6 +135,21 @@ class Game
         $gameParticipant?->setStatus(GameParticipantStatusEnum::FINISH);
     }
 
+    public function startDuelGame(): void
+    {
+        $this->gameStatus = GameStatusEnum::IN_PROGRESS->value;
+        $this->startedAt = new \DateTimeImmutable();
+
+        /** @var GameParticipant $participant */
+        foreach ($this->participants as $participant) {
+            if($participant->getPosition() === 1) {
+                $participant?->setStatus(GameParticipantStatusEnum::ACTIVE_TURN);
+            } else {
+                $participant?->setStatus(GameParticipantStatusEnum::WAITING_TURN);
+            }
+        }
+    }
+
     public function getCreated(): ?DateTimeInterface
     {
         return $this->created;

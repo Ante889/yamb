@@ -10,6 +10,7 @@ use App\Game\Application\Command\Game\CancelSoloGameCommand;
 use App\Game\Application\Command\Game\CancelSoloGameCommandHandler;
 use App\Game\Infrastructure\Resource\Game\EndGameResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class EndSoloGameProcessor implements ProcessorInterface
 {
@@ -38,7 +39,7 @@ final readonly class EndSoloGameProcessor implements ProcessorInterface
 
         return new JsonResponse(
             ['status' => 'success'],
-            202
+            Response::HTTP_ACCEPTED
         );
     }
 }

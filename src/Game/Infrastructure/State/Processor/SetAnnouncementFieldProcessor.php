@@ -12,6 +12,7 @@ use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Infrastructure\Resource\ScoreEntry\ScoreEntryResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class SetAnnouncementFieldProcessor implements ProcessorInterface
 {
@@ -43,7 +44,7 @@ final readonly class SetAnnouncementFieldProcessor implements ProcessorInterface
             [
                 'row' => ScoreEntryFieldEnum::from($data->row)
             ],
-            201
+            Response::HTTP_CREATED
         );
     }
 }

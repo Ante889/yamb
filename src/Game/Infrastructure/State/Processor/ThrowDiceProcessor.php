@@ -13,6 +13,7 @@ use App\Game\Infrastructure\Resource\Game\DiceGameResource;
 use Psr\Cache\InvalidArgumentException;
 use Random\RandomException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class ThrowDiceProcessor implements ProcessorInterface
 {
@@ -50,7 +51,7 @@ final readonly class ThrowDiceProcessor implements ProcessorInterface
                 'dices' => $this->diceResponseMapper->mapDice($dice['dices']),
                 'throwNumber' => $dice['throwNumber']
             ],
-            200
+            Response::HTTP_OK
         );
     }
 }

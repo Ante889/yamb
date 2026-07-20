@@ -15,6 +15,7 @@ use App\Shared\Domain\Mercure\MercureServiceInterface;
 use App\Shared\Domain\Mercure\MercureTopics;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class CreateRoomProcessor implements ProcessorInterface
 {
@@ -63,7 +64,7 @@ final readonly class CreateRoomProcessor implements ProcessorInterface
 
         return new JsonResponse(
             $gameMapper,
-            201
+            Response::HTTP_CREATED
         );
     }
 }

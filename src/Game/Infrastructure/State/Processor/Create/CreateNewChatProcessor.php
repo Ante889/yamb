@@ -10,6 +10,7 @@ use App\Game\Application\Command\Game\Create\NewChatCommand;
 use App\Game\Application\Command\Game\Create\NewChatCommandHandler;
 use App\Game\Infrastructure\Resource\Chat\ChatResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class CreateNewChatProcessor implements ProcessorInterface
 {
@@ -39,7 +40,7 @@ final readonly class CreateNewChatProcessor implements ProcessorInterface
 
         return new JsonResponse(
             ['status' => 'success'],
-            202
+            Response::HTTP_ACCEPTED
         );
     }
 }

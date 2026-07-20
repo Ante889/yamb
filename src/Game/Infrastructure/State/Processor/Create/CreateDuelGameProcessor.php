@@ -10,6 +10,7 @@ use App\Game\Application\Command\Game\StartNewDuelGameCommand;
 use App\Game\Application\Command\Game\StartNewDuelGameCommandHandler;
 use App\Game\Infrastructure\Resource\Game\StartDuelGameResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class CreateDuelGameProcessor implements ProcessorInterface
 {
@@ -30,13 +31,14 @@ final readonly class CreateDuelGameProcessor implements ProcessorInterface
 
         $this->startNewDuelGameCommandHandler->handle(
             new StartNewDuelGameCommand(
-                gameId: $data->gameId
+                gameId: (int)$uriVariables['gameId']
             )
         );
 
-        return new JsonResponse(
-            $gameMapper,
-            201
-        );
+        return new JsonResponse([
+            'success' => true,
+            'message' => 'Duel game started successfully',
+            'gameId' => $uriVariables['gameId'],
+        ], Response::HTTP_CREATED);
     }
 }

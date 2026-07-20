@@ -14,6 +14,7 @@ use App\Game\Infrastructure\Resource\Game\StartGameResource;
 use Psr\Cache\InvalidArgumentException;
 use Random\RandomException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class CreateSoloGameProcessor implements ProcessorInterface
 {
@@ -52,7 +53,7 @@ final readonly class CreateSoloGameProcessor implements ProcessorInterface
 
         return new JsonResponse(
             $this->gameResponseMapper->fromEntity($game),
-            201
+            Response::HTTP_CREATED
         );
     }
 }

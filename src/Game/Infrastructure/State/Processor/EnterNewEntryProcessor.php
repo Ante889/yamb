@@ -14,6 +14,7 @@ use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
 use App\Game\Infrastructure\Resource\ScoreEntry\ScoreEntryResource;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final readonly class EnterNewEntryProcessor implements ProcessorInterface
 {
@@ -52,7 +53,7 @@ final readonly class EnterNewEntryProcessor implements ProcessorInterface
                 'point' => $this->enterNewEntryCommandHandler->handle($command),
                 'gameStatus' => $this->currentGameStatusQueryHandler->query($commandStatus)
             ],
-            201
+            Response::HTTP_CREATED
         );
     }
 }
