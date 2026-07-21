@@ -27,9 +27,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 final readonly class StartDuelGameResource
 {
     public function __construct(
-        #[Assert\NotBlank]
-        public ?int    $numberOfDice = null,
-        public ?string $gameType = null,
     )
     {
     }

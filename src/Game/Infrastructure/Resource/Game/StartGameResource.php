@@ -24,7 +24,9 @@ final readonly class StartGameResource
 {
     public function __construct(
         #[ApiProperty(readable: true, writable: false, identifier: true)]
-        public ?int $gameId = null
+        public ?int    $gameId = null,
+        public ?int    $numberOfDice = null,
+        public ?string $gameType = null,
     )
     {
     }

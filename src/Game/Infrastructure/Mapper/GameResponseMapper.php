@@ -27,6 +27,7 @@ final readonly class GameResponseMapper
             'type' => $game->getGameType(),
             'isPublic' => $game->isPublic(),
             'joinCode' => $game->getJoinCode(),
+            'status' => $game->getGameStatus(),
             'participants' => array_map(
                 fn(GameParticipant $participant): array => [
                     'id' => $participant->getId(),

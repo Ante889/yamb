@@ -5,16 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/api/game/chatApi.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/services/game/chat/chatService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/api/game/duelGameApi.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/duel/duelGame/DuelGame.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/game/duelGame/duelGameService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/mercure/mercureApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/mercure/mercureApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/soloGameApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/soloGameApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/room/Room.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/mercure/mercureService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/mercure/mercureService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ChatRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Doctrine/Repository/ChatRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/StartNewDuelGameCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Validator/GameValidator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Mapper/GameResponseMapper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartDuelGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartDuelGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/StartGameResource.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +32,9 @@
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
-      <execution />
+      <execution>
+        <execution />
+      </execution>
     </execution>
   </component>
   <component name="Git.Settings">
@@ -39,61 +49,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="6.371215205599743E-6" />
-      <entry key="MS500" value="0.09137859052500208" />
-      <entry key="S2" value="0.5498080746572757" />
-      <entry key="S5" value="0.7871988400733052" />
-      <entry key="S10" value="0.8872422668433388" />
-      <entry key="S30" value="0.960914916910577" />
-      <entry key="S60" value="0.9846003084421708" />
-      <entry key="M2" value="1.18808937001349" />
-      <entry key="M5" value="4.625690354628039" />
-      <entry key="M10" value="12.95616822579632" />
-      <entry key="M15" value="19.86598596835791" />
-      <entry key="M30" value="32.09582454649238" />
-      <entry key="H1" value="41.69314159974778" />
-      <entry key="H2" value="47.79316449139294" />
-      <entry key="H4" value="51.2449554056723" />
-      <entry key="D1" value="54.351860955869434" />
-      <entry key="W1" value="54.90684565230706" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000000004" />
+      <entry key="S5" value="1.000001429672085" />
+      <entry key="S10" value="1.0020686476862883" />
+      <entry key="S30" value="1.265031710944144" />
+      <entry key="S60" value="1.9091349742264736" />
+      <entry key="M2" value="3.0809649441479396" />
+      <entry key="M5" value="7.682203362219458" />
+      <entry key="M10" value="15.00430800541012" />
+      <entry key="M15" value="21.714590953904295" />
+      <entry key="M30" value="44.29662316402773" />
+      <entry key="H1" value="84.60735856811283" />
+      <entry key="H2" value="128.30358600931447" />
+      <entry key="H4" value="161.4956258398597" />
+      <entry key="D1" value="197.63707372201085" />
+      <entry key="W1" value="204.77970414950593" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0007351226104477" />
-      <entry key="MS500" value="1.2786983493869877" />
-      <entry key="S2" value="2.151204393252936" />
-      <entry key="S5" value="2.594823425086759" />
-      <entry key="S10" value="2.7845105693981624" />
-      <entry key="S30" value="3.009242972771492" />
-      <entry key="S60" value="3.3755954805371164" />
-      <entry key="M2" value="4.1246594040103055" />
-      <entry key="M5" value="7.759299418300143" />
-      <entry key="M10" value="13.840614566575208" />
-      <entry key="M15" value="17.885384975212116" />
-      <entry key="M30" value="23.889491615839347" />
-      <entry key="H1" value="27.958450153302614" />
-      <entry key="H2" value="30.342240232365718" />
-      <entry key="H4" value="31.634700027273293" />
-      <entry key="D1" value="32.76719413337289" />
-      <entry key="W1" value="32.96661063483526" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="3.9498412307128555E-281" />
+      <entry key="S2" value="7.927658061278944E-71" />
+      <entry key="S5" value="9.112928522606571E-29" />
+      <entry key="S10" value="9.546165996150796E-15" />
+      <entry key="S30" value="2.1213369762175314E-5" />
+      <entry key="S60" value="0.0046061859446136924" />
+      <entry key="M2" value="0.06900449266842726" />
+      <entry key="M5" value="0.4995326550565692" />
+      <entry key="M10" value="1.5303889347006783" />
+      <entry key="M15" value="2.717265133796264" />
+      <entry key="M30" value="7.5572760013366835" />
+      <entry key="H1" value="17.33886807925648" />
+      <entry key="H2" value="28.513742148885616" />
+      <entry key="H4" value="37.19668117712942" />
+      <entry key="D1" value="46.77088468763043" />
+      <entry key="W1" value="48.67445202828439" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.022569549600301594" />
-      <entry key="MS500" value="0.6324915731062695" />
-      <entry key="S2" value="2.1255712230732935" />
-      <entry key="S5" value="3.040422621038631" />
-      <entry key="S10" value="3.473927180423118" />
-      <entry key="S30" value="3.894948707919197" />
-      <entry key="S60" value="4.317674778572753" />
-      <entry key="M2" value="5.2865382854822185" />
-      <entry key="M5" value="12.36104880795181" />
-      <entry key="M10" value="26.771298105063828" />
-      <entry key="M15" value="37.72793077487572" />
-      <entry key="M30" value="55.96858548969885" />
-      <entry key="H1" value="69.64146775348254" />
-      <entry key="H2" value="78.12981775263307" />
-      <entry key="H4" value="82.87671823014307" />
-      <entry key="D1" value="87.1185444381419" />
-      <entry key="W1" value="87.87338280403449" />
+      <entry key="MS100" value="0.8066417592221263" />
+      <entry key="MS500" value="0.9579352182226964" />
+      <entry key="S2" value="0.9893137269832238" />
+      <entry key="S5" value="0.9957130237752777" />
+      <entry key="S10" value="0.9998331956889464" />
+      <entry key="S30" value="1.2603481946153454" />
+      <entry key="S60" value="1.9063618484592533" />
+      <entry key="M2" value="3.141428595559343" />
+      <entry key="M5" value="8.17176685638255" />
+      <entry key="M10" value="16.524793869613305" />
+      <entry key="M15" value="24.422348032490948" />
+      <entry key="M30" value="51.844362614207434" />
+      <entry key="H1" value="101.93706530308964" />
+      <entry key="H2" value="156.8102998060121" />
+      <entry key="H4" value="198.68784891908228" />
+      <entry key="D1" value="244.40704245776502" />
+      <entry key="W1" value="253.45402042151468" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php">
@@ -264,12 +274,14 @@
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "/var/www/yamb",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "php.override.implement.member.chooser.php.doc": "NONE",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "settings.editor.selected.configurable": "editor.preferences.reactOptions",
     "to.speed.mode.migration.done": "true",
     "ts.external.directory.path": "/var/www/yamb/frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
@@ -391,7 +403,8 @@
       <workItem from="1782982493606" duration="192000" />
       <workItem from="1782990847961" duration="10869000" />
       <workItem from="1783335924952" duration="9164000" />
-      <workItem from="1784552329743" duration="5859000" />
+      <workItem from="1784552329743" duration="6775000" />
+      <workItem from="1784622356606" duration="5945000" />
     </task>
     <servers />
   </component>

@@ -29,21 +29,20 @@ final readonly class StartNewDuelGameCommandHandler
 
         if (!$game) throw GameException::gameNotFound();
 
-        //fali provjera je li game već startao
+        $this->gameValidator->isDuelGameAlreadyStarted($game);
         $this->gameValidator->isPlayerInRoom($game, $this->userService->getCurrentUser());
         $this->gameValidator->checkNumberOfParticipants($game);
 
         $game->startDuelGame();
 
         $this->mercureService->create(
-            MercureTopics::startedGame($game->getId()),
+            MercureTopics::startedGame(),
             [
-                'id' => $game->getId(),
-                'status' => 'started'
+                'key' => $game->getId(),
+                'status' => GameStatusEnum::LOBBY->value
             ]
         );
 
         $this->gameRepository->save();
-
     }
 }

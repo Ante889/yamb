@@ -6,6 +6,20 @@ export const MercureService = {
         return await mercureApi(gameId);
     },
 
+    async subscribeToGameStarted(callback: (data: any) => void): Promise<EventSource> {
+        const { token } = await this.getMercureToken();
+
+        const url = new URL(BASE_MERCURE_URL);
+        url.searchParams.append("topic", "/started-game");
+        url.searchParams.append("authorization", token);
+
+        const es = new EventSource(url);
+
+        es.onmessage = (event) => callback(JSON.parse(event.data));
+
+        return es;
+    },
+
     async subscribeToRooms(callback: (data: any) => void): Promise<EventSource> {
         const { token } = await this.getMercureToken();
 

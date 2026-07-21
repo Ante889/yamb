@@ -5,10 +5,13 @@ import {useEffect, useMemo, useRef, useState} from "react";
 import {GameService} from "../../../services/game/game/gameService.tsx";
 import RoomLoading from "../../../components/Loading/RoomLoading.tsx";
 import {MercureService} from "../../../services/mercure/mercureService.tsx";
-import {applyEventForLobbyRoom} from "../../../mapper/roomMapper.tsx";
+import {applyEventForGameStarted, applyEventForLobbyRoom} from "../../../mapper/roomMapper.tsx";
 import {TokenService} from "../../../api/token.tsx";
 import {RoomService} from "../../../services/game/room/roomService.tsx";
 import Chat from "../../../components/Chat/Chat.tsx";
+import toast from "react-hot-toast";
+import {DuelGameService} from "../../../services/game/duelGame/duelGameService.tsx";
+import {IN_PROGRESS_GAME_STATUS} from "../../../constants/GameStatus.tsx";
 
 function Room() {
     const {id} = useParams();
@@ -43,6 +46,9 @@ function Room() {
                 if (cancelled) return;
                 setRoomData(res);
                 hasLoadedRef.current = true;
+                if(res.status === IN_PROGRESS_GAME_STATUS) {
+                    navigate("/duel-game/" + id);
+                }
             } catch (e) {
                 navigate("/room-list");
             } finally {
@@ -59,16 +65,33 @@ function Room() {
 
     useEffect(() => {
         let cancelled = false;
+        let eventSource: EventSource | null;
+        let eventSourceStartGame: EventSource;
 
         const connect = async () => {
-            const eventSource = await MercureService.subscribeToRooms((data) => {
-                setRoomData((prev) =>
-                    applyEventForLobbyRoom(prev, data.action, data.payload)
-                );
-            });
+            const [es, esGame] = await Promise.all([
+                MercureService.subscribeToRooms((data) => {
+                    setRoomData((prev: any) =>
+                        applyEventForLobbyRoom(prev, data.action, data.payload)
+                    );
+                }),
+                MercureService.subscribeToGameStarted((data) => {
+                    setRoomData((prev: any) => {
+                        const shouldNavigate = applyEventForGameStarted(prev, data.action, data.payload);
+                        if (shouldNavigate) {
+                            navigate("/duel-game/" + id);
+                        }
+                        return prev;
+                    });
+                }),
+            ]);
+
+            eventSource = es;
+            eventSourceStartGame = esGame;
 
             if (cancelled) {
                 eventSource.close();
+                eventSourceStartGame.close();
                 return;
             }
 
@@ -79,9 +102,10 @@ function Room() {
 
         return () => {
             cancelled = true;
-            esRef.current?.close();
+            eventSource?.close();
+            eventSourceStartGame?.close();
         };
-    }, []);
+    }, [id]);
 
     useEffect(() => {
         if (hasLoadedRef.current && roomData === null) {
@@ -111,6 +135,16 @@ function Room() {
     if (loading || !roomData) {
         return <RoomLoading/>;
     }
+
+    const handleStart = async () => {
+        const loadingToast = toast.loading(t("loading"));
+
+        try {
+            await DuelGameService.startGame(id);
+        } finally {
+            toast.dismiss(loadingToast);
+        }
+    };
 
     return (
         <div className={styles.wrapper}>
@@ -193,7 +227,12 @@ function Room() {
                         </div>
 
                         {isHost ? (
-                            <button className="btn-primary fullSize">
+                            <button
+                                className="btn-primary fullSize"
+                                onClick={() => {
+                                    handleStart()
+                                }}
+                            >
                                 {t("room.startGame")}
                             </button>
                         ) : (

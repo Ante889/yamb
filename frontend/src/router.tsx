@@ -13,6 +13,7 @@ import RoomList from "./pages/duel/RoomList.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PublicRooms from "./pages/duel/publicRooms/PublicRooms.tsx";
 import Room from "./pages/duel/room/Room.tsx";
+import DuelGame from "./pages/duel/duelGame/DuelGame.tsx";
 
 const routes: RouteObject[] = [
     {
@@ -68,6 +69,10 @@ const routes: RouteObject[] = [
                     {
                         path: "/room/:id",
                         element: <Room />,
+                    },
+                    {
+                        path: "/duel-game/:id",
+                        element: <DuelGame />,
                     },
                     {
                         path: "*",

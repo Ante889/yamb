@@ -14,9 +14,9 @@ final class MercureTopics
         return '/game/' . $gameId;
     }
 
-    public static function startedGame(int $gameId): string
+    public static function startedGame(): string
     {
-        return '/started-game/' . $gameId;
+        return '/started-game';
     }
 
     public static function gameParticipantsPattern(): string

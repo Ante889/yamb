@@ -70,3 +70,20 @@ export function applyEventForLobbyRoom(
 
     return prevRoom;
 }
+
+export function applyEventForGameStarted(
+    prevRoom: any,
+    action: string,
+    incoming: any
+): any {
+    if (!prevRoom || prevRoom.key === incoming.key) {
+        console.log('test');
+        if (action !== "created") {
+            return null
+        }
+
+        return true;
+    }
+
+    return null;
+}
