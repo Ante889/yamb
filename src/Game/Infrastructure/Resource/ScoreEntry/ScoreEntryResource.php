@@ -7,13 +7,14 @@ namespace App\Game\Infrastructure\Resource\ScoreEntry;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
 use App\Game\Application\Dto\ScoreSheetResult;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
-use App\Game\Infrastructure\State\Processor\EndSoloGameProcessor;
 use App\Game\Infrastructure\State\Processor\EnterNewEntryProcessor;
 use App\Game\Infrastructure\State\Processor\SetAnnouncementFieldProcessor;
+use App\Game\Infrastructure\State\Provider\ScoreDuelEntryByGameProvider;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
 
@@ -26,6 +27,15 @@ use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
             security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             output: ScoreSheetResult::class,
             provider: ScoreEntryByGameParticipantProvider::class
+        ),
+        new Get(
+            uriTemplate: '/score-duel-entry-by-game/{gameId}',
+            uriVariables: [
+                'gameId' => new Link(fromProperty: 'gameId')
+            ],
+            description: 'Get score entry data by for duel by game',
+            security: "is_granted('ROLE_USER')",
+            provider: ScoreDuelEntryByGameProvider::class
         ),
         new Post(
             uriTemplate: '/enter-new-entry/{gameParticipantId}',

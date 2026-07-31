@@ -29,6 +29,5 @@ final readonly class ScoreEntryByGameParticipantProvider implements ProviderInte
                 gameParticipantId: $uriVariables['gameParticipantId']
             )
         );
-
     }
 }

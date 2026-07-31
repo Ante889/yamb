@@ -9,7 +9,6 @@ use App\Game\Application\Query\GameStatus\CurrentGameStatusQuery;
 use App\Game\Application\Query\GameStatus\CurrentGameStatusQueryHandler;
 use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Exception\GameParticipantException;
-use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Repository\GameRepositoryInterface;
 use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use App\Game\Domain\Service\ScoreSheetCalculator;

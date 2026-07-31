@@ -6,6 +6,12 @@ export const scoreEntryApi = async (gameParticipantId) => {
     return res.data;
 };
 
+export const scoreDuelEntryApi = async (gameId) => {
+    const res = await api.get("/score-duel-entry-by-game/" + gameId);
+
+    return res.data;
+};
+
 export const newEntryApi = async (gameParticipantId, data) => {
     const res = await api.post("/enter-new-entry/" + gameParticipantId, data);
 

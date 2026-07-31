@@ -65,6 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         mappedBy: 'user',
         cascade: ['persist'],
         orphanRemoval: true
+
     )]
     private Collection $participants;
 
