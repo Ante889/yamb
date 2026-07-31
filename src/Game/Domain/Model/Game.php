@@ -97,7 +97,6 @@ class Game
         targetEntity: GameParticipant::class,
         mappedBy: 'game',
         cascade: ['persist'],
-        fetch: 'EAGER',
         orphanRemoval: true
     )]
     private Collection $participants;

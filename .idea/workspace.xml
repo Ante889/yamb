@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Dto/GameParticipantResult.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreDuelEntryByGameQuery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreDuelEntryByGameQueryHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreDuelEntryByGameProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/scoreEntryApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/scoreEntryApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/duelGame/DuelGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/duelGame/DuelGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/scoreEntry/scoreEntryService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/scoreEntry/scoreEntryService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreEntryByGameParticipantQueryHandler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Provider/ScoreEntryByGameParticipantProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Model/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,7 +403,7 @@
       <workItem from="1784622356606" duration="9093000" />
       <workItem from="1784703735817" duration="931000" />
       <workItem from="1784706569162" duration="220000" />
-      <workItem from="1785487459301" duration="14926000" />
+      <workItem from="1785487459301" duration="15005000" />
     </task>
     <servers />
   </component>
