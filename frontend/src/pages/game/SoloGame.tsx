@@ -8,6 +8,7 @@ import { PlusGame } from "../../components/Game/typesOfGame/PlusGame";
 import styles  from "./SoloGame.module.css";
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 import {CLASSIC_GAME_TYPE, SINGLE_COLUMN_GAME_TYPE, YAMB_PLUS_GAME_TYPE} from "../../constants/GameType.tsx";
+import {SINGLE_GAME} from "../../constants/GamePlayerTypes.tsx";
 
 export default function SoloGame() {
     const { id } = useParams();
@@ -49,17 +50,17 @@ export default function SoloGame() {
     switch (gameData.gameType) {
         case SINGLE_COLUMN_GAME_TYPE:
             return <SingleColumnGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal} type={SINGLE_GAME}
             />;
 
         case CLASSIC_GAME_TYPE:
             return <ClassicGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal} type={SINGLE_GAME}
             />;
 
         case YAMB_PLUS_GAME_TYPE:
             return <PlusGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
+                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal} type={SINGLE_GAME}
             />;
 
         default:

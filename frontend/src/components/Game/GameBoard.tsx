@@ -20,6 +20,8 @@ type GameBoardProps = {
     columns: GameColumnDefinition[];
     styles: Record<string, string>;
     participantId: number;
+    finishedModal: boolean,
+    setFinishedModal: any
 };
 
 

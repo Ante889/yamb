@@ -89,6 +89,36 @@
     opacity: 1;
 }
 
+.playerTitle {
+    text-align: center;
+    margin: 10px 0 18px;
+    padding: 12px;
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 0 12px var(--glow-accent-soft);
+}
+
+.playerTitle .username {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    letter-spacing: 0.5px;
+}
+
+.playerTitle .status {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    background: var(--border-default);
+}
+
 @media (max-width: 480px) {
     .sheetWrap {
         padding: 10px;

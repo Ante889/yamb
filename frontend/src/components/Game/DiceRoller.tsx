@@ -12,8 +12,9 @@ type Dice = {
 type Props = {
     diceCount?: number;
     dices?: number[];
-    throwNumber?: number;
-    onRollComplete?: (values: number[]) => void;
+    throwCount?: number;
+    setThrowCount?: any;
+    gameParticipantId?: number;
 };
 
 const MAX_THROWS = 3;
@@ -22,7 +23,8 @@ export function DiceRoller({
                                diceCount = 5,
                                dices = [],
                                throwCount,
-                               setThrowCount
+                               setThrowCount,
+                               gameParticipantId = null
                            }: Props) {
     const { t } = useTranslation();
     const { id } = useParams();
@@ -68,7 +70,7 @@ export function DiceRoller({
         const heldPositions = dice.map(d => d.held);
 
         await ThrowService.throwDiceGame(
-            id,
+            gameParticipantId ?? id,
             heldPositions
         ).then((res) =>{
             setTimeout(() => {

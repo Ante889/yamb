@@ -8,10 +8,11 @@ import {SingleColumnGame} from "../../../components/Game/typesOfGame/SingleColum
 import {ClassicGame} from "../../../components/Game/typesOfGame/ClassicGame.tsx";
 import {PlusGame} from "../../../components/Game/typesOfGame/PlusGame.tsx";
 import styles  from "../../game/SoloGame.module.css";
+import {DUEL_GAME} from "../../../constants/GamePlayerTypes.tsx";
 
 function DuelGame() {
     const { id } = useParams();
-    const [gameData, setGameData] = useState<any>(null);
+    const [gameData, setGameData] = useState<any[] | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [finishedModal, setFinishedModal] = useState(false);
 
@@ -22,12 +23,10 @@ function DuelGame() {
             setIsLoading(true);
 
             try {
-                const response =
-                    await ScoreEntryService.getScoreDuelEntryByGame(Number(id));
-
+                const response = await ScoreEntryService.getScoreDuelEntryByGame(Number(id));
                 setGameData(response);
 
-                if (response['status'] === FINISHED_GAME_STATUS) {
+                if (Array.isArray(response) && response.some((p: any) => p.status === FINISHED_GAME_STATUS)) {
                     setFinishedModal(true);
                 }
             } finally {
@@ -38,31 +37,56 @@ function DuelGame() {
         loadGameData();
     }, [id]);
 
-    console.log(gameData)
+    if (isLoading) return <JambLoading />;
 
-    if (isLoading) {
-        return <JambLoading />;
-    }
-
-    if (!gameData) {
+    if (!gameData || !Array.isArray(gameData) || gameData.length === 0) {
         return null;
     }
 
-    switch (gameData.gameType) {
+    const gameType = gameData[0].gameType;
+
+    switch (gameType) {
         case SINGLE_COLUMN_GAME_TYPE:
-            return <SingleColumnGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
-            />;
+            return (
+                <>
+                    <SingleColumnGame
+                        gameData={gameData}
+                        styles={styles}
+                        participantId={null}
+                        finishedModal={finishedModal}
+                        setFinishedModal={setFinishedModal}
+                        type={DUEL_GAME}
+                    />
+                </>
+            );
 
         case CLASSIC_GAME_TYPE:
-            return <ClassicGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
-            />;
+            return (
+                <>
+                    <ClassicGame
+                        gameData={gameData}
+                        styles={styles}
+                        participantId={null}
+                        finishedModal={finishedModal}
+                        setFinishedModal={setFinishedModal}
+                        type={DUEL_GAME}
+                    />
+                </>
+            );
 
         case YAMB_PLUS_GAME_TYPE:
-            return <PlusGame
-                gameData={gameData} styles={styles} participantId={id} finishedModal={finishedModal} setFinishedModal={setFinishedModal}
-            />;
+            return (
+                <>
+                    <PlusGame
+                        gameData={gameData}
+                        styles={styles}
+                        participantId={null}
+                        finishedModal={finishedModal}
+                        setFinishedModal={setFinishedModal}
+                        type={DUEL_GAME}
+                    />
+                </>
+            );
 
         default:
             return null;

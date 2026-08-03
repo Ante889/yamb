@@ -75,7 +75,8 @@
         "total": "Total",
         "CLASSIC": "Classic",
         "YAMB_PLUS": "Yamb plus",
-        "SINGLE_COLUMN": "Single column"
+        "SINGLE_COLUMN": "Single column",
+        "currentlyPlaying": "Currently playing"
     },
     "leaderboard": {
         "SINGLE_COLUMN": "Single column",
