@@ -103,7 +103,8 @@ export function GameDuelBoard({
         }
 
         const response =
-            await ScoreEntryService.newScoreEntryByParticipant(
+            await ScoreEntryService.newScoreDuelEntryByParticipant(
+                id,
                 participantId,
                 row,
                 column
