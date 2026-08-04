@@ -12,6 +12,7 @@ use ApiPlatform\Metadata\Post;
 use App\Game\Application\Dto\ScoreSheetResult;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Infrastructure\State\Processor\EnterNewDuelEntryProcessor;
 use App\Game\Infrastructure\State\Processor\EnterNewEntryProcessor;
 use App\Game\Infrastructure\State\Processor\SetAnnouncementFieldProcessor;
 use App\Game\Infrastructure\State\Provider\ScoreDuelEntryByGameProvider;
@@ -42,6 +43,27 @@ use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
             description: 'Enter a new entry',
             security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             processor: EnterNewEntryProcessor::class
+        ),
+
+
+        new Get(
+            uriTemplate: '/score-duel-entry-by-game/{gameId}',
+            uriVariables: [
+                'gameId' => new Link(fromProperty: 'gameId')
+            ],
+            description: 'Get score entry data by for duel by game',
+            security: "is_granted('ROLE_USER')",
+            provider: ScoreDuelEntryByGameProvider::class
+        ),
+        new Post(
+            uriTemplate: '/enter-new-duel-entry/{gameParticipantId}/{gameId}',
+            uriVariables: [
+                'gameParticipantId' => new Link(fromProperty: 'gameParticipantId'),
+                'gameId' => new Link(fromProperty: 'gameId')
+            ],
+            description: 'Enter a new duel entry',
+            security: "is_granted('ROLE_USER')",
+            processor: EnterNewDuelEntryProcessor::class
         ),
         new Post(
             uriTemplate: '/set-announcement/{gameParticipantId}',

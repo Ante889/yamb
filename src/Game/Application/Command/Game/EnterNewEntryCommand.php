@@ -6,13 +6,16 @@ namespace App\Game\Application\Command\Game;
 
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Enum\ScoreEntryFieldEnum;
+use App\Game\Domain\Model\Game;
 
 final readonly class EnterNewEntryCommand
 {
     public function __construct(
         public int                  $gameParticipantId,
         public ScoreEntryColumnEnum $column,
-        public ScoreEntryFieldEnum  $row
+        public ScoreEntryFieldEnum  $row,
+        public bool                 $isDuel = false,
+        public ?Game                $game = null,
     )
     {
     }

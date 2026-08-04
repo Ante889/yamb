@@ -3,6 +3,7 @@ import styles from "./DiceRoller.module.css";
 import { useTranslation } from "react-i18next";
 import { ThrowService } from "../../services/game/throwDice/throwService.tsx";
 import { useParams } from "react-router-dom";
+import {DUEL_GAME, SINGLE_GAME} from "../../constants/GamePlayerTypes.tsx";
 
 type Dice = {
     value: number | null;
@@ -14,7 +15,10 @@ type Props = {
     dices?: number[];
     throwCount?: number;
     setThrowCount?: any;
-    gameParticipantId?: number;
+    type: string;
+    gameParticipantId?: any;
+    me?: any,
+    activePlayer?: any
 };
 
 const MAX_THROWS = 3;
@@ -24,7 +28,10 @@ export function DiceRoller({
                                dices = [],
                                throwCount,
                                setThrowCount,
-                               gameParticipantId = null
+                               type,
+                               gameParticipantId = null,
+                               me = null,
+                               activePlayer = null
                            }: Props) {
     const { t } = useTranslation();
     const { id } = useParams();
@@ -63,6 +70,8 @@ export function DiceRoller({
     };
 
     const rollDice = async () => {
+        if (type === DUEL_GAME && activePlayer.userId !== me.userId) return;
+
         if (rolling || rollsLeft <= 0) return;
 
         setRolling(true);
@@ -126,15 +135,17 @@ export function DiceRoller({
                 ))}
             </div>
 
-            <div className="fullSize">
-                <button
-                    className="btn btn-primary"
-                    onClick={rollDice}
-                    disabled={rolling || rollsLeft <= 0}
-                >
-                    {t("game.throwDice")}
-                </button>
-            </div>
+            {type === SINGLE_GAME || (type === DUEL_GAME && activePlayer.userId === me.userId)  && (
+                <div className="fullSize">
+                    <button
+                        className="btn btn-primary"
+                        onClick={rollDice}
+                        disabled={rolling || rollsLeft <= 0}
+                    >
+                        {t("game.throwDice")}
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

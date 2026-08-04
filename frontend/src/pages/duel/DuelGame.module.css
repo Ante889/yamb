@@ -1,0 +1,181 @@
+.tableWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.panel {
+    flex: 1 1 340px;
+    max-width: 420px;
+    align-self: center;
+}
+
+.sheetWrap {
+    padding: 45px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    color: var(--color-text-primary);
+}
+
+.sheet {
+    max-width: 520px;
+    margin: 0;
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.cell {
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 6px;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.announcedCell {
+    background-color: var(--color-accent-2);
+    font-weight: bold;
+}
+
+.cat {
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+}
+
+.headerCell {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    background: var(--border-default);
+}
+
+.totalCell {
+    border-color: var(--color-accent-1);
+    box-shadow: 0 0 10px var(--glow-accent-soft);
+    font-weight: 700;
+}
+
+.grandCell {
+    background: var(--gradient-primary);
+    color: black;
+    font-weight: 800;
+}
+
+.rule {
+    position: relative;
+    font-size: 20px;
+    cursor: help;
+}
+
+.rule::after {
+    content: attr(data-rule);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+
+.rule:hover::after {
+    opacity: 1;
+}
+
+.playerTitle {
+    text-align: center;
+    margin: 10px 0 18px;
+    padding: 12px;
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    box-shadow: 0 0 12px var(--glow-accent-soft);
+}
+
+.playerTitle .username {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    letter-spacing: 0.5px;
+}
+
+.playerTitle .status {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    background: var(--border-default);
+}
+
+@media (max-width: 480px) {
+    .sheetWrap {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+        color: var(--color-text-primary);
+    }
+    .tableWrapper {
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px;
+    }
+
+    .panel {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .sheetWrap {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        overflow-x: hidden;
+        color: var(--color-text-primary);
+    }
+    .sheet {
+        width: 100%;
+        padding: 6px;
+    }
+
+    .cell {
+        padding: 4px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .row {
+        gap: 3px;
+    }
+
+    .rule {
+        font-size: 18px;
+    }
+}

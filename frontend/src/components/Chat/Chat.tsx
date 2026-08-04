@@ -14,9 +14,10 @@ type Message = {
 
 interface Props {
     username: string;
-    gameId: string;
-    gameParticipantId: string;
+    gameId: any;
+    gameParticipantId: any;
 }
+
 
 function Chat({ username, gameId, gameParticipantId }: Props) {
     const { t } = useTranslation();
@@ -24,6 +25,41 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
     const [text, setText] = useState("");
     const esRef = useRef<EventSource | null>(null);
     const bottomRef = useRef<HTMLDivElement | null>(null);
+    const audioCtxRef = useRef<AudioContext | null>(null);
+
+    const getAudioContext = () => {
+        if (!audioCtxRef.current) {
+            audioCtxRef.current = new (window.AudioContext ||
+                (window as any).webkitAudioContext)();
+        }
+        return audioCtxRef.current;
+    };
+
+    const playNotificationSound = () => {
+        try {
+            const ctx = getAudioContext();
+
+            if (ctx.state === "suspended") {
+                ctx.resume();
+            }
+
+            const oscillator = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            oscillator.type = "sine";
+            oscillator.frequency.setValueAtTime(880, ctx.currentTime); // A5 ton
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+
+            oscillator.connect(gain);
+            gain.connect(ctx.destination);
+
+            oscillator.start();
+            oscillator.stop(ctx.currentTime + 0.3);
+        } catch (error) {
+            console.error("Ne mogu odsvirati zvuk:", error);
+        }
+    };
 
     useEffect(() => {
         let ignore = false;
@@ -56,6 +92,14 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
                 (data) => {
                     if (!mounted) return;
 
+                    if (
+                        data.action === "created" &&
+                        data.payload?.username &&
+                        data.payload.username !== username
+                    ) {
+                        playNotificationSound();
+                    }
+
                     setMessages((prev) =>
                         applyEventForChat(prev, data.action, data.payload)
                     );
@@ -77,7 +121,7 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
             esRef.current?.close();
             esRef.current = null;
         };
-    }, [gameId]);
+    }, [gameId, username]);
 
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -85,6 +129,8 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
 
     const sendMessage = async () => {
         if (!text.trim()) return;
+
+        getAudioContext();
 
         try {
             await ChatService.setChatByGameParticipant(
@@ -130,6 +176,7 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                     onKeyDown={handleKeyDown}
+                    onFocus={getAudioContext}
                     placeholder={t("chat.typeAMessage")}
                 />
 

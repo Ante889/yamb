@@ -7,7 +7,7 @@ import {CLASSIC_GAME_TYPE, SINGLE_COLUMN_GAME_TYPE, YAMB_PLUS_GAME_TYPE} from ".
 import {SingleColumnGame} from "../../../components/Game/typesOfGame/SingleColumnGame.tsx";
 import {ClassicGame} from "../../../components/Game/typesOfGame/ClassicGame.tsx";
 import {PlusGame} from "../../../components/Game/typesOfGame/PlusGame.tsx";
-import styles  from "../../game/SoloGame.module.css";
+import styles  from "../DuelGame.module.css";
 import {DUEL_GAME} from "../../../constants/GamePlayerTypes.tsx";
 
 function DuelGame() {

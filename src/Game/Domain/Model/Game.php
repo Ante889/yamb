@@ -150,6 +150,17 @@ class Game
         }
     }
 
+    public function changePlayerTurn(GameParticipant $gameParticipant): void
+    {
+        foreach ($this->getParticipants() as $participant) {
+            if($participant === $gameParticipant) {
+                $participant->setStatus(GameParticipantStatusEnum::WAITING_TURN);
+            } else {
+                $participant->setStatus(GameParticipantStatusEnum::ACTIVE_TURN);
+            }
+        }
+    }
+
     public function getCreated(): ?DateTimeInterface
     {
         return $this->created;

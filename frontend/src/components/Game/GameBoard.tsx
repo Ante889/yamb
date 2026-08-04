@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
+import {SINGLE_GAME} from "../../constants/GamePlayerTypes.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -159,6 +160,7 @@ export function GameBoard({
                     dices={localGameData?.dices ?? []}
                     throwCount={throwCount}
                     setThrowCount={setThrowCount}
+                    type={SINGLE_GAME}
                 />
 
                 <div className={styles.row}>

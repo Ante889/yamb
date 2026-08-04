@@ -5,10 +5,14 @@ import {useTranslation} from "react-i18next";
 import {SoloGameService} from "../../services/game/soloGame/soloGameService.tsx";
 import {ScoreEntryService} from "../../services/game/scoreEntry/scoreEntryService.tsx";
 import {GameBoardService} from "../../services/game/gameBoard/gameBoardService.tsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
+import {getCurrentUserData} from "../../api/user/userApi.tsx";
+import {TokenService} from "../../api/token.tsx";
+import Chat from "../Chat/Chat.tsx";
+import {DUEL_GAME} from "../../constants/GamePlayerTypes.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -40,7 +44,6 @@ type GameBoardProps = {
     setFinishedModal: any;
 };
 
-
 export function GameDuelBoard({
                                   gameData,
                                   columns,
@@ -62,6 +65,13 @@ export function GameDuelBoard({
         (player) => player.moveStatus === "ACTIVE_TURN"
     );
 
+    const me = localGameData?.find(
+        (player) => player.username === TokenService.getUsername()
+    );
+
+    console.log(getCurrentUserData())
+
+    const {id} = useParams();
     const participantId = activePlayer?.participantId ?? null;
     const grid = activePlayer?.grid ?? {};
     const upperTotals = activePlayer?.upperTotals ?? {};
@@ -140,7 +150,7 @@ export function GameDuelBoard({
         }
     };
 
-    const renderRow = (rowName: string, index: int) => (
+    const renderRow = (rowName: string, index: number) => (
         <div
             className={styles.row}
             key={rowName + '_' + index}
@@ -178,6 +188,7 @@ export function GameDuelBoard({
     );
 
     return (
+
         <div className={styles.tableWrapper}>
             <div className={styles.sheet}>
                 <div className={styles.playerTitle}>
@@ -191,7 +202,10 @@ export function GameDuelBoard({
                     dices={activePlayer?.dices ?? []}
                     throwCount={throwCount}
                     setThrowCount={setThrowCount}
+                    type={DUEL_GAME}
                     gameParticipantId={participantId}
+                    me={me}
+                    activePlayer={activePlayer}
                 />
 
                 <div className={styles.row}>
@@ -295,13 +309,13 @@ export function GameDuelBoard({
                         {totalPoints}
                     </div>
                 </div>
-
                 <button
                     className="btn btn-error"
                     onClick={() => setShowExit(true)}
                 >
                     {t("game.exit")}
                 </button>
+
             </div>
 
             <ConfirmExitModal
@@ -317,6 +331,13 @@ export function GameDuelBoard({
                 isModalOpen={finishedModal}
                 points={totalPoints}
             />
+            <div className={styles.panel}>
+                <Chat
+                    username={activePlayer.username}
+                    gameId={id}
+                    gameParticipantId={me.participantId}
+                />
+            </div>
         </div>
     );
 }

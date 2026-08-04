@@ -5,18 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/constants/GamePlayerTypes.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/duel/DuelGame.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/EnterNewDuelEntryProcessor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/ClassicGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/ClassicGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/PlusGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/PlusGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/SingleColumnGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/typesOfGame/SingleColumnGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/duelGame/DuelGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/duelGame/DuelGame.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/game/SoloGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/EnterNewEntryCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/ScoreEntry/ScoreEntryResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +33,9 @@
           <execution>
             <execution>
               <execution>
-                <execution />
+                <execution>
+                  <execution />
+                </execution>
               </execution>
             </execution>
           </execution>
@@ -281,7 +285,7 @@
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "main",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/var/www/yamb/frontend/src/components/Game",
+    "last_opened_file_path": "/var/www/yamb/frontend/src/pages/duel",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
@@ -312,11 +316,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/pages/duel" />
       <recent name="$PROJECT_DIR$/frontend/src/components/Game" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Query/Chat" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game" />
       <recent name="$PROJECT_DIR$/src/Game/Application/Query/GameParticipant" />
-      <recent name="$PROJECT_DIR$/src/Game/Application/Command/Game/LobbyHeartBeat" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/Create" />
@@ -418,6 +422,7 @@
       <workItem from="1784706569162" duration="220000" />
       <workItem from="1785487459301" duration="15555000" />
       <workItem from="1785747260128" duration="10156000" />
+      <workItem from="1785833414345" duration="15427000" />
     </task>
     <servers />
   </component>
