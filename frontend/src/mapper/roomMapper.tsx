@@ -77,7 +77,6 @@ export function applyEventForGameStarted(
     incoming: any
 ): any {
     if (!prevRoom || prevRoom.key === incoming.key) {
-        console.log('test');
         if (action !== "created") {
             return null
         }

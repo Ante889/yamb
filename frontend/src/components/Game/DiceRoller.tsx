@@ -78,39 +78,42 @@ export function DiceRoller({
 
         const heldPositions = dice.map(d => d.held);
 
-        await ThrowService.throwDiceGame(
-            gameParticipantId ?? id,
-            heldPositions
-        ).then((res) =>{
-            setTimeout(() => {
-                const rawValues = [
-                    res['dices'].first,
-                    res['dices'].second,
-                    res['dices'].third,
-                    res['dices'].fourth,
-                    res['dices'].five,
-                    res['dices'].six
-                ];
+        const throwPromise = type === DUEL_GAME
+            ? ThrowService.throwDiceDuelGame(gameParticipantId ?? id, heldPositions)
+            : ThrowService.throwDiceGame(gameParticipantId ?? id, heldPositions);
 
-                const values = rawValues.slice(0, diceCount);
+        await throwPromise
+            .then((res) => {
+                setTimeout(() => {
+                    const rawValues = [
+                        res['dices'].first,
+                        res['dices'].second,
+                        res['dices'].third,
+                        res['dices'].fourth,
+                        res['dices'].five,
+                        res['dices'].six
+                    ];
 
-                setDice(prev =>
-                    values.map((value, i) => ({
-                        value,
-                        held: prev[i]?.held ?? false
-                    }))
-                );
+                    const values = rawValues.slice(0, diceCount);
 
-                if (typeof res['throwNumber'] === "number") {
-                    setThrowCount(res.throwNumber ?? 0);
-                }
+                    setDice(prev =>
+                        values.map((value, i) => ({
+                            value,
+                            held: prev[i]?.held ?? false
+                        }))
+                    );
 
+                    if (typeof res['throwNumber'] === "number") {
+                        setThrowCount(res.throwNumber ?? 0);
+                    }
+
+                    setRolling(false);
+                }, 900);
+            })
+            .catch((err) => {
                 setRolling(false);
-            }, 900);
-        }).catch((err) => {
-            setRolling(false);
-            return;
-        });
+                return;
+            });
     };
 
     return (
@@ -135,7 +138,7 @@ export function DiceRoller({
                 ))}
             </div>
 
-            {type === SINGLE_GAME || (type === DUEL_GAME && activePlayer.userId === me.userId)  && (
+            {(type === SINGLE_GAME || (type === DUEL_GAME && activePlayer.userId === me.userId)) && (
                 <div className="fullSize">
                     <button
                         className="btn btn-primary"

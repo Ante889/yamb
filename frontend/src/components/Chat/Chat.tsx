@@ -24,6 +24,7 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [text, setText] = useState("");
     const esRef = useRef<EventSource | null>(null);
+    const messagesRef = useRef<HTMLDivElement | null>(null);
     const bottomRef = useRef<HTMLDivElement | null>(null);
     const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -124,7 +125,7 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
     }, [gameId, username]);
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+        bottomRef.current?.scrollIntoView({ block: "nearest" });
     }, [messages]);
 
     const sendMessage = async () => {
@@ -154,7 +155,7 @@ function Chat({ username, gameId, gameParticipantId }: Props) {
         <div className={styles.chat}>
             <div className={styles.header}>{t('chat.chat')}</div>
 
-            <div className={styles.messages}>
+            <div className={styles.messages} ref={messagesRef}>
                 {messages.map((m) => (
                     <div
                         key={m.id}

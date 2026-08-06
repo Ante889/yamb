@@ -76,7 +76,8 @@
         "CLASSIC": "Classic",
         "YAMB_PLUS": "Yamb plus",
         "SINGLE_COLUMN": "Single column",
-        "currentlyPlaying": "Currently playing"
+        "currentlyPlaying": "Currently playing",
+        "waitingForPlayer": "Switching turns..."
     },
     "leaderboard": {
         "SINGLE_COLUMN": "Single column",

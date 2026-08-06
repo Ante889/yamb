@@ -52,4 +52,42 @@ export const MercureService = {
 
         return es;
     },
+
+    async subscribeToDuelGameDice(
+        gameId: number,
+        callback: (data: any) => void
+    ): Promise<EventSource> {
+
+        const { token } = await this.getMercureToken(gameId);
+
+        const url = new URL(BASE_MERCURE_URL);
+
+        url.searchParams.append("topic", `/game-participant-dice/${gameId}`);
+        url.searchParams.append("authorization", token);
+
+        const es = new EventSource(url);
+
+        es.onmessage = (event) => callback(JSON.parse(event.data));
+
+        return es;
+    },
+
+    async subscribeToDuelGameTurn(
+        gameId: number,
+        callback: (data: any) => void
+    ): Promise<EventSource> {
+
+        const { token } = await this.getMercureToken(gameId);
+
+        const url = new URL(BASE_MERCURE_URL);
+
+        url.searchParams.append("topic", `/game-participant-turn/${gameId}`);
+        url.searchParams.append("authorization", token);
+
+        const es = new EventSource(url);
+
+        es.onmessage = (event) => callback(JSON.parse(event.data));
+
+        return es;
+    },
 };

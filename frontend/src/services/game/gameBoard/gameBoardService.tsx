@@ -74,7 +74,17 @@ export class GameBoardService {
 
     static applyScore(gameData: any, row: string, column: string, points: number) {
         const updated = structuredClone(gameData);
+        updated.grid[row][column] = points;
+        updated.dices = [];
+        updated.throwNumber = 0;
 
+        this.recalculateTotals(updated, column);
+
+        return updated;
+    }
+
+    static applyScoreDuel(gameData: any, row: string, column: string, points: number) {
+        const updated = structuredClone(gameData);
         updated.grid[row][column] = points;
         updated.dices = [];
         updated.throwNumber = 0;

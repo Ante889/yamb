@@ -7,6 +7,7 @@ namespace App\Game\Infrastructure\Resource\Game;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
+use App\Game\Infrastructure\State\Processor\ThrowDiceDuelProcessor;
 use App\Game\Infrastructure\State\Processor\ThrowDiceProcessor;
 
 #[ApiResource(
@@ -17,6 +18,12 @@ use App\Game\Infrastructure\State\Processor\ThrowDiceProcessor;
             description: 'throw dice',
             security: "is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             processor: ThrowDiceProcessor::class
+        ),
+        new Post(
+            uriTemplate: '/throw-dice-duel/{gameParticipantId}',
+            description: 'throw dice',
+            security: "is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
+            processor: ThrowDiceDuelProcessor::class
         ),
     ],
 )]

@@ -9,10 +9,10 @@ import {useNavigate, useParams} from "react-router-dom";
 import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
-import {getCurrentUserData} from "../../api/user/userApi.tsx";
 import {TokenService} from "../../api/token.tsx";
 import Chat from "../Chat/Chat.tsx";
 import {DUEL_GAME} from "../../constants/GamePlayerTypes.tsx";
+import {useGameDuelBoardEffects} from "../../hooks/game/useGameDuelBoardEffects.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -55,11 +55,8 @@ export function GameDuelBoard({
     const navigate = useNavigate();
 
     const [showExit, setShowExit] = useState(false);
+    const [switchingTurn, setSwitchingTurn] = useState(false);
     const [localGameData, setLocalGameData] = useState(gameData);
-
-    useEffect(() => {
-        setLocalGameData(gameData);
-    }, [gameData]);
 
     const activePlayer = localGameData?.find(
         (player) => player.moveStatus === "ACTIVE_TURN"
@@ -69,23 +66,26 @@ export function GameDuelBoard({
         (player) => player.username === TokenService.getUsername()
     );
 
-    console.log(getCurrentUserData())
-
+    const otherPlayer = localGameData?.find(
+        (player) => player.username !== TokenService.getUsername()
+    );
     const {id} = useParams();
+
     const participantId = activePlayer?.participantId ?? null;
     const grid = activePlayer?.grid ?? {};
     const upperTotals = activePlayer?.upperTotals ?? {};
     const minMaxTotals = activePlayer?.minMaxTotals ?? {};
     const downTotals = activePlayer?.downTotals ?? {};
     const grandTotals = activePlayer?.grandTotals ?? {};
+    const [throwCount, setThrowCount] = useState(
+        activePlayer?.throwNumber ?? 0
+    );
 
     const [announcedColumn, setAnnouncedColumn] = useState(
         activePlayer?.announcement ?? null
     );
 
-    const [throwCount, setThrowCount] = useState(
-        activePlayer?.throwNumber ?? 0
-    );
+    useGameDuelBoardEffects({ gameId: id, gameData, otherPlayer, setLocalGameData, setThrowCount, setSwitchingTurn, setAnnouncedColumn });
 
     const totalPoints = Object.values(grandTotals ?? {}).reduce(
         (sum: number, value: any) => sum + (value ?? 0),
@@ -112,20 +112,39 @@ export function GameDuelBoard({
 
         if (!response) return;
 
-        setLocalGameData((prev: any) =>
-            GameBoardService.applyScore(
-                prev,
-                row,
-                column,
-                response.point
+        setLocalGameData((prev: any[]) =>
+            prev.map((player) =>
+                player.participantId === activePlayer.participantId
+                    ? GameBoardService.applyScoreDuel(player, row, column, response.point)
+                    : player
             )
         );
-        setAnnouncedColumn(null)
-        setThrowCount(0)
+
+        setAnnouncedColumn(null);
+        setThrowCount(0);
 
         if (response.gameStatus === FINISHED_GAME_STATUS) {
             setFinishedModal(true);
+            return;
         }
+
+        setSwitchingTurn(true);
+
+        setTimeout(() => {
+            setLocalGameData((prev: any[]) =>
+                prev.map((player) => {
+                    if (player.participantId === activePlayer.participantId) {
+                        return { ...player, moveStatus: "WAITING_TURN" };
+                    }
+                    if (player.participantId === otherPlayer.participantId) {
+                        return { ...player, moveStatus: "ACTIVE_TURN" };
+                    }
+                    return player;
+                })
+            );
+
+            setSwitchingTurn(false);
+        }, 1500);
     };
 
     const handleAnnouncementClick = async (
@@ -189,26 +208,18 @@ export function GameDuelBoard({
     );
 
     return (
-
         <div className={styles.tableWrapper}>
-            <div className={styles.sheet}>
-                <div className={styles.playerTitle}>
-                    <span className={styles.username}>
-                        {activePlayer.username}
-                    </span>
+            {switchingTurn && (
+                <div className={styles.turnOverlay}>
+                    <div className={styles.turnCard}>
+                        <div className={styles.turnSpinner} />
+                        <span className={styles.turnText}>
+                            {t("game.waitingForPlayer", { username: otherPlayer?.username })}
+                        </span>
+                    </div>
                 </div>
-
-                <DiceRoller
-                    diceCount={activePlayer?.diceNumber ?? 6}
-                    dices={activePlayer?.dices ?? []}
-                    throwCount={throwCount}
-                    setThrowCount={setThrowCount}
-                    type={DUEL_GAME}
-                    gameParticipantId={participantId}
-                    me={me}
-                    activePlayer={activePlayer}
-                />
-
+            )}
+            <div className={styles.sheet}>
                 <div className={styles.row}>
                     <div
                         className={`${styles.cell} ${styles.cat}`}
@@ -333,6 +344,21 @@ export function GameDuelBoard({
                 points={totalPoints}
             />
             <div className={styles.panel}>
+                <div className={styles.playerTitle}>
+                    <span className={styles.username}>
+                        {activePlayer.username}
+                    </span>
+                </div>
+                <DiceRoller
+                    diceCount={activePlayer?.diceNumber ?? 6}
+                    dices={activePlayer?.dices ?? []}
+                    throwCount={throwCount}
+                    setThrowCount={setThrowCount}
+                    type={DUEL_GAME}
+                    gameParticipantId={participantId}
+                    me={me}
+                    activePlayer={activePlayer}
+                />
                 <Chat
                     username={activePlayer.username}
                     gameId={id}
