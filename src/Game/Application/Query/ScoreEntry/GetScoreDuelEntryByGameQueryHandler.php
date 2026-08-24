@@ -55,7 +55,8 @@ final readonly class GetScoreDuelEntryByGameQueryHandler
             $scoreEntryData = $this->scoreEntryRepository->getByGameParticipantId($participantId);
 
             $commandStatus = new CurrentGameStatusQuery(
-                gameParticipantId: (int)$participantId
+                gameParticipantId: (int)$participantId,
+                isDuel: true
             );
 
             $participantData = GameParticipantResult::fillData($participant);

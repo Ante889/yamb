@@ -136,4 +136,35 @@ export function useGameDuelBoardEffects({
             es?.close();
         };
     }, [otherPlayer?.participantId]);
+
+    useEffect(() => {
+        if (!otherPlayer?.participantId) return;
+
+        let mounted = true;
+        let es: EventSource | null = null;
+
+        const connect = async () => {
+            es = await MercureService.subscribeToAnnouncement(
+                Number(otherPlayer.participantId),
+                (data: any) => {
+                    if (!mounted) return;
+                    if (data.action === "created" && data.payload) {
+                        setAnnouncedColumn(data.payload.row);
+                    }
+                }
+            );
+
+            if (!mounted) {
+                es?.close();
+                return;
+            }
+        };
+
+        connect();
+
+        return () => {
+            mounted = false;
+            es?.close();
+        };
+    }, [otherPlayer?.participantId]);
 }

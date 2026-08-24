@@ -90,4 +90,23 @@ export const MercureService = {
 
         return es;
     },
+
+    async subscribeToAnnouncement(
+        gameParticipant: number,
+        callback: (data: any) => void
+    ): Promise<EventSource> {
+
+        const { token } = await this.getMercureToken(gameParticipant);
+
+        const url = new URL(BASE_MERCURE_URL);
+
+        url.searchParams.append("topic", `/set-announcement-field/${gameParticipant}`);
+        url.searchParams.append("authorization", token);
+
+        const es = new EventSource(url);
+
+        es.onmessage = (event) => callback(JSON.parse(event.data));
+
+        return es;
+    },
 };

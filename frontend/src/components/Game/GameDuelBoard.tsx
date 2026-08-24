@@ -161,6 +161,7 @@ export function GameDuelBoard({
         setAnnouncedColumn(response.row)
     };
 
+
     const exitGame = async () => {
         const res =
             await SoloGameService.exitSoloGame(participantId);

@@ -5,21 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/game/useGameDuelBoardEffects.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Game/Infrastructure/State/Processor/ThrowDiceDuelProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/game/throwDiceApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/game/throwDiceApi.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Chat/Chat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/DiceRoller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/mapper/roomMapper.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/duel/DuelGame.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/duel/DuelGame.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/gameBoard/gameBoardService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/gameBoard/gameBoardService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/game/throwDice/throwService.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/game/useGameDuelBoardEffects.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/game/useGameDuelBoardEffects.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/mercure/mercureService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/mercure/mercureService.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Infrastructure/Resource/Game/DiceGameResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Command/Game/Announcement/SetAnnouncementFieldCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/GameStatus/CurrentGameStatusQueryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreDuelEntryByGameQueryHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Application/Query/ScoreEntry/GetScoreDuelEntryByGameQueryHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/Domain/Model/Game.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mercure/Infrastructure/State/Provider/MercureTokenProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Shared/Domain/Mercure/MercureTopics.php" afterDir="false" />
     </list>
@@ -39,7 +34,11 @@
                 <execution>
                   <execution>
                     <execution>
-                      <execution />
+                      <execution>
+                        <execution>
+                          <execution />
+                        </execution>
+                      </execution>
                     </execution>
                   </execution>
                 </execution>
@@ -346,7 +345,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-a98d8de5180a-ff90ddd8021d-com.jetbrains.php.sharedIndexes-PS-262.8665.325" />
+        <option value="bundled-php-predefined-a98d8de5180a-9522f28f0b20-com.jetbrains.php.sharedIndexes-PS-262.9437.196" />
       </set>
     </attachedChunks>
   </component>
@@ -431,7 +430,9 @@
       <workItem from="1785747260128" duration="10156000" />
       <workItem from="1785833414345" duration="15427000" />
       <workItem from="1785852244119" duration="46000" />
-      <workItem from="1786011136907" duration="10765000" />
+      <workItem from="1786011136907" duration="10832000" />
+      <workItem from="1786091790974" duration="2147000" />
+      <workItem from="1787572528942" duration="8560000" />
     </task>
     <servers />
   </component>

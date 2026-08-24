@@ -9,13 +9,16 @@ use App\Game\Domain\Contract\TurnStateStoreInterface;
 use App\Game\Domain\Enum\ScoreEntryColumnEnum;
 use App\Game\Domain\Validator\AnnouncementValidator;
 use App\Game\Domain\Validator\ScoreEntryValidator;
+use App\Shared\Domain\Mercure\MercureServiceInterface;
+use App\Shared\Domain\Mercure\MercureTopics;
 
 final readonly class SetAnnouncementFieldCommandHandler
 {
     public function __construct(
         private AnnouncementValidator   $announcementValidator,
         private TurnStateStoreInterface $store,
-        private ScoreEntryValidator $entryValidator
+        private ScoreEntryValidator     $entryValidator,
+        private MercureServiceInterface $mercureService
     )
     {
     }
@@ -29,5 +32,13 @@ final readonly class SetAnnouncementFieldCommandHandler
         $this->announcementValidator->isAlreadySet($gameParticipantId);
 
         $this->store->setAnnouncement($gameParticipantId, $command->row->value);
+
+        $this->mercureService->create(
+            MercureTopics::gameParticipantAnnouncementField($gameParticipantId),
+            [
+                'key' => $gameParticipantId,
+                'row' => $command->row->value
+            ]
+        );
     }
 }

@@ -7,7 +7,8 @@ namespace App\Game\Application\Query\GameStatus;
 final readonly class CurrentGameStatusQuery
 {
     public function __construct(
-        public ?int $gameParticipantId
+        public ?int  $gameParticipantId,
+        public ?bool $isDuel = false
     )
     {
     }

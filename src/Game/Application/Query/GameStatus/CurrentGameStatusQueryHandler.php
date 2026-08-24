@@ -43,9 +43,15 @@ final readonly class CurrentGameStatusQueryHandler
 
         if ($isGameFinished) {
             $gameParticipant = $this->gameParticipantRepository->findById($command->gameParticipantId);
-            $game->finish($gameParticipant, $this->calculatePointsForEntryService->calculateTotalScore(
-                $scoreEntries
-            ));
+            if($command->isDuel) {
+                $game->finishParticipant($gameParticipant, $this->calculatePointsForEntryService->calculateTotalScore(
+                    $scoreEntries
+                ));
+            } else {
+                $game->finish($gameParticipant, $this->calculatePointsForEntryService->calculateTotalScore(
+                    $scoreEntries
+                ));
+            }
 
             $this->gameRepository->save();
 

@@ -135,6 +135,16 @@ class Game
         $gameParticipant?->setStatus(GameParticipantStatusEnum::FINISH);
     }
 
+    public function finishParticipant(?GameParticipant $gameParticipant, int $points = 0): void
+    {
+        if ($this->gameStatus === GameStatusEnum::FINISHED->value) {
+            return;
+        }
+
+        $gameParticipant?->setPoints($points);
+        $gameParticipant?->setStatus(GameParticipantStatusEnum::FINISH);
+    }
+
     public function startDuelGame(): void
     {
         $this->gameStatus = GameStatusEnum::IN_PROGRESS->value;
