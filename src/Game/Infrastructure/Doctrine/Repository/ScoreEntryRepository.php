@@ -26,6 +26,29 @@ class ScoreEntryRepository extends ServiceEntityRepository implements ScoreEntry
             ->getResult();
     }
 
+    public function updateForLeaver(int $gameParticipant): int
+    {
+        return $this->createQueryBuilder('se')
+            ->update()
+            ->set('se.value', ':zero')
+            ->andWhere('se.gameParticipant = :gameParticipantId')
+            ->setParameter('zero', 0)
+            ->setParameter('gameParticipantId', $gameParticipant)
+            ->getQuery()
+            ->execute();
+    }
+
+    public function getByGame(int $gameId): array
+    {
+        return $this->createQueryBuilder('se')
+            ->innerJoin('se.gameParticipant', 'gp')
+            ->innerJoin('gp.game', 'g')
+            ->andWhere('g.id = :gameId')
+            ->setParameter('gameId', $gameId)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function checkUpDownRule(ScoreEntryFieldEnum $row, ScoreEntryColumnEnum $column, int $participantId): bool
     {
         $result = $this->createQueryBuilder('se')

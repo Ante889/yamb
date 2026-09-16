@@ -8,11 +8,11 @@ import {GameBoardService} from "../../services/game/gameBoard/gameBoardService.t
 import {useNavigate, useParams} from "react-router-dom";
 import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config/GameRowsConfig.tsx";
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
-import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
 import {TokenService} from "../../api/token.tsx";
 import Chat from "../Chat/Chat.tsx";
 import {DUEL_GAME} from "../../constants/GamePlayerTypes.tsx";
 import {useGameDuelBoardEffects} from "../../hooks/game/useGameDuelBoardEffects.tsx";
+import DuelGameFinishedModal from "../Modal/DuelGameFinishedModal.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -71,21 +71,23 @@ export function GameDuelBoard({
     );
     const {id} = useParams();
 
-    const participantId = activePlayer?.participantId ?? null;
-    const grid = activePlayer?.grid ?? {};
-    const upperTotals = activePlayer?.upperTotals ?? {};
-    const minMaxTotals = activePlayer?.minMaxTotals ?? {};
-    const downTotals = activePlayer?.downTotals ?? {};
-    const grandTotals = activePlayer?.grandTotals ?? {};
+    const participantId = activePlayer?.participantId ?? me?.participantId;
+    const grid = activePlayer?.grid ?? me?.grid;
+    const upperTotals = activePlayer?.upperTotals ?? me?.upperTotals;
+    const minMaxTotals = activePlayer?.minMaxTotals ?? me?.minMaxTotals;
+    const downTotals = activePlayer?.downTotals ?? me?.downTotals;
+    const grandTotals = activePlayer?.grandTotals ?? me?.grandTotals;
     const [throwCount, setThrowCount] = useState(
-        activePlayer?.throwNumber ?? 0
+        activePlayer?.throwNumber ?? me?.throwNumber
     );
 
     const [announcedColumn, setAnnouncedColumn] = useState(
-        activePlayer?.announcement ?? null
+        activePlayer?.announcement ?? me?.announcement
     );
 
-    useGameDuelBoardEffects({ gameId: id, gameData, otherPlayer, setLocalGameData, setThrowCount, setSwitchingTurn, setAnnouncedColumn });
+    useGameDuelBoardEffects(
+        { gameId: id, gameData, otherPlayer, me, setLocalGameData, setThrowCount, setSwitchingTurn, setAnnouncedColumn }
+    );
 
     const totalPoints = Object.values(grandTotals ?? {}).reduce(
         (sum: number, value: any) => sum + (value ?? 0),
@@ -97,6 +99,8 @@ export function GameDuelBoard({
         column: string
     ) => {
 
+        if(activePlayer?.userId !== me?.userId) return;
+
         if (column === 'announcement' && row !== announcedColumn) {
             await handleAnnouncementClick(row);
             return;
@@ -105,7 +109,7 @@ export function GameDuelBoard({
         const response =
             await ScoreEntryService.newScoreDuelEntryByParticipant(
                 id,
-                participantId,
+                me?.participantId,
                 row,
                 column
             );
@@ -163,12 +167,7 @@ export function GameDuelBoard({
 
 
     const exitGame = async () => {
-        const res =
-            await SoloGameService.exitSoloGame(participantId);
-
-        if (res) {
-            navigate("/");
-        }
+        navigate("/");
     };
 
     const renderRow = (rowName: string, index: number) => (
@@ -340,14 +339,16 @@ export function GameDuelBoard({
                 }}
             />
 
-            <SoloGameFinishedModal
+            <DuelGameFinishedModal
                 isModalOpen={finishedModal}
-                points={totalPoints}
+                me={me}
+                otherPlayer={otherPlayer}
             />
+
             <div className={styles.panel}>
                 <div className={styles.playerTitle}>
                     <span className={styles.username}>
-                        {activePlayer.username}
+                        {activePlayer?.username ?? me?.username}
                     </span>
                 </div>
                 <DiceRoller
@@ -358,10 +359,10 @@ export function GameDuelBoard({
                     type={DUEL_GAME}
                     gameParticipantId={participantId}
                     me={me}
-                    activePlayer={activePlayer}
+                    activePlayer={activePlayer ?? me}
                 />
                 <Chat
-                    username={activePlayer.username}
+                    username={activePlayer?.username}
                     gameId={id}
                     gameParticipantId={me.participantId}
                 />

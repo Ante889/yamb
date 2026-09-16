@@ -14,11 +14,15 @@ final readonly class GameStatusService
     {
     }
 
-    public function isGameFinished(Game $game, int $numberOfInsertedFields): bool
+    public function isGameFinished(Game $game, int $numberOfInsertedFields, bool $isDuel): bool
     {
         $columns = $game->getGameType()->columns();
 
-        $totalFields = count($columns) * count(ScoreEntryFieldEnum::cases());
+        if($isDuel) {
+            $totalFields = (count($columns) * count(ScoreEntryFieldEnum::cases())) * 2;
+        } else {
+            $totalFields = count($columns) * count(ScoreEntryFieldEnum::cases());
+        }
 
         return $numberOfInsertedFields >= $totalFields;
     }

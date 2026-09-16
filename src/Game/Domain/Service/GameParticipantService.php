@@ -9,6 +9,7 @@ use App\Game\Domain\Model\Game;
 use App\Game\Domain\Model\GameParticipant;
 use App\Game\Domain\Repository\GameParticipantRepositoryInterface;
 use App\Game\Domain\Repository\GameRepositoryInterface;
+use App\Game\Domain\Repository\ScoreEntryRepositoryInterface;
 use App\Game\Domain\Validator\JoinGameParticipantValidator;
 use App\Game\Infrastructure\Mapper\GameResponseMapper;
 use App\Shared\Domain\Mercure\MercureServiceInterface;
@@ -22,6 +23,7 @@ final readonly class GameParticipantService
         private JoinGameParticipantValidator       $joinGameParticipantValidator,
         private GameRepositoryInterface            $gameRepository,
         private GameParticipantRepositoryInterface $gameParticipantRepository,
+        private ScoreEntryRepositoryInterface      $scoreEntryRepository,
         private MercureServiceInterface            $mercureService,
         private GameResponseMapper                 $gameResponseMapper
     )
@@ -65,6 +67,35 @@ final readonly class GameParticipantService
                     $gameMapper
                 );
             }
+        }
+
+        $this->gameParticipantRepository->save();
+    }
+
+
+    public function removeExpiredGameParticipantsFromStartedGame(array $gameParticipants): void
+    {
+        /** @var GameParticipant $gameParticipant */
+        foreach ($gameParticipants as $gameParticipant) {
+            $game = $gameParticipant->getGame();
+            foreach ($game->getParticipants() as $gameParticipantOnGame) {
+                if ($gameParticipant === $gameParticipantOnGame) {
+                    $game->finishParticipant($gameParticipantOnGame, 0);
+                    $this->scoreEntryRepository->updateForLeaver($gameParticipantOnGame->getId());
+                } else {
+                    $game->finishParticipant($gameParticipantOnGame, 100);
+                }
+            }
+
+            $game->finishGame();
+            $this->gameRepository->save();
+
+            $this->mercureService->create(
+                MercureTopics::finishedGame($game->getId()),
+                [
+                    'success' => 'Success finished game'
+                ]
+            );
         }
 
         $this->gameParticipantRepository->save();

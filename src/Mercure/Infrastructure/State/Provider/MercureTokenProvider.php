@@ -35,6 +35,7 @@ final readonly class MercureTokenProvider implements ProviderInterface
 
         if ($gameId) {
             $topics[] = MercureTopics::gameChat((int) $gameId);
+            $topics[] = MercureTopics::finishedGame((int) $gameId);
         }
 
         if ($gameParticipantId) {

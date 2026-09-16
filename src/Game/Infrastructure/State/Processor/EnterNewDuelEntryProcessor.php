@@ -67,7 +67,8 @@ final readonly class EnterNewDuelEntryProcessor implements ProcessorInterface
 
         $gameStatus = $this->currentGameStatusQueryHandler->query(
             new CurrentGameStatusQuery(
-                gameParticipantId: $participantId
+                gameParticipantId: $participantId,
+                isDuel: true
             )
         );
 

@@ -2,9 +2,10 @@
 <dataSource name="yamb@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.55">
     <root id="1">
+      <DefaultAuthPlugin>caching_sha2_password</DefaultAuthPlugin>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <ServerVersion>8.0.42</ServerVersion>
+      <ServerVersion>8.0.46</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_general_ci">
       <Charset>armscii8</Charset>
@@ -1013,10 +1014,12 @@
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
     <table id="319" parent="308" name="game">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
     <table id="320" parent="308" name="game_participant">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
@@ -1029,6 +1032,7 @@
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
     <table id="323" parent="308" name="score_entry">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
@@ -1104,7 +1108,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="339" parent="319" name="id">
-      <AutoIncrement>250</AutoIncrement>
+      <AutoIncrement>45</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1175,7 +1179,7 @@
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="354" parent="320" name="id">
-      <AutoIncrement>267</AutoIncrement>
+      <AutoIncrement>82</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
@@ -1329,7 +1333,7 @@ id</ColNames>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
     <column id="385" parent="323" name="id">
-      <AutoIncrement>590</AutoIncrement>
+      <AutoIncrement>161</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>

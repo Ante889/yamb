@@ -70,7 +70,7 @@ export function DiceRoller({
     };
 
     const rollDice = async () => {
-        if (type === DUEL_GAME && activePlayer.userId !== me.userId) return;
+        if (type === DUEL_GAME && activePlayer?.userId !== me.userId) return;
 
         if (rolling || rollsLeft <= 0) return;
 
@@ -138,7 +138,7 @@ export function DiceRoller({
                 ))}
             </div>
 
-            {(type === SINGLE_GAME || (type === DUEL_GAME && activePlayer.userId === me.userId)) && (
+            {(type === SINGLE_GAME || (type === DUEL_GAME && activePlayer?.userId === me.userId)) && (
                 <div className="fullSize">
                     <button
                         className="btn btn-primary"

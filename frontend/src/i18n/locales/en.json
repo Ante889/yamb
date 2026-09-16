@@ -77,7 +77,10 @@
         "YAMB_PLUS": "Yamb plus",
         "SINGLE_COLUMN": "Single column",
         "currentlyPlaying": "Currently playing",
-        "waitingForPlayer": "Switching turns..."
+        "waitingForPlayer": "Switching turns...",
+        "winner": "\uD83C\uDFC6 Winner",
+        "draw": "\uD83E\uDD1D Draw",
+        "loser": "Loser"
     },
     "leaderboard": {
         "SINGLE_COLUMN": "Single column",

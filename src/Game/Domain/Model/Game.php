@@ -145,6 +145,16 @@ class Game
         $gameParticipant?->setStatus(GameParticipantStatusEnum::FINISH);
     }
 
+    public function finishGame(): void
+    {
+        if ($this->gameStatus === GameStatusEnum::FINISHED->value) {
+            return;
+        }
+
+        $this->gameStatus = GameStatusEnum::FINISHED->value;
+        $this->finishedAt = new \DateTimeImmutable();
+    }
+
     public function startDuelGame(): void
     {
         $this->gameStatus = GameStatusEnum::IN_PROGRESS->value;

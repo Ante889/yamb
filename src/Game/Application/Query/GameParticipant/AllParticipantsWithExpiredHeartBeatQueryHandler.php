@@ -26,12 +26,12 @@ final readonly class AllParticipantsWithExpiredHeartBeatQueryHandler
      * @return GameForDeleteResult
      * @throws InvalidArgumentException
      */
-    public function query(): GameForDeleteResult
+    public function query(string $status): GameForDeleteResult
     {
         $expiredParticipants = [];
         $emptyGames = [];
 
-        foreach ($this->gameRepository->getLobbyStatus() as $game) {
+        foreach ($this->gameRepository->getByStatus($status) as $game) {
             $participants = $game->getParticipants();
 
             if (count($participants) === 0) {

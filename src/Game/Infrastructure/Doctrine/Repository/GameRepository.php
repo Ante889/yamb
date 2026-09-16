@@ -21,11 +21,11 @@ class GameRepository extends ServiceEntityRepository implements GameRepositoryIn
         parent::__construct($registry, Game::class);
     }
 
-    public function getLobbyStatus(): array
+    public function getByStatus(string $status): array
     {
         return  $this->createQueryBuilder('g')
             ->where('g.gameStatus = :status')
-            ->setParameter('status', GameStatusEnum::LOBBY->value)
+            ->setParameter('status', $status)
             ->getQuery()
             ->getResult();
     }

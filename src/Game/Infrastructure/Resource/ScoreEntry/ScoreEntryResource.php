@@ -44,17 +44,6 @@ use App\Game\Infrastructure\State\Provider\ScoreEntryByGameParticipantProvider;
             security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             processor: EnterNewEntryProcessor::class
         ),
-
-
-        new Get(
-            uriTemplate: '/score-duel-entry-by-game/{gameId}',
-            uriVariables: [
-                'gameId' => new Link(fromProperty: 'gameId')
-            ],
-            description: 'Get score entry data by for duel by game',
-            security: "is_granted('ROLE_USER')",
-            provider: ScoreDuelEntryByGameProvider::class
-        ),
         new Post(
             uriTemplate: '/enter-new-duel-entry/{gameParticipantId}/{gameId}',
             uriVariables: [

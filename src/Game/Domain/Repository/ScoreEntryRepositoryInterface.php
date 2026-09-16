@@ -11,6 +11,8 @@ use App\Game\Domain\Model\ScoreEntry;
 interface ScoreEntryRepositoryInterface
 {
     public function getByGameParticipantId(int $gameParticipant): array;
+    public function updateForLeaver(int $gameParticipant): int;
+    public function getByGame(int $gameId): array;
     public function existsForParticipantAndPosition(int $participantId, ScoreEntryColumnEnum $column, ScoreEntryFieldEnum $row): bool;
     public function checkUpDownRule(ScoreEntryFieldEnum $row, ScoreEntryColumnEnum $column, int $participantId): bool;
     public function deleteByGameId(int $gameId);

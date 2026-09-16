@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Game\Infrastructure\Console;
 
 use App\Game\Application\Query\GameParticipant\AllParticipantsWithExpiredHeartBeatQueryHandler;
+use App\Game\Domain\Enum\GameStatusEnum;
 use App\Game\Domain\Service\GameParticipantService;
 use Psr\Cache\InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -40,15 +41,26 @@ final class ClearRooms extends Command
         OutputInterface $output
     ): int
     {
-        $data = $this->allParticipantsWithExpiredHeartBeatQueryHandler->query();
+        $dataLobbyStatus = $this->allParticipantsWithExpiredHeartBeatQueryHandler->query(
+            GameStatusEnum::LOBBY->value
+        );
+
+        $dataInProgressStatus = $this->allParticipantsWithExpiredHeartBeatQueryHandler->query(
+            GameStatusEnum::IN_PROGRESS->value
+        );
 
         $this->gameParticipantService->removeExpiredGameParticipants(
-            $data->expiredParticipants
+            $dataLobbyStatus->expiredParticipants
         );
 
-        $this->gameParticipantService->removeEmptyGame(
-            $data->emptyGames
+        $this->gameParticipantService->removeExpiredGameParticipantsFromStartedGame(
+            $dataInProgressStatus->expiredParticipants
         );
+
+        $this->gameParticipantService->removeEmptyGame([
+            ...$dataLobbyStatus->emptyGames,
+            ...$dataInProgressStatus->emptyGames,
+        ]);
 
         return Command::SUCCESS;
     }

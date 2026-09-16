@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { MercureService } from "../../services/mercure/mercureService.tsx";
 import {GameBoardService} from "../../services/game/gameBoard/gameBoardService.tsx";
+import {RoomService} from "../../services/game/room/roomService.tsx";
 
 interface UseGameDuelBoardEffectsParams {
     gameId: any;
     gameData: any[];
     otherPlayer: any;
+    me: any;
     setLocalGameData: React.Dispatch<React.SetStateAction<any[]>>;
     setThrowCount: React.Dispatch<React.SetStateAction<any>>;
     setSwitchingTurn: React.Dispatch<React.SetStateAction<any>>;
@@ -25,10 +27,11 @@ export function useGameDuelBoardEffects({
                                             gameId,
                                             gameData,
                                             otherPlayer,
+                                            me,
                                             setLocalGameData,
                                             setThrowCount,
                                             setSwitchingTurn,
-                                            setAnnouncedColumn
+                                            setAnnouncedColumn,
                                         }: UseGameDuelBoardEffectsParams) {
 
     useEffect(() => {
@@ -167,4 +170,54 @@ export function useGameDuelBoardEffects({
             es?.close();
         };
     }, [otherPlayer?.participantId]);
+
+    useEffect(() => {
+        if (!otherPlayer?.participantId) return;
+
+        let mounted = true;
+        let es: EventSource | null = null;
+
+        const connect = async () => {
+            es = await MercureService.subscribeToFinishedGame(
+                Number(gameId),
+                (data: any) => {
+                    if (!mounted) return;
+                    if (data.action === "created" && data.payload) {
+                        window.location.reload();
+                    }
+                }
+            );
+
+            if (!mounted) {
+                es?.close();
+                return;
+            }
+        };
+
+        connect();
+
+        return () => {
+            mounted = false;
+            es?.close();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!me.participantId) return;
+
+        const sendHeartbeat = async () => {
+
+            try {
+                await RoomService.lobbyHeartBeat(me.participantId);
+            } catch (err) {
+                console.error("Heartbeat failed:", err);
+            }
+        };
+
+        sendHeartbeat();
+
+        const interval = setInterval(sendHeartbeat, 10000);
+
+        return () => clearInterval(interval);
+    }, []);
 }

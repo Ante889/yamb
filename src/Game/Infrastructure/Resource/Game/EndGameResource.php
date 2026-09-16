@@ -19,7 +19,7 @@ use App\Game\Infrastructure\State\Provider\GameParticipantProvider;
             security: "is_granted('ROLE_USER') and is_granted('PARTICIPANT_ON_GAME', request.attributes.get('gameParticipantId'))",
             provider: GameParticipantProvider::class,
             processor: EndSoloGameProcessor::class
-        ),
+        )
     ],
 )]
 final readonly class EndGameResource

@@ -13,7 +13,11 @@ interface GameRepositoryInterface
     /**
      * @return array<int, Game>
      */
-    public function getLobbyStatus(): array;
+    public function getByStatus(string $status): array;
+
+    /**
+     * @return array<int, Game>
+     */
     public function deleteById(int $gameId): int;
 
     public function findById(int $gameId): ?Game;

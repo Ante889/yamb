@@ -2,6 +2,7 @@ import Modal from "./Modal.tsx";
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 
+
 function SoloGameFinishedModal({
                                    isModalOpen,
                                    points
@@ -14,6 +15,7 @@ function SoloGameFinishedModal({
             isOpen={isModalOpen}
             title={t("game.gameIsFinished")}
             withExit={false}
+            onClose={null}
         >
             <div style={{ textAlign: "center", fontSize: "18px", marginBottom: "12px" }}>
                 <div style={{ opacity: 0.7, marginBottom: "6px" }}>
