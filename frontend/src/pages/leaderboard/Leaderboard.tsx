@@ -55,12 +55,12 @@ export default function Leaderboard() {
             <div className={styles.header}>
                 <button
                     className={'backButton'}
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate('/')}
                 >
                     ← {t("dashboard.back")}
                 </button>
                 <h1>
-                    {t("roomList.title")}
+                    {t("dashboard.leaderboard")}
                 </h1>
             </div>
             <br/>

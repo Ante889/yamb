@@ -49,9 +49,8 @@
     transform: translateY(-6px);
     border-color: var(--border-accent);
 
-    box-shadow:
-        0 0 20px var(--glow-accent-soft),
-        0 0 40px var(--glow-warm);
+    box-shadow: 0 0 20px var(--glow-accent-soft),
+    0 0 40px var(--glow-warm);
 }
 
 .gameCard:hover img {
@@ -68,16 +67,15 @@
     overflow: hidden;
 
     background: linear-gradient(
-        135deg,
-        var(--glow-accent-soft),
-        var(--bg-accent-warm-soft)
+            135deg,
+            var(--glow-accent-soft),
+            var(--bg-accent-warm-soft)
     );
 
     border: 1px solid var(--border-accent);
 
-    box-shadow:
-        0 12px 30px var(--overlay-dark),
-        0 0 25px var(--glow-accent-soft);
+    box-shadow: 0 12px 30px var(--overlay-dark),
+    0 0 25px var(--glow-accent-soft);
 
     cursor: pointer;
 
@@ -96,9 +94,8 @@
 .leaderboardCard:hover {
     transform: translateY(-6px);
 
-    box-shadow:
-        0 0 30px var(--glow-accent-strong),
-        0 0 60px var(--glow-warm);
+    box-shadow: 0 0 30px var(--glow-accent-strong),
+    0 0 60px var(--glow-warm);
 }
 
 .leaderboardCard:hover img {
@@ -114,9 +111,9 @@
     padding: 16px;
 
     background: linear-gradient(
-        to top,
-        var(--color-bg-main),
-        transparent
+            to top,
+            var(--color-bg-main),
+            transparent
     );
 
     color: var(--color-text-primary);
@@ -131,6 +128,157 @@
     font-size: 13px;
     color: var(--color-text-secondary);
 }
+
+.playerStats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    width: 100%;
+    padding: 0.75rem;
+
+    background: var(--color-bg-glass);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+
+    box-shadow: 0 0 25px var(--glow-accent-soft),
+    inset 0 1px 0 var(--border-subtle);
+
+    backdrop-filter: blur(12px);
+}
+
+.stat {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 0.65rem 1rem;
+}
+
+.stat:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+
+    background: var(--border-subtle);
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.statLabel {
+    margin-top: 0.25rem;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+
+/* RECORDS */
+
+.records {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 100%;
+    margin-top: 0.5rem;
+
+    background: var(--color-bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    padding: 0.55rem 0.4rem;
+
+    border-right: 1px solid var(--border-subtle);
+}
+
+.record:last-child {
+    border-right: none;
+}
+
+.recordType {
+    max-width: 100%;
+
+    color: var(--color-text-primary);
+
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recordDice {
+    margin-top: 0.15rem;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.6rem;
+}
+
+.recordPoints {
+    margin-top: 0.2rem;
+
+    color: var(--color-text-primary);
+
+    font-size: 0.95rem;
+    font-weight: 800;
+
+    text-shadow: 0 0 8px var(--glow-warm);
+}
+
+
+@media (max-width: 600px) {
+    .playerStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(2)::after {
+        display: none;
+    }
+
+    .stat:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .records {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .record:nth-child(2) {
+        border-right: none;
+    }
+
+    .record:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--border-subtle);
+    }
+}
+
 
 @media (max-width: 768px) {
     .grid {

@@ -10,6 +10,7 @@ import {LOWER_SECTION_ROWS, MIN_MAX_ROWS, UPPER_SECTION_ROWS} from "../../config
 import {FINISHED_GAME_STATUS} from "../../constants/GameStatus.tsx";
 import SoloGameFinishedModal from "../Modal/SoloGameFinishedModal.tsx";
 import {SINGLE_GAME} from "../../constants/GamePlayerTypes.tsx";
+import {RoomService} from "../../services/game/room/roomService.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -56,6 +57,25 @@ export function GameBoard({
         (sum: number, value: any) => sum + (value ?? 0),
         0
     );
+
+    useEffect(() => {
+        if (!participantId) return;
+
+        const sendHeartbeat = async () => {
+
+            try {
+                await RoomService.lobbyHeartBeat(participantId.toString());
+            } catch (err) {
+                console.error("Heartbeat failed:", err);
+            }
+        };
+
+        sendHeartbeat();
+
+        const interval = setInterval(sendHeartbeat, 10000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const handleCellClick = async (
         row: string,
