@@ -13,6 +13,7 @@ import Chat from "../Chat/Chat.tsx";
 import {DUEL_GAME} from "../../constants/GamePlayerTypes.tsx";
 import {useGameDuelBoardEffects} from "../../hooks/game/useGameDuelBoardEffects.tsx";
 import DuelGameFinishedModal from "../Modal/DuelGameFinishedModal.tsx";
+import PlayerModal from "../Modal/PlayerModal.tsx";
 
 type GameColumnDefinition = {
     label: string;
@@ -57,6 +58,8 @@ export function GameDuelBoard({
     const [showExit, setShowExit] = useState(false);
     const [switchingTurn, setSwitchingTurn] = useState(false);
     const [localGameData, setLocalGameData] = useState(gameData);
+    const [playerModal, setPlayerModal] = useState(false);
+    const [clickedPlayer, setClickedPlayer] = useState(null);
 
     const activePlayer = localGameData?.find(
         (player) => player.moveStatus === "ACTIVE_TURN"
@@ -346,7 +349,14 @@ export function GameDuelBoard({
             />
 
             <div className={styles.panel}>
-                <div className={styles.playerTitle}>
+                <div
+                    className={styles.playerTitle}
+                    style={{cursor: 'pointer'}}
+                    onClick={() => {
+                        setPlayerModal(true)
+                        setClickedPlayer(activePlayer)
+                    }}
+                >
                     <span className={styles.username}>
                         {activePlayer?.username ?? me?.username}
                     </span>
@@ -365,6 +375,15 @@ export function GameDuelBoard({
                     username={activePlayer?.username}
                     gameId={id}
                     gameParticipantId={me.participantId}
+                />
+
+                <PlayerModal
+                    isModalOpen={playerModal}
+                    onClose={() => {
+                        setPlayerModal(false)
+                        setClickedPlayer(null)
+                    }}
+                    activePlayer = {activePlayer}
                 />
             </div>
         </div>

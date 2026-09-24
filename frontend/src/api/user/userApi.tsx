@@ -7,4 +7,11 @@ export const getCurrentUserData = async () => {
 };
 
 
+export const getUserStatistic = async (id) => {
+    const res = await api.get("/user/statistics/" + id);
+
+    return res.data;
+};
+
+
 

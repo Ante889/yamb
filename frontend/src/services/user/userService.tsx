@@ -1,17 +1,20 @@
 import { TokenService } from "../../api/token";
-import {getCurrentUserData} from "../../api/user/userApi.tsx";
+import {getCurrentUserData, getUserStatistic} from "../../api/user/userApi.tsx";
 
 export const UserService = {
     getCurrentUserData: async () => {
         const data = await getCurrentUserData();
 
-        const { username, email } = data;
-
+        const { username, email, key } = data;
         TokenService.setUserData(
             username,
-            email
+            email,
+            key
         );
 
         return data;
     },
+    getStatistics: async (id) => {
+        return await getUserStatistic(id);
+    }
 };

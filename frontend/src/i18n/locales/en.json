@@ -41,7 +41,11 @@
         "topPlayersThisWeek": "Top players",
         "exitConfirmation": "Exit confirmation",
         "duel": "Duel",
-        "back": "Back"
+        "back": "Back",
+        "records": "Records",
+        "dice": "Dice",
+        "loadingData": "Loading data...",
+        "winRate": "Win rate"
     },
     "login": {
         "email": "Email",

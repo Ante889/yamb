@@ -3,11 +3,13 @@ const REFRESH_TOKEN = "refresh_token";
 const EXPIRY = "token_expiry";
 const USER_NAME = "user_name";
 const USER_EMAIL = "user_email";
+const USER_ID = "user_id";
 
 export const TokenService = {
     getAccessToken: () => localStorage.getItem(ACCESS_TOKEN),
     getRefreshToken: () => localStorage.getItem(REFRESH_TOKEN),
     getUsername: () => localStorage.getItem(USER_NAME),
+    getUserId: () => localStorage.getItem(USER_ID),
     getUserEmail: () => localStorage.getItem(USER_EMAIL),
     setTokens: (access: string, refresh: string, expiresIn: number) => {
         const expiry = Date.now() + expiresIn * 1000;
@@ -16,9 +18,10 @@ export const TokenService = {
         localStorage.setItem(REFRESH_TOKEN, refresh);
         localStorage.setItem(EXPIRY, String(expiry));
     },
-    setUserData:(username: string, email: string) => {
+    setUserData:(username: string, email: string, key: number) => {
         localStorage.setItem(USER_NAME, username);
         localStorage.setItem(USER_EMAIL, email);
+        localStorage.setItem(USER_ID, String(key));
     },
     clear: () => {
         localStorage.removeItem(ACCESS_TOKEN);

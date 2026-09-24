@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bc2cd85-8c0d-4055-b205-e21ee2bd5c33" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Query/GetUserCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Query/GetUserCommandHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Query/GetUserStatisticsQuery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Application/Query/GetUserStatisticsQueryHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/Resource/PlayerResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User/Infrastructure/State/Provider/PlayerStatisticsDataProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cc7d4c5-16a7-49b5-9252-65fea822a095.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/PlayerModal.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Modal/PlayerModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/token.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/token.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/api/user/userApi.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/user/userApi.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Game/GameDuelBoard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/dashboard/Dashboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/leaderboard/Leaderboard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Domain/Repository/UserRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Domain/Repository/UserRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/Infrastructure/Doctrine/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/user/userService.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/user/userService.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +44,11 @@
                                       <execution>
                                         <execution>
                                           <execution>
-                                            <execution />
+                                            <execution>
+                                              <execution>
+                                                <execution />
+                                              </execution>
+                                            </execution>
                                           </execution>
                                         </execution>
                                       </execution>
@@ -365,7 +366,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-a98d8de5180a-9522f28f0b20-com.jetbrains.php.sharedIndexes-PS-262.10315.130" />
+        <option value="bundled-php-predefined-a98d8de5180a-9522f28f0b20-com.jetbrains.php.sharedIndexes-PS-262.10968.76" />
       </set>
     </attachedChunks>
   </component>
@@ -461,7 +462,9 @@
       <workItem from="1789547730233" duration="19354000" />
       <workItem from="1789630586281" duration="279000" />
       <workItem from="1789630895837" duration="7000" />
-      <workItem from="1789642878744" duration="8491000" />
+      <workItem from="1789642878744" duration="8514000" />
+      <workItem from="1790073063300" duration="1058000" />
+      <workItem from="1790240553402" duration="10766000" />
     </task>
     <servers />
   </component>
